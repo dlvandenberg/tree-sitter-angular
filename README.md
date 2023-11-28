@@ -1,0 +1,1 @@
+# tree-sitter-angular-2
