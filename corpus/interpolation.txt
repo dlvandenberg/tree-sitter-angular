@@ -1,0 +1,23 @@
+=====
+Basic
+=====
+
+<span>{{ value }}</span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+    )
+    (interpolation
+      (expression
+        (identifier)
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)

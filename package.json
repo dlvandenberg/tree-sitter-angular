@@ -1,0 +1,40 @@
+{
+  "name": "tree-sitter-angular",
+  "version": "1.0.0",
+  "description": "Tree-sitter grammar for the Angular framework",
+  "main": "bindings/node",
+  "scripts": {
+    "test": "tree-sitter test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlvandenberg/tree-sitter-angular-2.git"
+  },
+  "keywords": [
+    "Treesitter",
+    "Angular",
+    "Grammar",
+    "Tree-Sitter"
+  ],
+  "author": "dlvandenberg",
+  "license": "GNU GPLv3",
+  "bugs": {
+    "url": "https://github.com/dlvandenberg/tree-sitter-angular-2/issues"
+  },
+  "homepage": "https://github.com/dlvandenberg/tree-sitter-angular-2#readme",
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.8"
+  },
+  "dependencies": {
+    "nan": "^2.18.0",
+    "tree-sitter-html": "^0.20.0"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.angular",
+      "file-types": [
+        "component.html"
+      ]
+    }
+  ]
+}
