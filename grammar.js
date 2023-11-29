@@ -1,13 +1,13 @@
-/// <reference types="tree-sitter-cli/dsl"
+// / <reference types="tree-sitter-cli/dsl"
 
-const HTML = require("tree-sitter-html/grammar");
+const HTML = require('tree-sitter-html/grammar');
 const PREC = {
   CALL: 1,
   ALIAS: 2,
 };
 
 module.exports = grammar(HTML, {
-  name: "angular",
+  name: 'angular',
 
   rules: {
     // ---------- Root ---------
@@ -24,30 +24,25 @@ module.exports = grammar(HTML, {
       ),
 
     // ---------- Interpolation ---------
-    interpolation: ($) =>
-      seq($._interpolation_start, $.expression, $._interpolation_end),
+    interpolation: ($) => seq($._interpolation_start, $.expression, $._interpolation_end),
 
-    _interpolation_start: () => seq("{", token.immediate("{")),
-    _interpolation_end: () => seq("}", token.immediate("}")),
+    _interpolation_start: () => seq('{', token.immediate('{')),
+    _interpolation_end: () => seq('}', token.immediate('}')),
 
     // ---------- Expressions ---------
     // Expression
-    expression: ($) =>
-      seq($._primitive, optional(field("pipes", $.pipe_sequence))),
+    expression: ($) => seq($._primitive, optional(field('pipes', $.pipe_sequence))),
 
     // Unary expression
     unary_expression: ($) =>
-      seq(
-        field("operator", alias("!", $.unary_operator)),
-        field("value", $.expression),
-      ),
+      seq(field('operator', alias('!', $.unary_operator)), field('value', $.expression)),
 
     // Binary expression
     binary_expression: ($) =>
       seq(
-        field("left", $._primitive),
-        field("operator", $._binary_op),
-        field("right", $._primitive),
+        field('left', $._primitive),
+        field('operator', $._binary_op),
+        field('right', $._primitive),
       ),
 
     // Ternary expression
@@ -55,10 +50,10 @@ module.exports = grammar(HTML, {
       prec.right(
         PREC.CALL,
         seq(
-          field("condition", $._any_expression),
-          alias("?", $.ternary_operator),
+          field('condition', $._any_expression),
+          alias('?', $.ternary_operator),
           choice($.group, $._primitive),
-          alias(":", $.ternary_operator),
+          alias(':', $.ternary_operator),
           choice($.group, $._primitive),
         ),
       ),
@@ -68,30 +63,20 @@ module.exports = grammar(HTML, {
       prec.right(
         PREC.CALL,
         seq(
-          field(
-            "condition",
-            choice($._primitive, $.unary_expression, $.binary_expression),
-          ),
-          alias(choice("||", "&&"), $.conditional_operator),
-          field(
-            "condition",
-            choice($._primitive, $.unary_operator, $.conditional_expression),
-          ),
+          field('condition', choice($._primitive, $.unary_expression, $.binary_expression)),
+          alias(choice('||', '&&'), $.conditional_operator),
+          field('condition', choice($._primitive, $.unary_expression, $.conditional_expression)),
         ),
       ),
 
     // ---------- Pipes ---------
-    pipe_sequence: ($) =>
-      repeat1(seq(alias("|", $.pipe_operator), $.pipe_call)),
+    pipe_sequence: ($) => repeat1(seq(alias('|', $.pipe_operator), $.pipe_call)),
 
     pipe_call: ($) =>
-      seq(
-        field("name", $.identifier),
-        optional(field("arguments", $.pipe_arguments)),
-      ),
+      seq(field('name', $.identifier), optional(field('arguments', $.pipe_arguments))),
 
     pipe_arguments: ($) => repeat1($._pipe_argument),
-    _pipe_argument: ($) => seq(":", $._primitive),
+    _pipe_argument: ($) => seq(':', $._primitive),
 
     // ---------- Primitives ----------
     _primitive: ($) =>
@@ -107,22 +92,22 @@ module.exports = grammar(HTML, {
       ),
 
     // Object
-    object: ($) => seq("{", repeat($.pair), "}"),
+    object: ($) => seq('{', repeat($.pair), '}'),
     pair: ($) =>
       seq(
-        field("key", choice($.identifier, $.string)),
-        ":",
-        field("value", choice($.expression, $.unary_expression)),
-        optional(","),
+        field('key', choice($.identifier, $.string)),
+        ':',
+        field('value', choice($.expression, $.unary_expression)),
+        optional(','),
       ),
 
     // Array
     array: ($) =>
       seq(
-        "[",
+        '[',
         choice($.expression, $.unary_expression),
-        repeat(seq(",", choice($.expression, $.unary_expression))),
-        "]",
+        repeat(seq(',', choice($.expression, $.unary_expression))),
+        ']',
       ),
 
     // Identifier
@@ -139,53 +124,28 @@ module.exports = grammar(HTML, {
     number: () => /[0-9]+\.?[0-9]*/,
 
     // Group
-    group: ($) => seq("(", $._any_expression, ")"),
+    group: ($) => seq('(', $._any_expression, ')'),
 
     // Call expression
     call_expression: ($) =>
       prec.left(
         PREC.CALL,
-        seq(
-          field("function", $.identifier),
-          "(",
-          optional(field("arguments", $.arguments)),
-          ")",
-        ),
+        seq(field('function', $.identifier), '(', optional(field('arguments', $.arguments)), ')'),
       ),
     arguments: ($) =>
       seq(
         choice($._primitive, $.binary_expression, $.unary_expression),
-        repeat(seq(",", $._primitive)),
+        repeat(seq(',', $._primitive)),
       ),
 
     // Member expression
     member_expression: ($) =>
-      seq(
-        field("object", $._primitive),
-        choice(".", "?.", "!."),
-        field("property", $.identifier),
-      ),
+      seq(field('object', $._primitive), choice('.', '?.', '!.'), field('property', $.identifier)),
 
     // ---------- Base ----------
     _single_quote: () => "'",
     _double_quote: () => '"',
     _binary_op: () =>
-      choice(
-        "+",
-        "-",
-        "/",
-        "*",
-        "%",
-        "==",
-        "===",
-        "!=",
-        "!==",
-        "&&",
-        "||",
-        "<",
-        "<=",
-        ">",
-        ">=",
-      ),
+      choice('+', '-', '/', '*', '%', '==', '===', '!=', '!==', '&&', '||', '<', '<=', '>', '>='),
   },
 });
