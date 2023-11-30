@@ -2,11 +2,17 @@
 Basic
 =====
 
+{{ value }}
 <span>{{ value }}</span>
 
 ---
 
 (fragment
+  (interpolation
+    (expression
+      (identifier)
+    )
+  )
   (element
     (start_tag
       (tag_name)
@@ -21,3 +27,145 @@ Basic
     )
   )
 )
+
+==========
+With pipes
+==========
+
+<span>{{ value | pipe }}</span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+    )
+    (interpolation
+      (expression
+        (identifier)
+        (pipe_sequence
+          (pipe_operator)
+          (pipe_call
+            (identifier)
+          )
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+
+===================
+Pipe with arguments
+===================
+
+<span>{{ value | pipe:arg1:arg2 }}</span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+    )
+    (interpolation
+      (expression
+        (identifier)
+        (pipe_sequence
+          (pipe_operator)
+          (pipe_call
+            (identifier)
+            (pipe_arguments
+              (identifier)
+              (identifier)
+            )
+          )
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+
+======================
+Conditional expression
+======================
+
+<span>{{ authenticated ? "Logged In" : "Logged Out" }}</span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+    )
+    (interpolation
+      (ternary_expression
+        (expression
+          (identifier)
+        )
+        (ternary_operator)
+        (string)
+        (ternary_operator)
+        (string)
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+
+======================
+Conditional with pipes
+======================
+
+<h1>{{ isNew ? ('entity.new' | translate) : data.entity?.name }}</h1>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+    )
+    (interpolation
+      (ternary_expression
+        (expression
+          (identifier)
+        )
+        (ternary_operator)
+        (group
+          (expression
+            (string)
+            (pipe_sequence
+              (pipe_operator)
+              (pipe_call
+                (identifier)
+              )
+            )
+          )
+        )
+        (ternary_operator)
+          (member_expression
+            (member_expression
+              (identifier)
+              (identifier)
+            )
+            (identifier)
+          )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+
+

@@ -1,6 +1,14 @@
-// / <reference types="tree-sitter-cli/dsl"
+/**
+ * @file Angular Grammar for tree-sitter
+ * @author Dennis van den Berg <dennis@vdberg.dev>
+ * @license MIT
+ */
+
+/* eslint-disable-next-line spaced-comment */
+/// <reference types="tree-sitter-cli/dsl"
 
 const HTML = require('tree-sitter-html/grammar');
+
 const PREC = {
   CALL: 1,
   ALIAS: 2,
@@ -9,9 +17,11 @@ const PREC = {
 module.exports = grammar(HTML, {
   name: 'angular',
 
+  externals: ($, original) => original.concat([$._interpolation_start, $._interpolation_end]),
+
   rules: {
     // ---------- Root ---------
-    _node: ($, orig) => choice(prec(1, $.interpolation), orig),
+    _node: ($, original) => choice(prec(1, $.interpolation), original),
 
     // Expressions
     _any_expression: ($) =>
@@ -24,10 +34,12 @@ module.exports = grammar(HTML, {
       ),
 
     // ---------- Interpolation ---------
-    interpolation: ($) => seq($._interpolation_start, $.expression, $._interpolation_end),
-
-    _interpolation_start: () => seq('{', token.immediate('{')),
-    _interpolation_end: () => seq('}', token.immediate('}')),
+    interpolation: ($) =>
+      seq(
+        alias($._interpolation_start, '{{'),
+        $._any_expression,
+        alias($._interpolation_end, '}}'),
+      ),
 
     // ---------- Expressions ---------
     // Expression
@@ -143,6 +155,7 @@ module.exports = grammar(HTML, {
       seq(field('object', $._primitive), choice('.', '?.', '!.'), field('property', $.identifier)),
 
     // ---------- Base ----------
+    // eslint-disable-next-line quotes
     _single_quote: () => "'",
     _double_quote: () => '"',
     _binary_op: () =>
