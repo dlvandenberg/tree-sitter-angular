@@ -15,7 +15,9 @@ enum TokenType {
   RAW_TEXT,
   COMMENT,
   INTERPOLATION_START,
-  INTERPOLATION_END
+  INTERPOLATION_END,
+  CONTROL_FLOW_START,
+  CONTROL_FLOW_END,
 };
 
 typedef struct {
@@ -235,12 +237,6 @@ static bool scan_raw_text(Scanner *scanner, TSLexer *lexer) {
     return false;
   }
 
-  // if (VEC_BACK(scanner->tags).type == INTERPOLATION) {
-  //   scan_js_expr(lexer, "}"); // DEVDBE: does this need to be doubled?
-  //   VEC_POP(scanner->tags);
-  //   goto finish;
-  // }
-
   if (VEC_BACK(scanner->tags).type != SCRIPT &&
       VEC_BACK(scanner->tags).type != STYLE) {
     return false;
@@ -439,6 +435,38 @@ static bool scan(Scanner *scanner, TSLexer *lexer, const bool *valid_symbols) {
       VEC_POP(scanner->tags);
       lexer->result_symbol = INTERPOLATION_END;
       return true;
+    } else if (VEC_BACK(scanner->tags).type == CONTROL_FLOW) {
+      printf("Ending control flow");
+      lexer->mark_end(lexer);
+      VEC_POP(scanner->tags);
+      lexer->result_symbol = CONTROL_FLOW_END;
+      return true;
+    }
+    break;
+
+  case '@':
+    printf("find @\n");
+    lexer->mark_end(lexer);
+    lexer->advance(lexer, false);
+
+    switch (lexer->lookahead) {
+    case 'i': // possible if
+    case 'd': // possible defer
+    case 's': // possible switch
+    case 'f': // possible for
+      if (valid_symbols[CONTROL_FLOW_START]) {
+
+        printf("found @, possible control flow: %s\n", &lexer->lookahead);
+        lexer->mark_end(lexer);
+        lexer->advance(lexer, false);
+        Tag tag = (Tag){CONTROL_FLOW, {0}};
+        VEC_PUSH(scanner->tags, tag);
+        lexer->result_symbol = CONTROL_FLOW_START;
+        return true;
+      }
+      break;
+    default:
+      return false;
     }
     break;
 

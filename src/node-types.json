@@ -360,6 +360,21 @@
     }
   },
   {
+    "type": "control_flow",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "if_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "doctype",
     "named": true,
     "fields": {}
@@ -372,6 +387,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "control_flow",
+          "named": true
+        },
         {
           "type": "doctype",
           "named": true
@@ -406,6 +425,169 @@
         },
         {
           "type": "start_tag",
+          "named": true
+        },
+        {
+          "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "else_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "control_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "else_if_expression",
+    "named": true,
+    "fields": {
+      "reference": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "if_reference",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "control_keyword",
+          "named": true
+        },
+        {
+          "type": "if_condition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "else_if_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "control_flow",
+          "named": true
+        },
+        {
+          "type": "doctype",
+          "named": true
+        },
+        {
+          "type": "element",
+          "named": true
+        },
+        {
+          "type": "else_if_expression",
+          "named": true
+        },
+        {
+          "type": "else_if_statement",
+          "named": true
+        },
+        {
+          "type": "else_statement",
+          "named": true
+        },
+        {
+          "type": "entity",
+          "named": true
+        },
+        {
+          "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "if_end_expression",
+          "named": true
+        },
+        {
+          "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "script_element",
+          "named": true
+        },
+        {
+          "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "else_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "control_flow",
+          "named": true
+        },
+        {
+          "type": "doctype",
+          "named": true
+        },
+        {
+          "type": "element",
+          "named": true
+        },
+        {
+          "type": "else_expression",
+          "named": true
+        },
+        {
+          "type": "entity",
+          "named": true
+        },
+        {
+          "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "if_end_expression",
+          "named": true
+        },
+        {
+          "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "script_element",
           "named": true
         },
         {
@@ -547,6 +729,10 @@
       "required": false,
       "types": [
         {
+          "type": "control_flow",
+          "named": true
+        },
+        {
           "type": "doctype",
           "named": true
         },
@@ -607,6 +793,154 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_condition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_end_expression",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "if_reference",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "special_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_start_expression",
+    "named": true,
+    "fields": {
+      "reference": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "if_reference",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "control_keyword",
+          "named": true
+        },
+        {
+          "type": "if_condition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "control_flow",
+          "named": true
+        },
+        {
+          "type": "doctype",
+          "named": true
+        },
+        {
+          "type": "element",
+          "named": true
+        },
+        {
+          "type": "else_if_statement",
+          "named": true
+        },
+        {
+          "type": "else_statement",
+          "named": true
+        },
+        {
+          "type": "entity",
+          "named": true
+        },
+        {
+          "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "if_end_expression",
+          "named": true
+        },
+        {
+          "type": "if_start_expression",
+          "named": true
+        },
+        {
+          "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "script_element",
+          "named": true
+        },
+        {
+          "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "text",
           "named": true
         }
       ]
@@ -1031,10 +1365,6 @@
       "required": false,
       "types": [
         {
-          "type": "special_block_keyword",
-          "named": true
-        },
-        {
           "type": "special_keyword",
           "named": true
         }
@@ -1374,6 +1704,10 @@
     "named": false
   },
   {
+    "type": "@",
+    "named": false
+  },
+  {
     "type": "[",
     "named": false
   },
@@ -1402,6 +1736,10 @@
     "named": true
   },
   {
+    "type": "control_keyword",
+    "named": true
+  },
+  {
     "type": "doctype",
     "named": false
   },
@@ -1427,10 +1765,6 @@
   },
   {
     "type": "raw_text",
-    "named": true
-  },
-  {
-    "type": "special_block_keyword",
     "named": true
   },
   {

@@ -1,0 +1,35 @@
+============
+If statement
+============
+
+@if (a > b) {
+  <p>a is greater than b</p>
+}
+
+---
+
+(fragment
+  (control_flow
+    (if_statement
+      (if_start_expression
+        (control_keyword)
+        (if_condition
+          (binary_expression
+            (identifier)
+            (identifier)
+          )
+        )
+      )
+      (element
+        (start_tag
+          (tag_name)
+        )
+        (text)
+        (end_tag
+          (tag_name)
+        )
+      )
+      (if_end_expression)
+    )
+  )
+)

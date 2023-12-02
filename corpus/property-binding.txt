@@ -25,6 +25,83 @@ Property binding
 )
 
 ======================
+Array Property binding
+======================
+
+<element [icon]="['fas', 'chevron']"/>
+
+---
+
+(fragment
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier)
+          )
+          (expression
+            (array
+              (expression
+                (string)
+              )
+              (expression
+                (string)
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+========================
+Array Binding with pipes
+========================
+
+<element [values]="[(someValue | async), syncValue]"/>
+
+---
+
+(fragment
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier)
+          )
+          (expression
+            (array
+              (expression
+                (group
+                  (expression
+                    (identifier)
+                    (pipe_sequence
+                      (pipe_operator)
+                      (pipe_call
+                        (identifier)
+                      )
+                    )
+                  )
+                )
+              )
+              (expression
+                (identifier)
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+
+======================
 String literal binding
 ======================
 

@@ -17,16 +17,91 @@ const PREC = {
 module.exports = grammar(HTML, {
   name: 'angular',
 
-  externals: ($, original) => original.concat([$._interpolation_start, $._interpolation_end]),
+  externals: ($, original) =>
+    original.concat([
+      $._interpolation_start,
+      $._interpolation_end,
+      $._control_flow_start,
+      $._control_flow_end,
+    ]),
 
   rules: {
     // ---------- Root ---------
-    _node: ($, original) => choice(prec(1, $.interpolation), original),
+    _node: ($, original) => choice(prec(1, $.interpolation), prec(1, $.control_flow), original),
 
     // ---------- Overrides ----------
     attribute_name: (_) => /[^<>\*.\[\]\(\)"'=\s]+/,
 
-    // Expressions
+    // ---------- Control flow ---------
+    control_flow: ($) => seq(alias($._control_flow_start, '@'), $._any_statement),
+
+    // ---------- Statements ----------
+    _any_statement: ($) =>
+      choice(
+        $.if_statement,
+        // $.for_statement,
+        // $.defer_statement,
+        // $.switch_statement
+      ),
+
+    // ---------- If Statement ----------
+    if_statement: ($) =>
+      seq(
+        $.if_start_expression,
+        repeat($._node),
+        choice($.else_if_statement, $.else_statement, $.if_end_expression),
+      ),
+
+    else_if_statement: ($) =>
+      seq(
+        $.else_if_expression,
+        repeat($._node),
+        choice($.else_if_statement, $.else_statement, $.if_end_expression),
+      ),
+
+    else_statement: ($) => seq($.else_expression, repeat($._node), $.if_end_expression),
+
+    if_start_expression: ($) =>
+      seq(
+        // '@',
+        // alias($._control_flow_start, '@'),
+        alias('if', $.control_keyword),
+        '(',
+        $.if_condition,
+        optional(field('reference', $.if_reference)),
+        ')',
+        '{',
+      ),
+
+    else_if_expression: ($) =>
+      seq(
+        '}',
+        '@',
+        // alias($._control_flow_start, '@'),
+        alias('if', $.control_keyword),
+        '(',
+        $.if_condition,
+        optional(field('reference', $.if_reference)),
+        ')',
+        '{',
+      ),
+
+    else_expression: ($) =>
+      seq(
+        '}',
+        '@',
+        // alias($._control_flow_start, '@'),
+        alias('else', $.control_keyword),
+        '{',
+      ),
+
+    if_end_expression: ($) => alias($._control_flow_end, '}'),
+
+    if_condition: ($) => $._any_expression,
+
+    if_reference: ($) => seq(';', alias('as', $.special_keyword), $.identifier),
+
+    // ---------- Expressions -----------
     _any_expression: ($) =>
       choice(
         $.binary_expression,
@@ -91,7 +166,7 @@ module.exports = grammar(HTML, {
         seq(field('name', $.identifier), optional($._alias)),
       ),
 
-    _alias: ($) => seq(alias('as', $.special_block_keyword), field('alias', $.identifier)),
+    _alias: ($) => seq(alias('as', $.special_keyword), field('alias', $.identifier)),
 
     // ---------- Bindings ----------
     property_binding: ($) => seq('[', $.binding_name, ']', $._binding_assignment),
