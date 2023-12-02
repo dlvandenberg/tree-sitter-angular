@@ -167,3 +167,45 @@ Conditional with pipes
     )
   )
 )
+
+========
+Grouping
+========
+
+<span>{{ ((recipe$ | async)?.name) + ' update' }}</span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+    )
+    (interpolation
+      (binary_expression
+        (group
+          (expression
+            (member_expression
+              (group
+                (expression
+                  (identifier)
+                  (pipe_sequence
+                    (pipe_operator)
+                    (pipe_call
+                      (identifier)
+                    )
+                  )
+                )
+              )
+              (identifier)
+            )
+          )
+        )
+        (string)
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)

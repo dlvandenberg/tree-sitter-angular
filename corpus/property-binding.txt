@@ -15,7 +15,6 @@ Property binding
           (binding_name
             (identifier)
           )
-          (assignment_operator)
           (expression
             (identifier)
           )
@@ -42,7 +41,6 @@ String literal binding
           (binding_name
             (identifier)
           )
-          (assignment_operator)
           (binary_expression
             (string)
             (member_expression
@@ -57,7 +55,6 @@ String literal binding
           (binding_name
             (identifier)
           )
-          (assignment_operator)
           (expression
             (string)
           )
@@ -87,7 +84,6 @@ Subproperty
               (identifier)
             )
           )
-          (assignment_operator)
           (expression
             (identifier)
           )
@@ -115,7 +111,6 @@ With pipes
           (binding_name
               (identifier)
           )
-          (assignment_operator)
           (expression
             (identifier)
             (pipe_sequence
@@ -148,7 +143,6 @@ Two-way binding
           (binding_name
             (identifier)
           )
-          (assignment_operator)
           (expression
             (identifier)
           )
@@ -175,7 +169,6 @@ Event binding
           (binding_name
             (identifier)
           )
-          (assignment_operator)
           (expression
             (call_expression
               (identifier)

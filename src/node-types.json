@@ -90,6 +90,10 @@
           "named": true
         },
         {
+          "type": "structural_directive",
+          "named": true
+        },
+        {
           "type": "two_way_binding",
           "named": true
         }
@@ -453,10 +457,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "assignment_operator",
-          "named": true
-        },
         {
           "type": "binary_expression",
           "named": true
@@ -866,10 +866,6 @@
       "required": true,
       "types": [
         {
-          "type": "assignment_operator",
-          "named": true
-        },
-        {
           "type": "binary_expression",
           "named": true
         },
@@ -978,6 +974,132 @@
     "fields": {}
   },
   {
+    "type": "structural_assignment",
+    "named": true,
+    "fields": {
+      "alias": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "=",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "special_block_keyword",
+          "named": true
+        },
+        {
+          "type": "special_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "structural_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "special_keyword",
+          "named": true
+        },
+        {
+          "type": "structural_assignment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "structural_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "structural_declaration",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "style_element",
     "named": true,
     "fields": {},
@@ -1082,10 +1204,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "assignment_operator",
-          "named": true
-        },
         {
           "type": "binary_expression",
           "named": true
@@ -1212,6 +1330,10 @@
     "named": false
   },
   {
+    "type": ";",
+    "named": false
+  },
+  {
     "type": "<",
     "named": false
   },
@@ -1264,10 +1386,6 @@
     "named": false
   },
   {
-    "type": "assignment_operator",
-    "named": true
-  },
-  {
     "type": "attribute_name",
     "named": true
   },
@@ -1309,6 +1427,14 @@
   },
   {
     "type": "raw_text",
+    "named": true
+  },
+  {
+    "type": "special_block_keyword",
+    "named": true
+  },
+  {
+    "type": "special_keyword",
     "named": true
   },
   {

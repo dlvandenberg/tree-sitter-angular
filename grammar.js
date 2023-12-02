@@ -24,8 +24,7 @@ module.exports = grammar(HTML, {
     _node: ($, original) => choice(prec(1, $.interpolation), original),
 
     // ---------- Overrides ----------
-    // attribute_value: ($, original) => choice($.interpolation, $._any_expression),
-    attribute_name: (_) => /[^<>.\[\]\(\)"'=\s]+/,
+    attribute_name: (_) => /[^<>\*.\[\]\(\)"'=\s]+/,
 
     // Expressions
     _any_expression: ($) =>
@@ -51,15 +50,55 @@ module.exports = grammar(HTML, {
         prec(1, $.property_binding),
         prec(1, $.two_way_binding),
         prec(1, $.event_binding),
+        prec(1, $.structural_directive),
         $.normal_attribute,
       ),
 
+    // ---------- Structural Directives ---------
+    structural_directive: ($) =>
+      seq(
+        '*',
+        $.identifier,
+        optional(
+          seq(
+            '=',
+            $._double_quote,
+            choice($._any_expression, $.structural_declaration),
+            $._double_quote,
+          ),
+        ),
+      ),
+
+    structural_declaration: ($) =>
+      seq(
+        alias('let', $.special_keyword),
+        seq($.structural_assignment, repeat(seq(choice(';', ','), $.structural_assignment))),
+      ),
+
+    structural_assignment: ($) =>
+      choice(
+        seq(field('name', $.identifier), ':', field('value', $.identifier)),
+        prec.left(
+          PREC.ALIAS,
+          seq(
+            optional(alias('let', $.special_keyword)),
+            field('name', $.identifier),
+            field('operator', choice($.identifier, '=')),
+            field('value', $.expression),
+            optional($._alias),
+          ),
+        ),
+        seq(field('name', $.identifier), optional($._alias)),
+      ),
+
+    _alias: ($) => seq(alias('as', $.special_block_keyword), field('alias', $.identifier)),
+
+    // ---------- Bindings ----------
     property_binding: ($) => seq('[', $.binding_name, ']', $._binding_assignment),
     event_binding: ($) => seq('(', $.binding_name, ')', $._binding_assignment),
     two_way_binding: ($) => seq('[(', $.binding_name, ')]', $._binding_assignment),
 
-    _binding_assignment: ($) =>
-      seq(alias('=', $.assignment_operator), $._double_quote, $._any_expression, $._double_quote),
+    _binding_assignment: ($) => seq('=', $._double_quote, $._any_expression, $._double_quote),
 
     binding_name: ($) => choice($.identifier, $.member_expression),
 

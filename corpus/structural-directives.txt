@@ -1,0 +1,356 @@
+====
+NgIf
+====
+
+<span *ngIf="someCondition">{{ value }}</span>
+<span *ngIf="someCondition && otherCondition">{{ value }}</span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (structural_directive
+          (identifier)
+          (expression
+            (identifier)
+          )
+        )
+      )
+    )
+    (interpolation
+      (expression
+        (identifier)
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (structural_directive
+          (identifier)
+          (conditional_expression
+            (identifier)
+            (conditional_operator)
+            (identifier)
+          )
+        )
+      )
+    )
+    (interpolation
+      (expression
+        (identifier)
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+
+======================
+NgIf binary expression
+======================
+
+<span *ngIf="a > b"></span>
+<span *ngIf="a == b"></span>
+<span *ngIf="a === b"></span>
+<span *ngIf="a != b"></span>
+<span *ngIf="a !== b"></span>
+<span *ngIf="a && b"></span>
+<span *ngIf="a || b"></span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (structural_directive
+          (identifier)
+          (binary_expression
+            (identifier)
+            (identifier)
+          )
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (structural_directive
+          (identifier)
+          (binary_expression
+            (identifier)
+            (identifier)
+          )
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (structural_directive
+          (identifier)
+          (binary_expression
+            (identifier)
+            (identifier)
+          )
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (structural_directive
+          (identifier)
+          (binary_expression
+            (identifier)
+            (identifier)
+          )
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (structural_directive
+          (identifier)
+          (binary_expression
+            (identifier)
+            (identifier)
+          )
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (structural_directive
+          (identifier)
+          (conditional_expression
+            (identifier)
+            (conditional_operator)
+            (identifier)
+          )
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (structural_directive
+          (identifier)
+          (conditional_expression
+            (identifier)
+            (conditional_operator)
+            (identifier)
+          )
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+
+=====
+NgFor
+=====
+
+<span *ngFor="let item of items">{{ item }}</span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (structural_directive
+          (identifier)
+          (structural_declaration
+            (special_keyword)
+            (structural_assignment
+              (identifier)
+              (identifier)
+              (expression
+                (identifier)
+              )
+            )
+          )
+        )
+      )
+    )
+    (interpolation
+      (expression
+        (identifier)
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+
+================
+NgFor with alias
+================
+
+<li *ngFor="let person of people; let i = index; let isEven = even; let isOdd = odd; trackBy: trackByPersonId">
+</li>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (structural_directive
+          (identifier)
+          (structural_declaration
+            (special_keyword)
+            (structural_assignment
+              (identifier)
+              (identifier)
+              (expression
+                (identifier)
+              )
+            )
+            (structural_assignment
+              (special_keyword)
+              (identifier)
+              (expression
+                (identifier)
+              )
+            )
+            (structural_assignment
+              (special_keyword)
+              (identifier)
+              (expression
+                (identifier)
+              )
+            )
+            (structural_assignment
+              (special_keyword)
+              (identifier)
+              (expression
+                (identifier)
+              )
+            )
+            (structural_assignment
+              (identifier)
+              (identifier)
+            )
+          )
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+
+========
+NgSwitch
+========
+
+<div [ngSwitch]="currentItem.feature">
+  <span *ngSwitchCase="'stout'"></span>
+  <span *ngSwitchDefault></span>
+</div>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier)
+          )
+          (expression
+            (member_expression
+              (identifier)
+              (identifier)
+            )
+          )
+        )
+      )
+    )
+    (element
+      (start_tag
+        (tag_name)
+        (attribute
+          (structural_directive
+            (identifier)
+            (expression
+              (string)
+            )
+          )
+        )
+      )
+      (end_tag
+        (tag_name)
+      )
+    )
+    (element
+      (start_tag
+        (tag_name)
+        (attribute
+          (structural_directive
+            (identifier)
+          )
+        )
+      )
+      (end_tag
+        (tag_name)
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
