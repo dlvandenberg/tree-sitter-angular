@@ -23,6 +23,10 @@ module.exports = grammar(HTML, {
     // ---------- Root ---------
     _node: ($, original) => choice(prec(1, $.interpolation), original),
 
+    // ---------- Overrides ----------
+    // attribute_value: ($, original) => choice($.interpolation, $._any_expression),
+    attribute_name: (_) => /[^<>.\[\]\(\)"'=\s]+/,
+
     // Expressions
     _any_expression: ($) =>
       choice(
@@ -39,6 +43,30 @@ module.exports = grammar(HTML, {
         alias($._interpolation_start, '{{'),
         $._any_expression,
         alias($._interpolation_end, '}}'),
+      ),
+
+    // ---------- Property Binding ---------
+    attribute: ($) =>
+      choice(
+        prec(1, $.property_binding),
+        prec(1, $.two_way_binding),
+        prec(1, $.event_binding),
+        $.normal_attribute,
+      ),
+
+    property_binding: ($) => seq('[', $.binding_name, ']', $._binding_assignment),
+    event_binding: ($) => seq('(', $.binding_name, ')', $._binding_assignment),
+    two_way_binding: ($) => seq('[(', $.binding_name, ')]', $._binding_assignment),
+
+    _binding_assignment: ($) =>
+      seq(alias('=', $.assignment_operator), $._double_quote, $._any_expression, $._double_quote),
+
+    binding_name: ($) => choice($.identifier, $.member_expression),
+
+    normal_attribute: ($) =>
+      seq(
+        $.attribute_name,
+        optional(seq('=', choice($.attribute_value, $.quoted_attribute_value))),
       ),
 
     // ---------- Expressions ---------

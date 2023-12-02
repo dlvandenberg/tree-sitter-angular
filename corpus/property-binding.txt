@@ -1,0 +1,174 @@
+================
+Property binding
+================
+
+<element [property]="value"/>
+
+---
+
+(fragment
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier)
+          )
+          (assignment_operator)
+          (expression
+            (identifier)
+          )
+        )
+      )
+    )
+  )
+)
+
+===========
+Subproperty
+===========
+
+<element [attr.property]="value"/>
+
+---
+
+(fragment
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (member_expression
+              (identifier)
+              (identifier)
+            )
+          )
+          (assignment_operator)
+          (expression
+            (identifier)
+          )
+        )
+      )
+    )
+  )
+)
+
+
+================
+With pipes
+================
+
+<element [property]="value$ | async"/>
+
+---
+
+(fragment
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+              (identifier)
+          )
+          (assignment_operator)
+          (expression
+            (identifier)
+            (pipe_sequence
+              (pipe_operator)
+              (pipe_call
+                (identifier)
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+===============
+Two-way binding
+===============
+
+<element [(property)]="value"/>
+
+---
+
+(fragment
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (two_way_binding
+          (binding_name
+            (identifier)
+          )
+          (assignment_operator)
+          (expression
+            (identifier)
+          )
+        )
+      )
+    )
+  )
+)
+
+=============
+Event binding
+=============
+
+<element (click)="handle($event)"/>
+
+---
+
+(fragment
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (event_binding
+          (binding_name
+            (identifier)
+          )
+          (assignment_operator)
+          (expression
+            (call_expression
+              (identifier)
+              (arguments
+                (identifier)
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+
+=================
+Regular attribute
+=================
+
+<element attr="value"/>
+
+---
+
+(fragment
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+       (normal_attribute
+        (attribute_name)
+        (quoted_attribute_value
+         (attribute_value)
+        )
+       )
+      )
+    )
+  )
+)
