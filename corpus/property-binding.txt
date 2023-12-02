@@ -25,6 +25,48 @@ Property binding
   )
 )
 
+======================
+String literal binding
+======================
+
+<element [property]="'value' + obj.value" [other]="'200px'"/>
+
+---
+
+(fragment
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier)
+          )
+          (assignment_operator)
+          (binary_expression
+            (string)
+            (member_expression
+              (identifier)
+              (identifier)
+            )
+          )
+        )
+      )
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier)
+          )
+          (assignment_operator)
+          (expression
+            (string)
+          )
+        )
+      )
+    )
+  )
+)
+
 ===========
 Subproperty
 ===========
