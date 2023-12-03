@@ -209,3 +209,41 @@ Grouping
     )
   )
 )
+
+========
+Combined
+========
+
+<span>Hello {{ firstName }}, welcome to {{ title | uppercase }}!</span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+    )
+    (text)
+    (interpolation
+      (expression
+        (identifier)
+      )
+    )
+    (text)
+    (interpolation
+      (expression
+        (identifier)
+        (pipe_sequence
+          (pipe_operator)
+          (pipe_call
+            (identifier)
+          )
+        )
+      )
+    )
+    (text)
+    (end_tag
+      (tag_name)
+    )
+  )
+)

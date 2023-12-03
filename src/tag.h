@@ -134,6 +134,8 @@ typedef enum {
   // Angular's interpolation syntax
   INTERPOLATION,
   CONTROL_FLOW,
+  // IF,
+  // ELSE,
 
   CUSTOM,
 
@@ -156,7 +158,7 @@ typedef struct {
   String custom_tag_name;
 } Tag;
 
-const TagMap TAG_TYPES_BY_TAG_NAME[126] = {
+const TagMap TAG_TYPES_BY_TAG_NAME[128] = {
     {"AREA", AREA},
     {"BASE", BASE},
     {"BASEFONT", BASEFONT},

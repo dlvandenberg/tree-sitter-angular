@@ -9,7 +9,6 @@ If statement
 ---
 
 (fragment
-  (control_flow
     (if_statement
       (if_start_expression
         (control_keyword)
@@ -31,5 +30,107 @@ If statement
       )
       (if_end_expression)
     )
-  )
 )
+
+=================
+If-else statement
+=================
+
+@if (a > b) {
+  <p>a is greater than b</p>
+} @else if (b > 2) {
+  <p>a is less than b</p>
+}
+
+---
+
+(fragment
+    (if_statement
+      (if_start_expression
+        (control_keyword)
+        (if_condition
+          (binary_expression
+            (identifier)
+            (identifier)
+          )
+        )
+      )
+      (element
+        (start_tag
+          (tag_name)
+        )
+        (text)
+        (end_tag
+          (tag_name)
+        )
+      )
+      (else_statement
+        (else_expression
+          (control_keyword)
+        )
+        (element
+          (start_tag
+            (tag_name)
+          )
+          (text)
+          (end_tag
+            (tag_name)
+          )
+        )
+        (if_end_expression)
+      )
+    )
+)
+
+
+
+=================
+Else statement
+=================
+
+@if (a > b) {
+  <p>a is greater than b</p>
+} @else {
+  <p>a is less than b</p>
+}
+
+---
+
+(fragment
+    (if_statement
+      (if_start_expression
+        (control_keyword)
+        (if_condition
+          (binary_expression
+            (identifier)
+            (identifier)
+          )
+        )
+      )
+      (element
+        (start_tag
+          (tag_name)
+        )
+        (text)
+        (end_tag
+          (tag_name)
+        )
+      )
+      (else_statement
+        (else_expression
+          (control_keyword)
+        )
+        (element
+          (start_tag
+            (tag_name)
+          )
+          (text)
+          (end_tag
+            (tag_name)
+          )
+        )
+        (if_end_expression)
+      )
+    )
+)
+

@@ -18,22 +18,15 @@ module.exports = grammar(HTML, {
   name: 'angular',
 
   externals: ($, original) =>
-    original.concat([
-      $._interpolation_start,
-      $._interpolation_end,
-      $._control_flow_start,
-      $._control_flow_end,
-    ]),
+    original.concat([$._interpolation_start, $._interpolation_end, $._control_flow_start]),
 
   rules: {
     // ---------- Root ---------
-    _node: ($, original) => choice(prec(1, $.interpolation), prec(1, $.control_flow), original),
+    _node: ($, original) => choice(prec(1, $.interpolation), prec(1, $._any_statement), original),
 
     // ---------- Overrides ----------
     attribute_name: (_) => /[^<>\*.\[\]\(\)"'=\s]+/,
-
-    // ---------- Control flow ---------
-    control_flow: ($) => seq(alias($._control_flow_start, '@'), $._any_statement),
+    text: (_) => /[^<>{}&\s]([^<>{}&]*[^<>{}&\s])?/,
 
     // ---------- Statements ----------
     _any_statement: ($) =>
@@ -46,25 +39,31 @@ module.exports = grammar(HTML, {
 
     // ---------- If Statement ----------
     if_statement: ($) =>
+      // prec.right(
       seq(
         $.if_start_expression,
         repeat($._node),
         choice($.else_if_statement, $.else_statement, $.if_end_expression),
       ),
+    // ),
 
     else_if_statement: ($) =>
+      // prec.right(
       seq(
         $.else_if_expression,
         repeat($._node),
         choice($.else_if_statement, $.else_statement, $.if_end_expression),
       ),
+    // ),
 
-    else_statement: ($) => seq($.else_expression, repeat($._node), $.if_end_expression),
+    else_statement: ($) =>
+      // prec.right(
+      seq($.else_expression, repeat($._node), $.if_end_expression),
+    // ),
 
     if_start_expression: ($) =>
       seq(
-        // '@',
-        // alias($._control_flow_start, '@'),
+        alias($._control_flow_start, '@'),
         alias('if', $.control_keyword),
         '(',
         $.if_condition,
@@ -77,7 +76,7 @@ module.exports = grammar(HTML, {
       seq(
         '}',
         '@',
-        // alias($._control_flow_start, '@'),
+        alias('else', $.control_keyword),
         alias('if', $.control_keyword),
         '(',
         $.if_condition,
@@ -86,16 +85,11 @@ module.exports = grammar(HTML, {
         '{',
       ),
 
-    else_expression: ($) =>
-      seq(
-        '}',
-        '@',
-        // alias($._control_flow_start, '@'),
-        alias('else', $.control_keyword),
-        '{',
-      ),
+    else_expression: ($) => seq('}', '@', alias('else', $.control_keyword), '{'),
 
-    if_end_expression: ($) => alias($._control_flow_end, '}'),
+    if_end_expression: ($) => $._closing_bracket,
+
+    _closing_bracket: (_) => token(prec(-1, '}')),
 
     if_condition: ($) => $._any_expression,
 

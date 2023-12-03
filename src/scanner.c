@@ -17,7 +17,6 @@ enum TokenType {
   INTERPOLATION_START,
   INTERPOLATION_END,
   CONTROL_FLOW_START,
-  CONTROL_FLOW_END,
 };
 
 typedef struct {
@@ -414,59 +413,47 @@ static bool scan(Scanner *scanner, TSLexer *lexer, const bool *valid_symbols) {
     break;
 
   case '{':
-    lexer->advance(lexer, false);
-
-    if (lexer->lookahead == '{' && valid_symbols[INTERPOLATION_START]) {
-      lexer->advance(lexer, false);
+    if (valid_symbols[INTERPOLATION_START]) {
+      printf("found { possible interpolation\n");
       lexer->mark_end(lexer);
-      Tag tag = (Tag){INTERPOLATION, {0}};
-      VEC_PUSH(scanner->tags, tag);
-      lexer->result_symbol = INTERPOLATION_START;
-      return true;
+      lexer->advance(lexer, false);
+      if (lexer->lookahead == '{') {
+        printf("found another {\"\n");
+        lexer->advance(lexer, false);
+        lexer->mark_end(lexer);
+        Tag tag = (Tag){INTERPOLATION, {0}};
+        VEC_PUSH(scanner->tags, tag);
+        lexer->result_symbol = INTERPOLATION_START;
+        return true;
+      }
     }
     break;
 
   case '}':
-    lexer->advance(lexer, false);
-    if (lexer->lookahead == '}' &&
-        VEC_BACK(scanner->tags).type == INTERPOLATION) {
+    if (valid_symbols[INTERPOLATION_END]) {
+      printf("found } possible interpolation end\n");
+      lexer->mark_end(lexer);
       lexer->advance(lexer, false);
-      lexer->mark_end(lexer);
-      VEC_POP(scanner->tags);
-      lexer->result_symbol = INTERPOLATION_END;
-      return true;
-    } else if (VEC_BACK(scanner->tags).type == CONTROL_FLOW) {
-      printf("Ending control flow");
-      lexer->mark_end(lexer);
-      VEC_POP(scanner->tags);
-      lexer->result_symbol = CONTROL_FLOW_END;
-      return true;
+      if (lexer->lookahead == '}' &&
+          VEC_BACK(scanner->tags).type == INTERPOLATION) {
+        printf("found another }\"\n");
+        lexer->advance(lexer, false);
+        lexer->mark_end(lexer);
+        VEC_POP(scanner->tags);
+        lexer->result_symbol = INTERPOLATION_END;
+        return true;
+      }
     }
+
     break;
 
   case '@':
-    printf("find @\n");
-    lexer->mark_end(lexer);
-    lexer->advance(lexer, false);
-
-    switch (lexer->lookahead) {
-    case 'i': // possible if
-    case 'd': // possible defer
-    case 's': // possible switch
-    case 'f': // possible for
-      if (valid_symbols[CONTROL_FLOW_START]) {
-
-        printf("found @, possible control flow: %s\n", &lexer->lookahead);
-        lexer->mark_end(lexer);
-        lexer->advance(lexer, false);
-        Tag tag = (Tag){CONTROL_FLOW, {0}};
-        VEC_PUSH(scanner->tags, tag);
-        lexer->result_symbol = CONTROL_FLOW_START;
-        return true;
-      }
-      break;
-    default:
-      return false;
+    if (valid_symbols[CONTROL_FLOW_START]) {
+      printf("found @, possible control flow \n");
+      lexer->advance(lexer, false);
+      lexer->mark_end(lexer);
+      lexer->result_symbol = CONTROL_FLOW_START;
+      return true;
     }
     break;
 

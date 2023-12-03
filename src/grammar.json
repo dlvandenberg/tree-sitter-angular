@@ -54,7 +54,7 @@
           "value": 1,
           "content": {
             "type": "SYMBOL",
-            "name": "control_flow"
+            "name": "_any_statement"
           }
         },
         {
@@ -465,25 +465,7 @@
     },
     "text": {
       "type": "PATTERN",
-      "value": "[^<>&\\s]([^<>&]*[^<>&\\s])?"
-    },
-    "control_flow": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_control_flow_start"
-          },
-          "named": false,
-          "value": "@"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_any_statement"
-        }
-      ]
+      "value": "[^<>{}&\\s]([^<>{}&]*[^<>{}&\\s])?"
     },
     "_any_statement": {
       "type": "CHOICE",
@@ -586,6 +568,15 @@
         {
           "type": "ALIAS",
           "content": {
+            "type": "SYMBOL",
+            "name": "_control_flow_start"
+          },
+          "named": false,
+          "value": "@"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
             "type": "STRING",
             "value": "if"
           },
@@ -636,6 +627,15 @@
         {
           "type": "STRING",
           "value": "@"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "else"
+          },
+          "named": true,
+          "value": "control_keyword"
         },
         {
           "type": "ALIAS",
@@ -707,13 +707,19 @@
       ]
     },
     "if_end_expression": {
-      "type": "ALIAS",
+      "type": "SYMBOL",
+      "name": "_closing_bracket"
+    },
+    "_closing_bracket": {
+      "type": "TOKEN",
       "content": {
-        "type": "SYMBOL",
-        "name": "_control_flow_end"
-      },
-      "named": false,
-      "value": "}"
+        "type": "PREC",
+        "value": -2,
+        "content": {
+          "type": "STRING",
+          "value": "}"
+        }
+      }
     },
     "if_condition": {
       "type": "SYMBOL",
@@ -1950,10 +1956,6 @@
     {
       "type": "SYMBOL",
       "name": "_control_flow_start"
-    },
-    {
-      "type": "SYMBOL",
-      "name": "_control_flow_end"
     }
   ],
   "inline": [],
