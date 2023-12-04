@@ -38,8 +38,98 @@ module.exports = grammar(HTML, {
       choice(
         $.if_statement,
         $.for_statement,
-        // $.defer_statement,
+        $.defer_statement,
         // $.switch_statement
+      ),
+
+    // ---------- Defer Statement ----------
+    defer_statement: ($) =>
+      seq(
+        $.defer_start_expression,
+        repeat($._node),
+        choice(
+          $.placeholder_statement,
+          $.loading_statement,
+          $.error_statement,
+          $.defer_end_expression,
+        ),
+      ),
+
+    placeholder_statement: ($) =>
+      seq(
+        $.placeholder_expression,
+        repeat($._node),
+        choice($.loading_statement, $.error_statement, $.defer_end_expression),
+      ),
+
+    loading_statement: ($) =>
+      seq(
+        $.loading_expression,
+        repeat($._node),
+        choice($.error_statement, $.defer_end_expression),
+      ),
+
+    error_statement: ($) =>
+      seq($.error_expression, repeat($._node), $.defer_end_expression),
+
+    defer_start_expression: ($) =>
+      seq(
+        alias($._control_flow_start, '@'),
+        alias('defer', $.control_keyword),
+        optional($.defer_trigger),
+        '{',
+      ),
+
+    placeholder_expression: ($) =>
+      seq(
+        token(prec(2, '} @')),
+        alias('placeholder', $.control_keyword),
+        optional($.placeholder_minimum),
+        '{',
+      ),
+
+    loading_expression: ($) =>
+      seq(
+        token(prec(2, '} @')),
+        alias('loading', $.control_keyword),
+        optional($.loading_condition),
+        '{',
+      ),
+
+    error_expression: ($) =>
+      seq(token(prec(2, '} @')), alias('error', $.control_keyword), '{'),
+
+    defer_end_expression: ($) => $._closing_bracket,
+
+    defer_trigger: ($) =>
+      seq(
+        '(',
+        $.defer_trigger_condition,
+        optional(repeat(seq(';', $.defer_trigger_condition))),
+        ')',
+      ),
+
+    placeholder_minimum: ($) => seq('(', field('minimum', $._timed_expression), ')'),
+
+    loading_condition: ($) =>
+      seq(
+        '(',
+        field('condition', $._timed_expression),
+        optional(seq(';', field('condition', $._timed_expression))),
+        ')',
+      ),
+
+    defer_trigger_condition: ($) =>
+      choice(
+        seq(alias('when', $.special_keyword), field('trigger', $._any_expression)),
+        seq(alias('on', $.special_keyword), field('trigger', $._primitive)),
+      ),
+
+    _timed_expression: ($) =>
+      seq(
+        alias(choice('after', 'minimum'), $.special_keyword),
+        field('value', $.number),
+        alias(choice('ms', 's'), $.unit),
       ),
 
     // ---------- For Statement ----------
