@@ -728,8 +728,12 @@
       }
     },
     "if_condition": {
-      "type": "SYMBOL",
-      "name": "_any_expression"
+      "type": "PREC_RIGHT",
+      "value": 1,
+      "content": {
+        "type": "SYMBOL",
+        "name": "_any_expression"
+      }
     },
     "if_reference": {
       "type": "SEQ",
@@ -1391,6 +1395,10 @@
                 {
                   "type": "SYMBOL",
                   "name": "unary_expression"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "binary_expression"
                 },
                 {
                   "type": "SYMBOL",

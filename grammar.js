@@ -18,11 +18,16 @@ module.exports = grammar(HTML, {
   name: 'angular',
 
   externals: ($, original) =>
-    original.concat([$._interpolation_start, $._interpolation_end, $._control_flow_start]),
+    original.concat([
+      $._interpolation_start,
+      $._interpolation_end,
+      $._control_flow_start,
+    ]),
 
   rules: {
     // ---------- Root ---------
-    _node: ($, original) => choice(prec(1, $.interpolation), prec(1, $._any_statement), original),
+    _node: ($, original) =>
+      choice(prec(1, $.interpolation), prec(1, $._any_statement), original),
 
     // ---------- Overrides ----------
     attribute_name: (_) => /[^<>\*.\[\]\(\)"'=\s]+/,
@@ -77,13 +82,14 @@ module.exports = grammar(HTML, {
         '{',
       ),
 
-    else_expression: ($) => seq(token(prec(2, '} @')), alias('else', $.control_keyword), '{'),
+    else_expression: ($) =>
+      seq(token(prec(2, '} @')), alias('else', $.control_keyword), '{'),
 
     if_end_expression: ($) => $._closing_bracket,
 
     _closing_bracket: (_) => token(prec(-1, '}')),
 
-    if_condition: ($) => $._any_expression,
+    if_condition: ($) => prec.right(PREC.CALL, $._any_expression),
 
     if_reference: ($) => seq(';', alias('as', $.special_keyword), $.identifier),
 
@@ -133,7 +139,10 @@ module.exports = grammar(HTML, {
     structural_declaration: ($) =>
       seq(
         alias('let', $.special_keyword),
-        seq($.structural_assignment, repeat(seq(choice(';', ','), $.structural_assignment))),
+        seq(
+          $.structural_assignment,
+          repeat(seq(choice(';', ','), $.structural_assignment)),
+        ),
       ),
 
     structural_assignment: ($) =>
@@ -159,7 +168,8 @@ module.exports = grammar(HTML, {
     event_binding: ($) => seq('(', $.binding_name, ')', $._binding_assignment),
     two_way_binding: ($) => seq('[(', $.binding_name, ')]', $._binding_assignment),
 
-    _binding_assignment: ($) => seq('=', $._double_quote, $._any_expression, $._double_quote),
+    _binding_assignment: ($) =>
+      seq('=', $._double_quote, $._any_expression, $._double_quote),
 
     binding_name: ($) => choice($.identifier, $.member_expression),
 
@@ -203,9 +213,20 @@ module.exports = grammar(HTML, {
       prec.right(
         PREC.CALL,
         seq(
-          field('condition', choice($._primitive, $.unary_expression, $.binary_expression)),
+          field(
+            'condition',
+            choice($._primitive, $.unary_expression, $.binary_expression),
+          ),
           alias(choice('||', '&&'), $.conditional_operator),
-          field('condition', choice($._primitive, $.unary_expression, $.conditional_expression)),
+          field(
+            'condition',
+            choice(
+              $._primitive,
+              $.unary_expression,
+              $.binary_expression,
+              $.conditional_expression,
+            ),
+          ),
         ),
       ),
 
@@ -270,7 +291,12 @@ module.exports = grammar(HTML, {
     call_expression: ($) =>
       prec.left(
         PREC.CALL,
-        seq(field('function', $.identifier), '(', optional(field('arguments', $.arguments)), ')'),
+        seq(
+          field('function', $.identifier),
+          '(',
+          optional(field('arguments', $.arguments)),
+          ')',
+        ),
       ),
     arguments: ($) =>
       seq(
@@ -280,13 +306,33 @@ module.exports = grammar(HTML, {
 
     // Member expression
     member_expression: ($) =>
-      seq(field('object', $._primitive), choice('.', '?.', '!.'), field('property', $.identifier)),
+      seq(
+        field('object', $._primitive),
+        choice('.', '?.', '!.'),
+        field('property', $.identifier),
+      ),
 
     // ---------- Base ----------
     // eslint-disable-next-line quotes
     _single_quote: () => "'",
     _double_quote: () => '"',
     _binary_op: () =>
-      choice('+', '-', '/', '*', '%', '==', '===', '!=', '!==', '&&', '||', '<', '<=', '>', '>='),
+      choice(
+        '+',
+        '-',
+        '/',
+        '*',
+        '%',
+        '==',
+        '===',
+        '!=',
+        '!==',
+        '&&',
+        '||',
+        '<',
+        '<=',
+        '>',
+        '>=',
+      ),
   },
 });
