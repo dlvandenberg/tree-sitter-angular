@@ -39,27 +39,20 @@ module.exports = grammar(HTML, {
 
     // ---------- If Statement ----------
     if_statement: ($) =>
-      // prec.right(
       seq(
         $.if_start_expression,
         repeat($._node),
         choice($.else_if_statement, $.else_statement, $.if_end_expression),
       ),
-    // ),
 
     else_if_statement: ($) =>
-      // prec.right(
       seq(
         $.else_if_expression,
         repeat($._node),
         choice($.else_if_statement, $.else_statement, $.if_end_expression),
       ),
-    // ),
 
-    else_statement: ($) =>
-      // prec.right(
-      seq($.else_expression, repeat($._node), $.if_end_expression),
-    // ),
+    else_statement: ($) => seq($.else_expression, repeat($._node), $.if_end_expression),
 
     if_start_expression: ($) =>
       seq(
@@ -74,8 +67,7 @@ module.exports = grammar(HTML, {
 
     else_if_expression: ($) =>
       seq(
-        '}',
-        '@',
+        token(prec(2, '} @')),
         alias('else', $.control_keyword),
         alias('if', $.control_keyword),
         '(',
@@ -85,7 +77,7 @@ module.exports = grammar(HTML, {
         '{',
       ),
 
-    else_expression: ($) => seq('}', '@', alias('else', $.control_keyword), '{'),
+    else_expression: ($) => seq(token(prec(2, '} @')), alias('else', $.control_keyword), '{'),
 
     if_end_expression: ($) => $._closing_bracket,
 

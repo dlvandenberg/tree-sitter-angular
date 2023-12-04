@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/dlvandenberg/tree-sitter-angular-2#readme",
   "devDependencies": {
+    "@stylistic/eslint-plugin-js": "^1.4.1",
     "eslint": "^8.54.0",
     "eslint-config-google": "^0.14.0",
     "tree-sitter-cli": "^0.20.8"

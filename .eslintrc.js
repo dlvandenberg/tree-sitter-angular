@@ -5,11 +5,13 @@ module.exports = {
   },
   extends: 'google',
   overrides: [],
+  plugins: ['@stylistic/js'],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
   rules: {
+    'function-call-argument-newline': ['error', 'consistent'],
     'object-curly-spacing': 'off',
     'quote-props': 'off',
     indent: ['error', 2, { SwitchCase: 1 }],

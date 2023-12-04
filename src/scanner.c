@@ -414,11 +414,9 @@ static bool scan(Scanner *scanner, TSLexer *lexer, const bool *valid_symbols) {
 
   case '{':
     if (valid_symbols[INTERPOLATION_START]) {
-      printf("found { possible interpolation\n");
       lexer->mark_end(lexer);
       lexer->advance(lexer, false);
       if (lexer->lookahead == '{') {
-        printf("found another {\"\n");
         lexer->advance(lexer, false);
         lexer->mark_end(lexer);
         Tag tag = (Tag){INTERPOLATION, {0}};
@@ -431,12 +429,10 @@ static bool scan(Scanner *scanner, TSLexer *lexer, const bool *valid_symbols) {
 
   case '}':
     if (valid_symbols[INTERPOLATION_END]) {
-      printf("found } possible interpolation end\n");
       lexer->mark_end(lexer);
       lexer->advance(lexer, false);
       if (lexer->lookahead == '}' &&
           VEC_BACK(scanner->tags).type == INTERPOLATION) {
-        printf("found another }\"\n");
         lexer->advance(lexer, false);
         lexer->mark_end(lexer);
         VEC_POP(scanner->tags);
@@ -449,7 +445,6 @@ static bool scan(Scanner *scanner, TSLexer *lexer, const bool *valid_symbols) {
 
   case '@':
     if (valid_symbols[CONTROL_FLOW_START]) {
-      printf("found @, possible control flow \n");
       lexer->advance(lexer, false);
       lexer->mark_end(lexer);
       lexer->result_symbol = CONTROL_FLOW_START;

@@ -64,9 +64,16 @@ If-else statement
           (tag_name)
         )
       )
-      (else_statement
-        (else_expression
+      (else_if_statement
+        (else_if_expression
           (control_keyword)
+          (control_keyword)
+          (if_condition
+            (binary_expression
+              (identifier)
+              (identifier)
+            )
+          )
         )
         (element
           (start_tag
@@ -81,8 +88,6 @@ If-else statement
       )
     )
 )
-
-
 
 =================
 Else statement
@@ -134,3 +139,231 @@ Else statement
     )
 )
 
+=========
+Nested if
+=========
+
+@if (a && b) {
+  <p>a and b are true</p>
+  @if (a > b) {
+    <p>a is greater than b</p>
+  } @else {
+    <p>a is less than b</p>
+  }
+}
+
+---
+
+(fragment
+  (if_statement
+    (if_start_expression
+      (control_keyword)
+      (if_condition
+        (conditional_expression
+          (identifier)
+          (conditional_operator)
+          (identifier)
+        )
+      )
+    )
+    (element
+      (start_tag
+        (tag_name)
+      )
+      (text)
+      (end_tag
+        (tag_name)
+      )
+    )
+    (if_statement
+      (if_start_expression
+        (control_keyword)
+        (if_condition
+          (binary_expression
+            (identifier)
+            (identifier)
+          )
+        )
+      )
+      (element
+        (start_tag
+          (tag_name)
+        )
+        (text)
+        (end_tag
+          (tag_name)
+        )
+      )
+      (else_statement
+        (else_expression
+          (control_keyword)
+        )
+        (element
+          (start_tag
+            (tag_name)
+          )
+          (text)
+          (end_tag
+            (tag_name)
+          )
+        )
+        (if_end_expression)
+      )
+    )
+    (if_end_expression)
+  )
+)
+
+=================
+If with reference
+=================
+
+@if (users$ | async; as users) {
+  <p>{{ users | json }}</p>
+}
+
+---
+
+(fragment
+  (if_statement
+    (if_start_expression
+      (control_keyword)
+      (if_condition
+        (expression
+          (identifier)
+          (pipe_sequence
+            (pipe_operator)
+            (pipe_call
+              (identifier)
+            )
+          )
+        )
+      )
+      (if_reference
+        (special_keyword)
+        (identifier)
+      )
+    )
+    (element
+      (start_tag
+        (tag_name)
+      )
+      (interpolation
+        (expression
+          (identifier)
+          (pipe_sequence
+            (pipe_operator)
+            (pipe_call
+              (identifier)
+            )
+          )
+        )
+      )
+      (end_tag
+        (tag_name)
+      )
+    )
+    (if_end_expression)
+  )
+)
+
+========================
+If with object reference
+========================
+
+@if ({ data: fromSignal() }; as data) {
+  <p>{{ data | json }}</p>
+}
+
+---
+
+(fragment
+  (if_statement
+    (if_start_expression
+      (control_keyword)
+      (if_condition
+        (expression
+          (object
+            (pair
+              (identifier)
+              (expression
+                (call_expression
+                  (identifier)
+                )
+              )
+            )
+          )
+        )
+      )
+      (if_reference
+        (special_keyword)
+        (identifier)
+      )
+    )
+    (element
+      (start_tag
+        (tag_name)
+      )
+      (interpolation
+        (expression
+          (identifier)
+          (pipe_sequence
+            (pipe_operator)
+            (pipe_call
+              (identifier)
+            )
+          )
+        )
+      )
+      (end_tag
+        (tag_name)
+      )
+    )
+    (if_end_expression)
+  )
+)
+
+==========================
+Unary and conditional expr
+==========================
+
+@if (!inverted && !anotherInverted) {
+  <p>inverted and anotherInverted are false</p>
+}
+
+---
+
+(fragment
+  (if_statement
+    (if_start_expression
+      (control_keyword)
+      (if_condition
+        (conditional_expression
+          (unary_expression
+            (unary_operator)
+            (expression
+              (identifier)
+            )
+          )
+          (conditional_operator)
+          (unary_expression
+            (unary_operator)
+            (expression
+              (identifier)
+            )
+          )
+        )
+      )
+    )
+    (element
+      (start_tag
+        (tag_name)
+      )
+      (text)
+      (end_tag
+        (tag_name)
+      )
+    )
+    (if_end_expression)
+  )
+)
