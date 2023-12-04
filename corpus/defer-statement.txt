@@ -95,6 +95,41 @@ Defer with multiple triggers
   )
 )
 
+===================
+Defer with prefetch
+===================
+
+@defer (on interaction; prefetch on idle) {
+  <calendar-cmp/>
+}
+
+---
+
+(fragment
+  (defer_statement
+    (defer_start_expression
+      (control_keyword)
+      (defer_trigger
+        (defer_trigger_condition
+          (special_keyword)
+          (identifier)
+        )
+        (defer_trigger_condition
+          (prefetch_keyword)
+          (special_keyword)
+          (identifier)
+        )
+      )
+    )
+    (element
+      (self_closing_tag
+        (tag_name)
+      )
+    )
+    (defer_end_expression)
+  )
+)
+
 ==============================
 Defer with conditional trigger
 ==============================
@@ -406,3 +441,81 @@ Error
   )
 )
 
+===============================
+Defer-placeholder-loading-error
+===============================
+
+@defer (on viewport) {
+  <calendar-cmp/>
+} @placeholder (minimum 100ms) {
+  <small-component/>
+} @loading (after 100s; minimum 200ms){
+  <loading-spinner/>
+} @error {
+  <error-message/>
+}
+
+---
+
+(fragment
+  (defer_statement
+    (defer_start_expression
+      (control_keyword)
+      (defer_trigger
+        (defer_trigger_condition
+          (special_keyword)
+          (identifier)
+        )
+      )
+    )
+    (element
+      (self_closing_tag
+        (tag_name)
+      )
+    )
+    (placeholder_statement
+      (placeholder_expression
+        (control_keyword)
+        (placeholder_minimum
+          (special_keyword)
+          (number)
+          (unit)
+        )
+      )
+      (element
+        (self_closing_tag
+          (tag_name)
+        )
+      )
+      (loading_statement
+        (loading_expression
+          (control_keyword)
+          (loading_condition
+            (special_keyword)
+            (number)
+            (unit)
+            (special_keyword)
+            (number)
+            (unit)
+          )
+        )
+        (element
+          (self_closing_tag
+            (tag_name)
+          )
+        )
+        (error_statement
+          (error_expression
+            (control_keyword)
+          )
+          (element
+            (self_closing_tag
+              (tag_name)
+            )
+          )
+          (defer_end_expression)
+        )
+      )
+    )
+  )
+)

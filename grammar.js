@@ -120,9 +120,12 @@ module.exports = grammar(HTML, {
       ),
 
     defer_trigger_condition: ($) =>
-      choice(
-        seq(alias('when', $.special_keyword), field('trigger', $._any_expression)),
-        seq(alias('on', $.special_keyword), field('trigger', $._primitive)),
+      seq(
+        optional(alias('prefetch', $.prefetch_keyword)),
+        choice(
+          seq(alias('when', $.special_keyword), field('trigger', $._any_expression)),
+          seq(alias('on', $.special_keyword), field('trigger', $._primitive)),
+        ),
       ),
 
     _timed_expression: ($) =>

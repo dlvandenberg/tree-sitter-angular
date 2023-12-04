@@ -622,9 +622,13 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "prefetch_keyword",
+          "named": true
+        },
         {
           "type": "special_keyword",
           "named": true
@@ -2631,6 +2635,10 @@
   },
   {
     "type": "pipe_operator",
+    "named": true
+  },
+  {
+    "type": "prefetch_keyword",
     "named": true
   },
   {

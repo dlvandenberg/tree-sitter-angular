@@ -866,49 +866,71 @@
       ]
     },
     "defer_trigger_condition": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "SEQ",
+          "type": "CHOICE",
           "members": [
             {
               "type": "ALIAS",
               "content": {
                 "type": "STRING",
-                "value": "when"
+                "value": "prefetch"
               },
               "named": true,
-              "value": "special_keyword"
+              "value": "prefetch_keyword"
             },
             {
-              "type": "FIELD",
-              "name": "trigger",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_any_expression"
-              }
+              "type": "BLANK"
             }
           ]
         },
         {
-          "type": "SEQ",
+          "type": "CHOICE",
           "members": [
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "STRING",
-                "value": "on"
-              },
-              "named": true,
-              "value": "special_keyword"
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "when"
+                  },
+                  "named": true,
+                  "value": "special_keyword"
+                },
+                {
+                  "type": "FIELD",
+                  "name": "trigger",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_any_expression"
+                  }
+                }
+              ]
             },
             {
-              "type": "FIELD",
-              "name": "trigger",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_primitive"
-              }
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "on"
+                  },
+                  "named": true,
+                  "value": "special_keyword"
+                },
+                {
+                  "type": "FIELD",
+                  "name": "trigger",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_primitive"
+                  }
+                }
+              ]
             }
           ]
         }
