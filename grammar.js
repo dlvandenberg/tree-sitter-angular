@@ -35,12 +35,48 @@ module.exports = grammar(HTML, {
 
     // ---------- Statements ----------
     _any_statement: ($) =>
-      choice(
-        $.if_statement,
-        $.for_statement,
-        $.defer_statement,
-        // $.switch_statement
+      choice($.if_statement, $.for_statement, $.defer_statement, $.switch_statement),
+
+    // ---------- Switch Statement ----------
+    switch_statement: ($) =>
+      seq(
+        $.switch_start_expression,
+        repeat1($.case_statement),
+        optional($.default_statement),
+        $.switch_end_expression,
       ),
+
+    case_statement: ($) => seq($.case_expression, repeat($._node), $.case_end_expression),
+
+    default_statement: ($) =>
+      seq($.default_expression, repeat($._node), $.default_end_expression),
+
+    switch_start_expression: ($) =>
+      seq(
+        alias($._control_flow_start, '@'),
+        alias('switch', $.control_keyword),
+        '(',
+        field('value', $.expression),
+        ')',
+        '{',
+      ),
+
+    case_expression: ($) =>
+      seq(
+        alias($._control_flow_start, '@'),
+        alias('case', $.control_keyword),
+        '(',
+        field('value', $._primitive),
+        ')',
+        '{',
+      ),
+
+    default_expression: ($) =>
+      seq(alias($._control_flow_start, '@'), alias('default', $.control_keyword), '{'),
+
+    switch_end_expression: ($) => $._closing_bracket,
+    case_end_expression: ($) => $._closing_bracket,
+    default_end_expression: ($) => $._closing_bracket,
 
     // ---------- Defer Statement ----------
     defer_statement: ($) =>
