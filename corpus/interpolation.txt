@@ -182,7 +182,7 @@ Grouping
       (tag_name)
     )
     (interpolation
-      (binary_expression
+      (concatination_expression
         (group
           (expression
             (member_expression
@@ -242,6 +242,32 @@ Combined
       )
     )
     (text)
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+
+====================
+String concatination
+====================
+
+<span>{{ 'Hello ' + firstName + ', how are you?' }}</span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+    )
+    (interpolation
+      (concatination_expression
+        (string)
+        (identifier)
+        (string)
+      ) 
+    )
     (end_tag
       (tag_name)
     )

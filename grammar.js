@@ -37,9 +37,54 @@ module.exports = grammar(HTML, {
     _any_statement: ($) =>
       choice(
         $.if_statement,
-        // $.for_statement,
+        $.for_statement,
         // $.defer_statement,
         // $.switch_statement
+      ),
+
+    // ---------- For Statement ----------
+    for_statement: ($) =>
+      seq(
+        $.for_start_expression,
+        repeat($._node),
+        choice($.empty_statement, $.for_end_expression),
+      ),
+
+    empty_statement: ($) =>
+      seq($.empty_expression, repeat($._node), $.for_end_expression),
+
+    for_start_expression: ($) =>
+      seq(
+        alias($._control_flow_start, '@'),
+        alias('for', $.control_keyword),
+        '(',
+        $.for_declaration,
+        optional(field('reference', $.for_reference)),
+        ')',
+        '{',
+      ),
+
+    empty_expression: ($) =>
+      seq(token(prec(2, '} @')), alias('empty', $.control_keyword), '{'),
+
+    for_end_expression: ($) => $._closing_bracket,
+
+    for_declaration: ($) =>
+      seq(
+        field('name', $.identifier),
+        alias('of', $.special_keyword),
+        field('value', $.expression),
+        ';',
+        alias('track', $.special_keyword),
+        field('value', $.expression),
+      ),
+
+    for_reference: ($) =>
+      seq(
+        ';',
+        alias('let', $.special_keyword),
+        field('alias', $.assignment_expression),
+        repeat(seq(choice(';', ','), $.assignment_expression)),
       ),
 
     // ---------- If Statement ----------
@@ -87,8 +132,6 @@ module.exports = grammar(HTML, {
 
     if_end_expression: ($) => $._closing_bracket,
 
-    _closing_bracket: (_) => token(prec(-1, '}')),
-
     if_condition: ($) => prec.right(PREC.CALL, $._any_expression),
 
     if_reference: ($) => seq(';', alias('as', $.special_keyword), $.identifier),
@@ -103,12 +146,21 @@ module.exports = grammar(HTML, {
         prec(3, $.conditional_expression),
       ),
 
+    assignment_expression: ($) =>
+      seq(field('name', $.identifier), '=', field('value', $._any_expression)),
+
     // ---------- Interpolation ---------
     interpolation: ($) =>
       seq(
         alias($._interpolation_start, '{{'),
-        $._any_expression,
+        choice($._any_expression, $.concatination_expression),
         alias($._interpolation_end, '}}'),
+      ),
+
+    concatination_expression: ($) =>
+      prec(
+        2,
+        seq($._primitive, '+', $._primitive, optional(repeat(seq('+', $._primitive)))),
       ),
 
     // ---------- Property Binding ---------
@@ -313,6 +365,7 @@ module.exports = grammar(HTML, {
       ),
 
     // ---------- Base ----------
+    _closing_bracket: (_) => token(prec(-1, '}')),
     // eslint-disable-next-line quotes
     _single_quote: () => "'",
     _double_quote: () => '"',

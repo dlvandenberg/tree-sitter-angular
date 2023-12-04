@@ -1,0 +1,220 @@
+=============
+For-statement
+=============
+
+@for (item of items; track item.id) {
+  <li>{{ item.name }}</li>
+}
+
+---
+
+(fragment
+  (for_statement
+    (for_start_expression
+      (control_keyword)
+      (for_declaration
+        (identifier)
+        (special_keyword)
+        (expression
+          (identifier)
+        )
+        (special_keyword)
+        (expression
+          (member_expression
+            (identifier)
+            (identifier)
+          )
+        )
+      )
+    )
+    (element
+      (start_tag
+        (tag_name)
+      )
+      (interpolation
+        (expression
+          (member_expression
+            (identifier)
+            (identifier)
+          )
+        )
+      )
+      (end_tag
+        (tag_name)
+      )
+    )
+    (for_end_expression)
+  )
+)
+
+==========================
+For-statement with aliases
+==========================
+
+@for (item of items; track $index; let idx = $index, e = $even) {
+  <li>{{ item }}</li>
+}
+
+---
+
+(fragment
+  (for_statement
+    (for_start_expression
+      (control_keyword)
+      (for_declaration
+        (identifier)
+        (special_keyword)
+        (expression
+          (identifier)
+        )
+        (special_keyword)
+        (expression
+          (identifier)
+        )
+      )
+      (for_reference
+        (special_keyword)
+        (assignment_expression
+          (identifier)
+          (expression
+            (identifier)
+          )
+        )
+        (assignment_expression
+          (identifier)
+          (expression
+            (identifier)
+          )
+        )
+      )
+    )
+    (element
+      (start_tag
+        (tag_name)
+      )
+      (interpolation
+        (expression
+          (identifier)
+        )
+      )
+      (end_tag
+        (tag_name)
+      )
+    )
+    (for_end_expression)
+  )
+)
+
+==============
+For with pipes
+==============
+
+@for (item of items$ | async; track item.id) {
+  <li>{{ item.name }}</li>
+}
+
+---
+
+(fragment
+  (for_statement
+    (for_start_expression
+      (control_keyword)
+      (for_declaration
+        (identifier)
+        (special_keyword)
+        (expression
+          (identifier)
+          (pipe_sequence
+            (pipe_operator)
+            (pipe_call
+              (identifier)
+            )
+          )
+        )
+        (special_keyword)
+        (expression
+          (member_expression
+            (identifier)
+            (identifier)
+          )
+        )
+      )
+    )
+    (element
+      (start_tag
+        (tag_name)
+      )
+      (interpolation
+        (expression
+          (member_expression
+            (identifier)
+            (identifier)
+          )
+        )
+      )
+      (end_tag
+        (tag_name)
+      )
+    )
+    (for_end_expression)
+  )
+)
+
+=========
+For-empty
+=========
+
+@for (item of items; track $index) {
+  <li>{{ item }}</li>
+} @empty {
+  <span>No items</span>
+}
+
+---
+
+(fragment
+  (for_statement
+    (for_start_expression
+      (control_keyword)
+      (for_declaration
+        (identifier)
+        (special_keyword)
+        (expression
+          (identifier)
+        )
+        (special_keyword)
+        (expression
+          (identifier)
+        )
+      )
+    )
+    (element
+      (start_tag
+        (tag_name)
+      )
+      (interpolation
+        (expression
+          (identifier)
+        )
+      )
+      (end_tag
+        (tag_name)
+      )
+    )
+    (empty_statement
+      (empty_expression
+        (control_keyword)
+      )
+      (element
+        (start_tag
+          (tag_name)
+        )
+        (text)
+        (end_tag
+          (tag_name)
+        )
+      )
+      (for_end_expression)
+    )
+  )
+)
