@@ -14,8 +14,10 @@ NgIf
       (attribute
         (structural_directive
           (identifier)
-          (expression
-            (identifier)
+          (structural_expression
+            (expression
+              (identifier)
+            )
           )
         )
       )
@@ -35,9 +37,48 @@ NgIf
       (attribute
         (structural_directive
           (identifier)
-          (conditional_expression
-            (identifier)
-            (conditional_operator)
+          (structural_expression
+            (conditional_expression
+              (identifier)
+              (conditional_operator)
+              (identifier)
+            )
+          )
+        )
+      )
+    )
+    (interpolation
+      (expression
+        (identifier)
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+
+=========
+NgIf else
+=========
+
+<span *ngIf="someCondition; else elseBlock">{{ value }}</span>
+<span #elseBlock>{{ value }}</span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (structural_directive
+          (identifier)
+          (structural_expression
+            (expression
+              (identifier)
+            )
+            (special_keyword)
             (identifier)
           )
         )
@@ -48,6 +89,24 @@ NgIf
         (identifier)
       )
     )
+    (end_tag
+      (tag_name)
+    )
+  )
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (normal_attribute
+          (attribute_name)
+        )
+      )
+    )
+    (interpolation
+      (expression
+        (identifier)
+      )
+    )   
     (end_tag
       (tag_name)
     )
@@ -75,9 +134,11 @@ NgIf binary expression
       (attribute
         (structural_directive
           (identifier)
-          (binary_expression
-            (identifier)
-            (identifier)
+          (structural_expression
+            (binary_expression
+              (identifier)
+              (identifier)
+            )
           )
         )
       )
@@ -92,9 +153,11 @@ NgIf binary expression
       (attribute
         (structural_directive
           (identifier)
-          (binary_expression
-            (identifier)
-            (identifier)
+          (structural_expression
+            (binary_expression
+              (identifier)
+              (identifier)
+            )
           )
         )
       )
@@ -109,9 +172,11 @@ NgIf binary expression
       (attribute
         (structural_directive
           (identifier)
-          (binary_expression
-            (identifier)
-            (identifier)
+          (structural_expression
+            (binary_expression
+              (identifier)
+              (identifier)
+            )
           )
         )
       )
@@ -126,9 +191,11 @@ NgIf binary expression
       (attribute
         (structural_directive
           (identifier)
-          (binary_expression
-            (identifier)
-            (identifier)
+          (structural_expression
+            (binary_expression
+              (identifier)
+              (identifier)
+            )
           )
         )
       )
@@ -143,9 +210,11 @@ NgIf binary expression
       (attribute
         (structural_directive
           (identifier)
-          (binary_expression
-            (identifier)
-            (identifier)
+          (structural_expression
+            (binary_expression
+              (identifier)
+              (identifier)
+            )
           )
         )
       )
@@ -160,10 +229,12 @@ NgIf binary expression
       (attribute
         (structural_directive
           (identifier)
-          (conditional_expression
-            (identifier)
-            (conditional_operator)
-            (identifier)
+          (structural_expression
+            (conditional_expression
+              (identifier)
+              (conditional_operator)
+              (identifier)
+            )
           )
         )
       )
@@ -178,10 +249,12 @@ NgIf binary expression
       (attribute
         (structural_directive
           (identifier)
-          (conditional_expression
-            (identifier)
-            (conditional_operator)
-            (identifier)
+          (structural_expression
+            (conditional_expression
+              (identifier)
+              (conditional_operator)
+              (identifier)
+            )
           )
         )
       )
@@ -326,8 +399,10 @@ NgSwitch
         (attribute
           (structural_directive
             (identifier)
-            (expression
-              (string)
+            (structural_expression
+              (expression
+                (string)
+              )
             )
           )
         )

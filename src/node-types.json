@@ -1962,6 +1962,10 @@
           "named": true
         },
         {
+          "type": "placeholder_statement",
+          "named": true
+        },
+        {
           "type": "script_element",
           "named": true
         },
@@ -2530,6 +2534,29 @@
       "required": true,
       "types": [
         {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "structural_declaration",
+          "named": true
+        },
+        {
+          "type": "structural_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "structural_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -2546,7 +2573,7 @@
           "named": true
         },
         {
-          "type": "structural_declaration",
+          "type": "special_keyword",
           "named": true
         },
         {

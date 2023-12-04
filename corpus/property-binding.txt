@@ -171,9 +171,9 @@ Subproperty
 )
 
 
-================
+==========
 With pipes
-================
+==========
 
 <element [property]="value$ | async"/>
 

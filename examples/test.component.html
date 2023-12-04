@@ -30,7 +30,7 @@
 <div class="container">
   @defer (on viewport; when visible) {
     <a-footer />
-  } @loading (after 100ms, minimum 1s) {
+  } @loading (after 100ms; minimum 1s) {
     <div class="loading">Loading...</div>
   } @placeholder {
     <div>Skeleton</div>
@@ -59,7 +59,7 @@
 <div class="event-binding">
   <button (click)="onClick()">Click me</button>
   <button (click)="onClick($event)">Click me</button>
-  <button (click)="onClick($event, 'some')">Click me</button><
+  <button (click)="onClick($event, 'some')">Click me</button>
 </div>
 
 <div class="directives">

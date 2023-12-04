@@ -134,8 +134,6 @@ typedef enum {
   // Angular's interpolation syntax
   INTERPOLATION,
   CONTROL_FLOW,
-  // IF,
-  // ELSE,
 
   CUSTOM,
 

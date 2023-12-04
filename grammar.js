@@ -102,7 +102,7 @@ module.exports = grammar(HTML, {
       seq(
         $.loading_expression,
         repeat($._node),
-        choice($.error_statement, $.defer_end_expression),
+        choice($.error_statement, $.placeholder_statement, $.defer_end_expression),
       ),
 
     error_statement: ($) =>
@@ -311,10 +311,16 @@ module.exports = grammar(HTML, {
           seq(
             '=',
             $._double_quote,
-            choice($._any_expression, $.structural_declaration),
+            choice($.structural_expression, $.structural_declaration),
             $._double_quote,
           ),
         ),
+      ),
+
+    structural_expression: ($) =>
+      seq(
+        $._any_expression,
+        optional(seq(';', alias('else', $.special_keyword), $.identifier)),
       ),
 
     structural_declaration: ($) =>
