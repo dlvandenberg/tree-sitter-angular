@@ -35,6 +35,6 @@
   },
   "dependencies": {
     "nan": "^2.18.0",
-    "tree-sitter-html": "^0.20.0"
+    "tree-sitter-html": "github:tree-sitter/tree-sitter-html"
   }
 }

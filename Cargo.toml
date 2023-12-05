@@ -5,7 +5,7 @@ version = "0.0.1"
 keywords = ["incremental", "parsing", "angular"]
 categories = ["parsing", "text-editors"]
 repository = "https://github.com/tree-sitter/tree-sitter-angular"
-edition = "2023"
+edition = "2021"
 license = "MIT"
 
 build = "bindings/rust/build.rs"
@@ -21,7 +21,6 @@ path = "bindings/rust/lib.rs"
 
 [dependencies]
 tree-sitter = "~0.20.10"
-tree-sitter-html = "~0.20.0"
 
 [build-dependencies]
 cc = "1.0"
