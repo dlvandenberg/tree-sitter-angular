@@ -6,11 +6,12 @@
   "scripts": {
     "build": "tree-sitter generate && node-gyp build",
     "lint": "eslint grammar.js",
-    "test": "tree-sitter test && tree-sitter parse examples/*.html --quiet --time"
+    "test": "tree-sitter test && tree-sitter parse examples/*.html --quiet --time",
+    "test:windows": "tree-sitter test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dlvandenberg/tree-sitter-angular-2.git"
+    "url": "git+https://github.com/dlvandenberg/tree-sitter-angular.git"
   },
   "keywords": [
     "Treesitter",
@@ -19,12 +20,13 @@
     "Tree-Sitter",
     "parser"
   ],
-  "author": "dlvandenberg",
-  "license": "GNU GPLv3",
+  "author": "Dennis van den Berg",
+  "url": "https://vdberg.dev",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dlvandenberg/tree-sitter-angular-2/issues"
+    "url": "https://github.com/dlvandenberg/tree-sitter-angular/issues"
   },
-  "homepage": "https://github.com/dlvandenberg/tree-sitter-angular-2#readme",
+  "homepage": "https://github.com/dlvandenberg/tree-sitter-angular#readme",
   "devDependencies": {
     "@stylistic/eslint-plugin-js": "^1.4.1",
     "eslint": "^8.54.0",
@@ -34,13 +36,5 @@
   "dependencies": {
     "nan": "^2.18.0",
     "tree-sitter-html": "^0.20.0"
-  },
-  "tree-sitter": [
-    {
-      "scope": "source.angular",
-      "file-types": [
-        "component.html"
-      ]
-    }
-  ]
+  }
 }
