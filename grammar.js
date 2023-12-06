@@ -5,7 +5,7 @@
  */
 
 /* eslint-disable-next-line spaced-comment */
-/// <reference types="tree-sitter-cli/dsl"
+/// <reference types="tree-sitter-cli/dsl" />
 
 const HTML = require('tree-sitter-html/grammar');
 
