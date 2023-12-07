@@ -35,7 +35,7 @@ in `~/.config/nvim/ftdetect/angular.vim`, or put
 ```
 vim.filetype.add({
     extension = {
-        component.html = "angular"
+        ["component.html"] = "angular"
     }
 })
 ```
