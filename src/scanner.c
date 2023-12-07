@@ -1,6 +1,4 @@
 #include "tag.h"
-#include "tree_sitter/parser.h"
-#include <stdio.h>
 
 #include <wctype.h>
 
@@ -355,7 +353,6 @@ static bool scan_end_tag_name(Scanner *scanner, TSLexer *lexer) {
     VEC_POP(scanner->tags);
     lexer->result_symbol = END_TAG_NAME;
   } else {
-    printf("ERRONEOUS_END_TAG_NAME\n");
     lexer->result_symbol = ERRONEOUS_END_TAG_NAME;
   }
   tag_free(&tag);
