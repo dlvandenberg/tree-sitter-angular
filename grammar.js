@@ -320,6 +320,7 @@ module.exports = grammar(HTML, {
     structural_expression: ($) =>
       seq(
         $._any_expression,
+        optional($._alias),
         optional(seq(';', alias('else', $.special_keyword), $.identifier)),
       ),
 

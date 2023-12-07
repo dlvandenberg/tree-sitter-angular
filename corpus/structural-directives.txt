@@ -113,6 +113,63 @@ NgIf else
   )
 )
 
+===============
+NgIf with alias
+===============
+
+<span *ngIf="{
+    isAuthenticated: isAuthenticated$ | async
+  } as data">
+  {{ data.isAuthenticated }}
+</span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (structural_directive
+          (identifier)
+          (structural_expression
+            (expression
+              (object
+                (pair
+                  (identifier)
+                  (expression
+                    (identifier)
+                    (pipe_sequence
+                      (pipe_operator)
+                      (pipe_call
+                        (identifier)
+                      )
+                    )
+                  )
+                )
+              )
+            )
+            (special_keyword)
+            (identifier)
+          )
+        )
+      )
+    )
+    (interpolation
+      (expression
+        (member_expression
+          (identifier)
+          (identifier)
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+
+
 ======================
 NgIf binary expression
 ======================
