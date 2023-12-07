@@ -7,14 +7,14 @@
 /* eslint-disable-next-line spaced-comment */
 /// <reference types="tree-sitter-cli/dsl" />
 
-import HTML from 'tree-sitter-html/grammar';
+const HTML = require('tree-sitter-html/grammar');
 
 const PREC = {
   CALL: 1,
   ALIAS: 2,
 };
 
-export default grammar(HTML, {
+module.exports = grammar(HTML, {
   name: 'angular',
 
   externals: ($, original) =>

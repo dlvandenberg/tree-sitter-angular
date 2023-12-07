@@ -1,5 +1,12 @@
 node_modules
+build
+*.log
 log.html
 
 /target
+*.a
+*.so
 *.o
+bindings/c/*.h
+bindings/c/*.pc
+.build/
