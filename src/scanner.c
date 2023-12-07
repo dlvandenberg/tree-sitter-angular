@@ -259,7 +259,6 @@ static bool scan_raw_text(Scanner *scanner, TSLexer *lexer) {
     }
   }
 
-finish:
   lexer->result_symbol = RAW_TEXT;
   return true;
 }
