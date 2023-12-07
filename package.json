@@ -5,7 +5,7 @@
   "main": "bindings/node",
   "scripts": {
     "build": "tree-sitter generate && node-gyp build",
-    "parse": "tree-sitter parse",
+    "parse": "tree-sitter parse examples/*.html",
     "lint": "eslint grammar.js",
     "test": "tree-sitter test && tree-sitter parse examples/*.html --quiet --time",
     "test:windows": "tree-sitter test"
