@@ -97,9 +97,7 @@ NgIf else
     (start_tag
       (tag_name)
       (attribute
-        (normal_attribute
-          (attribute_name)
-        )
+        (attribute_name)
       )
     )
     (interpolation

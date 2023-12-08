@@ -382,7 +382,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "normal_attribute"
+          "name": "_normal_attribute"
         }
       ]
     },
@@ -2229,7 +2229,7 @@
         }
       ]
     },
-    "normal_attribute": {
+    "_normal_attribute": {
       "type": "SEQ",
       "members": [
         {

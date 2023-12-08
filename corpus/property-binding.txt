@@ -274,12 +274,10 @@ Regular attribute
     (self_closing_tag
       (tag_name)
       (attribute
-       (normal_attribute
         (attribute_name)
         (quoted_attribute_value
          (attribute_value)
         )
-       )
       )
     )
   )

@@ -116,19 +116,27 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "attribute_name",
+          "named": true
+        },
+        {
+          "type": "attribute_value",
+          "named": true
+        },
         {
           "type": "event_binding",
           "named": true
         },
         {
-          "type": "normal_attribute",
+          "type": "property_binding",
           "named": true
         },
         {
-          "type": "property_binding",
+          "type": "quoted_attribute_value",
           "named": true
         },
         {
@@ -2036,29 +2044,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "normal_attribute",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "attribute_name",
-          "named": true
-        },
-        {
-          "type": "attribute_value",
-          "named": true
-        },
-        {
-          "type": "quoted_attribute_value",
-          "named": true
-        }
-      ]
     }
   },
   {

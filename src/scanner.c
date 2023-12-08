@@ -234,11 +234,6 @@ static bool scan_raw_text(Scanner *scanner, TSLexer *lexer) {
     return false;
   }
 
-  if (VEC_BACK(scanner->tags).type != SCRIPT &&
-      VEC_BACK(scanner->tags).type != STYLE) {
-    return false;
-  }
-
   lexer->mark_end(lexer);
 
   const char *end_delimiter =
@@ -373,13 +368,13 @@ static bool scan_self_closing_tag_delimiter(Scanner *scanner, TSLexer *lexer) {
 }
 
 static bool scan(Scanner *scanner, TSLexer *lexer, const bool *valid_symbols) {
-  while (iswspace(lexer->lookahead)) {
-    lexer->advance(lexer, true);
-  }
-
   if (valid_symbols[RAW_TEXT] && !valid_symbols[START_TAG_NAME] &&
       !valid_symbols[END_TAG_NAME]) {
     return scan_raw_text(scanner, lexer);
+  }
+
+  while (iswspace(lexer->lookahead)) {
+    lexer->advance(lexer, true);
   }
 
   switch (lexer->lookahead) {
