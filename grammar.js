@@ -364,7 +364,7 @@ module.exports = grammar(HTML, {
         $._double_quote,
       ),
 
-    binding_name: ($) => choice($.identifier, $.member_expression),
+    binding_name: ($) => seq(optional('@'), choice($.identifier, $.member_expression)),
 
     _normal_attribute: ($) =>
       seq(
