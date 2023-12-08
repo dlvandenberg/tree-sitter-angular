@@ -2207,8 +2207,16 @@
           "name": "_double_quote"
         },
         {
-          "type": "SYMBOL",
-          "name": "_any_expression"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_any_expression"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "SYMBOL",

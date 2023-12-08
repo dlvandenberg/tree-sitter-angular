@@ -282,3 +282,30 @@ Regular attribute
     )
   )
 )
+
+=====================
+Empty attribute value
+=====================
+
+<span [property]=""></span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier)
+          )
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+

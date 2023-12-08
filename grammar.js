@@ -357,7 +357,7 @@ module.exports = grammar(HTML, {
     two_way_binding: ($) => seq('[(', $.binding_name, ')]', $._binding_assignment),
 
     _binding_assignment: ($) =>
-      seq('=', $._double_quote, $._any_expression, $._double_quote),
+      seq('=', $._double_quote, optional($._any_expression), $._double_quote),
 
     binding_name: ($) => choice($.identifier, $.member_expression),
 
