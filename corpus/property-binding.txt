@@ -260,6 +260,35 @@ Event binding
   )
 )
 
+========================
+Event binding expression
+========================
+
+<element (click)="property = $event" />
+
+---
+
+(fragment
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (event_binding
+          (binding_name
+            (identifier)
+          )
+          (assignment_expression
+            (identifier)
+            (expression
+              (identifier)
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
 
 =================
 Regular attribute

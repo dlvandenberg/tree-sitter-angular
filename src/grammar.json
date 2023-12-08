@@ -2210,8 +2210,17 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "_any_expression"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_any_expression"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "assignment_expression"
+                }
+              ]
             },
             {
               "type": "BLANK"

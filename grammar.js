@@ -299,7 +299,7 @@ module.exports = grammar(HTML, {
         prec(1, $.two_way_binding),
         prec(1, $.event_binding),
         prec(1, $.structural_directive),
-        $._normal_attribute,
+        $._normal_attribute, // <-- This needs to be hidden from syntax tree
       ),
 
     // ---------- Structural Directives ---------
@@ -357,7 +357,12 @@ module.exports = grammar(HTML, {
     two_way_binding: ($) => seq('[(', $.binding_name, ')]', $._binding_assignment),
 
     _binding_assignment: ($) =>
-      seq('=', $._double_quote, optional($._any_expression), $._double_quote),
+      seq(
+        '=',
+        $._double_quote,
+        optional(choice($._any_expression, $.assignment_expression)),
+        $._double_quote,
+      ),
 
     binding_name: ($) => choice($.identifier, $.member_expression),
 

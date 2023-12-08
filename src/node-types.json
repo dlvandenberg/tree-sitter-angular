@@ -1327,6 +1327,10 @@
       "required": true,
       "types": [
         {
+          "type": "assignment_expression",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -2320,6 +2324,10 @@
       "required": true,
       "types": [
         {
+          "type": "assignment_expression",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -2746,6 +2754,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "assignment_expression",
+          "named": true
+        },
         {
           "type": "binary_expression",
           "named": true
