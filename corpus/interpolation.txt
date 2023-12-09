@@ -201,7 +201,9 @@ Grouping
             )
           )
         )
-        (string)
+        (expression
+         (string)
+        )
       )
     )
     (end_tag
@@ -264,7 +266,9 @@ String concatination
     (interpolation
       (concatination_expression
         (string)
-        (identifier)
+        (expression
+          (identifier)
+        )
         (string)
       ) 
     )
@@ -273,3 +277,34 @@ String concatination
     )
   )
 )
+
+========================
+String concat with pipes
+========================
+
+{{ 'languages.' + translateService.getActiveLang() | transloco }}
+
+---
+
+(fragment
+  (interpolation
+    (concatination_expression
+      (string)
+      (expression
+        (member_expression
+          (identifier)
+          (call_expression
+            (identifier)
+          )
+        )
+        (pipe_sequence
+          (pipe_operator)
+          (pipe_call
+            (identifier)
+          )
+        )
+      )
+    )
+  )
+)
+

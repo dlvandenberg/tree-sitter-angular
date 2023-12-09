@@ -1805,7 +1805,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "_primitive"
+            "name": "expression"
           },
           {
             "type": "CHOICE",
@@ -2975,12 +2975,25 @@
           ]
         },
         {
-          "type": "FIELD",
-          "name": "property",
-          "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "property",
+              "content": {
+                "type": "SYMBOL",
+                "name": "identifier"
+              }
+            },
+            {
+              "type": "FIELD",
+              "name": "call",
+              "content": {
+                "type": "SYMBOL",
+                "name": "call_expression"
+              }
+            }
+          ]
         }
       ]
     },

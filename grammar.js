@@ -289,7 +289,7 @@ module.exports = grammar(HTML, {
     concatination_expression: ($) =>
       prec(
         2,
-        seq($._primitive, '+', $._primitive, optional(repeat(seq('+', $._primitive)))),
+        seq($._primitive, '+', $.expression, optional(repeat(seq('+', $._primitive)))),
       ),
 
     // ---------- Property Binding ---------
@@ -507,7 +507,7 @@ module.exports = grammar(HTML, {
       seq(
         field('object', $._primitive),
         choice('.', '?.', '!.'),
-        field('property', $.identifier),
+        choice(field('property', $.identifier), field('call', $.call_expression)),
       ),
 
     // ---------- Base ----------
