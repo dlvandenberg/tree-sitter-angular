@@ -131,8 +131,10 @@ static unsigned serialize(Scanner *scanner, char *buffer) {
       if (size + 2 + name_length >= TREE_SITTER_SERIALIZATION_BUFFER_SIZE) {
         break;
       }
-      buffer[size++] = (char)tag.type;
-      buffer[size++] = (char)name_length;
+      buffer[size++] =
+          (unsigned char)tag.type; // <-- This is because otherwise it is read
+                                   // as a negative value
+      buffer[size++] = (unsigned char)name_length;
       strncpy(&buffer[size], tag.custom_tag_name.data, name_length);
       size += name_length;
     } else {
@@ -165,7 +167,9 @@ static void deserialize(Scanner *scanner, const char *buffer, unsigned length) {
       unsigned iter = 0;
       for (iter = 0; iter < serialized_tag_count; iter++) {
         Tag tag = scanner->tags.data[iter];
-        tag.type = (TagType)buffer[size++];
+        tag.type =
+            (unsigned char)buffer[size++]; // <-- This is because otherwise it
+                                           // is read as a negative value
         if (tag.type == CUSTOM) {
           uint16_t name_length = (uint8_t)buffer[size++];
           tag.custom_tag_name.len = name_length;

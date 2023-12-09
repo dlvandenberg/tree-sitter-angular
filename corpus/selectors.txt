@@ -1,0 +1,35 @@
+==================
+Component selector
+==================
+
+<a-button>Label</a-button>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name) 
+    )
+    (text)
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+
+=====================
+Self closing selector
+=====================
+
+<a-button />
+
+---
+
+(fragment
+  (element
+    (self_closing_tag
+      (tag_name)
+    )
+  )
+)
