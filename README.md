@@ -32,16 +32,6 @@ autocmd BufRead,BufEnter *.component.html set filetype=angular
 
 in `~/.config/nvim/ftdetect/angular.vim`, or put
 
-```
-vim.filetype.add({
-    extension = {
-        ["component.html"] = "angular"
-    }
-})
-```
-
-in `~/.config/nvim/ftdetect/angular.lua`.
-
 ## Issues
 
-If you experience any issues, please feel free to open an issue.
+If you experience any issues, please feel free to open an issue with the code that's causing problems.
