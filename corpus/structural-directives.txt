@@ -484,3 +484,77 @@ NgSwitch
     )
   )
 )
+
+
+=======================
+Template Outlet context
+=======================
+
+<ng-container
+  *ngTemplateOutlet="
+    tab.url === undefined || tab.url === null ? tabTemplate : navigableTabTemplate;
+    context: { $implicit: tab, index: index }
+  "
+>
+</ng-container>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (structural_directive
+          (identifier)
+          (structural_expression
+            (ternary_expression
+              (conditional_expression
+                (binary_expression
+                  (member_expression
+                    (identifier)
+                    (identifier)
+                  )
+                  (identifier)
+                )
+                (conditional_operator)
+                (binary_expression
+                  (member_expression
+                    (identifier)
+                    (identifier)
+                  )
+                  (identifier)
+                )
+              )
+              (ternary_operator)
+              (identifier)
+              (ternary_operator)
+              (identifier)
+            )
+            (special_keyword)
+            (expression
+              (object
+                (pair
+                  (identifier)
+                  (expression
+                    (identifier)
+                  )
+                )
+                (pair
+                  (identifier)
+                  (expression
+                    (identifier)
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+    (erroneous_end_tag
+      (erroneous_end_tag_name)
+    )
+    (MISSING _implicit_end_tag)
+  )
+)
