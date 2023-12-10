@@ -1,6 +1,4 @@
 #include "tag.h"
-#include "tree_sitter/parser.h"
-#include <stdio.h>
 
 #include <wctype.h>
 
@@ -15,7 +13,8 @@ enum TokenType {
   RAW_TEXT,
   COMMENT,
   INTERPOLATION_START,
-  INTERPOLATION_END
+  INTERPOLATION_END,
+  CONTROL_FLOW_START,
 };
 
 typedef struct {
@@ -132,8 +131,10 @@ static unsigned serialize(Scanner *scanner, char *buffer) {
       if (size + 2 + name_length >= TREE_SITTER_SERIALIZATION_BUFFER_SIZE) {
         break;
       }
-      buffer[size++] = (char)tag.type;
-      buffer[size++] = (char)name_length;
+      buffer[size++] =
+          (unsigned char)tag.type; // <-- This is because otherwise it is read
+                                   // as a negative value
+      buffer[size++] = (unsigned char)name_length;
       strncpy(&buffer[size], tag.custom_tag_name.data, name_length);
       size += name_length;
     } else {
@@ -166,7 +167,9 @@ static void deserialize(Scanner *scanner, const char *buffer, unsigned length) {
       unsigned iter = 0;
       for (iter = 0; iter < serialized_tag_count; iter++) {
         Tag tag = scanner->tags.data[iter];
-        tag.type = (TagType)buffer[size++];
+        tag.type =
+            (unsigned char)buffer[size++]; // <-- This is because otherwise it
+                                           // is read as a negative value
         if (tag.type == CUSTOM) {
           uint16_t name_length = (uint8_t)buffer[size++];
           tag.custom_tag_name.len = name_length;
@@ -235,17 +238,6 @@ static bool scan_raw_text(Scanner *scanner, TSLexer *lexer) {
     return false;
   }
 
-  // if (VEC_BACK(scanner->tags).type == INTERPOLATION) {
-  //   scan_js_expr(lexer, "}"); // DEVDBE: does this need to be doubled?
-  //   VEC_POP(scanner->tags);
-  //   goto finish;
-  // }
-
-  if (VEC_BACK(scanner->tags).type != SCRIPT &&
-      VEC_BACK(scanner->tags).type != STYLE) {
-    return false;
-  }
-
   lexer->mark_end(lexer);
 
   const char *end_delimiter =
@@ -266,7 +258,6 @@ static bool scan_raw_text(Scanner *scanner, TSLexer *lexer) {
     }
   }
 
-finish:
   lexer->result_symbol = RAW_TEXT;
   return true;
 }
@@ -381,13 +372,13 @@ static bool scan_self_closing_tag_delimiter(Scanner *scanner, TSLexer *lexer) {
 }
 
 static bool scan(Scanner *scanner, TSLexer *lexer, const bool *valid_symbols) {
-  while (iswspace(lexer->lookahead)) {
-    lexer->advance(lexer, true);
-  }
-
   if (valid_symbols[RAW_TEXT] && !valid_symbols[START_TAG_NAME] &&
       !valid_symbols[END_TAG_NAME]) {
     return scan_raw_text(scanner, lexer);
+  }
+
+  while (iswspace(lexer->lookahead)) {
+    lexer->advance(lexer, true);
   }
 
   switch (lexer->lookahead) {
@@ -418,26 +409,41 @@ static bool scan(Scanner *scanner, TSLexer *lexer, const bool *valid_symbols) {
     break;
 
   case '{':
-    lexer->advance(lexer, false);
-
-    if (lexer->lookahead == '{' && valid_symbols[INTERPOLATION_START]) {
-      lexer->advance(lexer, false);
+    if (valid_symbols[INTERPOLATION_START]) {
       lexer->mark_end(lexer);
-      Tag tag = (Tag){INTERPOLATION, {0}};
-      VEC_PUSH(scanner->tags, tag);
-      lexer->result_symbol = INTERPOLATION_START;
-      return true;
+      lexer->advance(lexer, false);
+      if (lexer->lookahead == '{') {
+        lexer->advance(lexer, false);
+        lexer->mark_end(lexer);
+        Tag tag = (Tag){INTERPOLATION, {0}};
+        VEC_PUSH(scanner->tags, tag);
+        lexer->result_symbol = INTERPOLATION_START;
+        return true;
+      }
     }
     break;
 
   case '}':
-    lexer->advance(lexer, false);
-    if (lexer->lookahead == '}' &&
-        VEC_BACK(scanner->tags).type == INTERPOLATION) {
+    if (valid_symbols[INTERPOLATION_END]) {
+      lexer->mark_end(lexer);
+      lexer->advance(lexer, false);
+      if (lexer->lookahead == '}' &&
+          VEC_BACK(scanner->tags).type == INTERPOLATION) {
+        lexer->advance(lexer, false);
+        lexer->mark_end(lexer);
+        VEC_POP(scanner->tags);
+        lexer->result_symbol = INTERPOLATION_END;
+        return true;
+      }
+    }
+
+    break;
+
+  case '@':
+    if (valid_symbols[CONTROL_FLOW_START]) {
       lexer->advance(lexer, false);
       lexer->mark_end(lexer);
-      VEC_POP(scanner->tags);
-      lexer->result_symbol = INTERPOLATION_END;
+      lexer->result_symbol = CONTROL_FLOW_START;
       return true;
     }
     break;

@@ -15,7 +15,6 @@ Property binding
           (binding_name
             (identifier)
           )
-          (assignment_operator)
           (expression
             (identifier)
           )
@@ -24,6 +23,83 @@ Property binding
     )
   )
 )
+
+======================
+Array Property binding
+======================
+
+<element [icon]="['fas', 'chevron']"/>
+
+---
+
+(fragment
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier)
+          )
+          (expression
+            (array
+              (expression
+                (string)
+              )
+              (expression
+                (string)
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+========================
+Array Binding with pipes
+========================
+
+<element [values]="[(someValue | async), syncValue]"/>
+
+---
+
+(fragment
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier)
+          )
+          (expression
+            (array
+              (expression
+                (group
+                  (expression
+                    (identifier)
+                    (pipe_sequence
+                      (pipe_operator)
+                      (pipe_call
+                        (identifier)
+                      )
+                    )
+                  )
+                )
+              )
+              (expression
+                (identifier)
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
 
 ======================
 String literal binding
@@ -42,7 +118,6 @@ String literal binding
           (binding_name
             (identifier)
           )
-          (assignment_operator)
           (binary_expression
             (string)
             (member_expression
@@ -57,7 +132,6 @@ String literal binding
           (binding_name
             (identifier)
           )
-          (assignment_operator)
           (expression
             (string)
           )
@@ -87,7 +161,6 @@ Subproperty
               (identifier)
             )
           )
-          (assignment_operator)
           (expression
             (identifier)
           )
@@ -98,9 +171,9 @@ Subproperty
 )
 
 
-================
+==========
 With pipes
-================
+==========
 
 <element [property]="value$ | async"/>
 
@@ -115,7 +188,6 @@ With pipes
           (binding_name
               (identifier)
           )
-          (assignment_operator)
           (expression
             (identifier)
             (pipe_sequence
@@ -148,7 +220,6 @@ Two-way binding
           (binding_name
             (identifier)
           )
-          (assignment_operator)
           (expression
             (identifier)
           )
@@ -175,13 +246,41 @@ Event binding
           (binding_name
             (identifier)
           )
-          (assignment_operator)
           (expression
             (call_expression
               (identifier)
               (arguments
                 (identifier)
               )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+========================
+Event binding expression
+========================
+
+<element (click)="property = $event" />
+
+---
+
+(fragment
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (event_binding
+          (binding_name
+            (identifier)
+          )
+          (assignment_expression
+            (identifier)
+            (expression
+              (identifier)
             )
           )
         )
@@ -204,13 +303,66 @@ Regular attribute
     (self_closing_tag
       (tag_name)
       (attribute
-       (normal_attribute
         (attribute_name)
         (quoted_attribute_value
          (attribute_value)
         )
-       )
       )
+    )
+  )
+)
+
+=====================
+Empty attribute value
+=====================
+
+<span [property]=""></span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier)
+          )
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+
+==================
+Animation property
+==================
+
+<span [@someAnimation]="condition"></span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier)
+          )
+          (expression
+            (identifier)
+          )
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
     )
   )
 )

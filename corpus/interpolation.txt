@@ -167,3 +167,144 @@ Conditional with pipes
     )
   )
 )
+
+========
+Grouping
+========
+
+<span>{{ ((recipe$ | async)?.name) + ' update' }}</span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+    )
+    (interpolation
+      (concatination_expression
+        (group
+          (expression
+            (member_expression
+              (group
+                (expression
+                  (identifier)
+                  (pipe_sequence
+                    (pipe_operator)
+                    (pipe_call
+                      (identifier)
+                    )
+                  )
+                )
+              )
+              (identifier)
+            )
+          )
+        )
+        (expression
+         (string)
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+
+========
+Combined
+========
+
+<span>Hello {{ firstName }}, welcome to {{ title | uppercase }}!</span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+    )
+    (text)
+    (interpolation
+      (expression
+        (identifier)
+      )
+    )
+    (text)
+    (interpolation
+      (expression
+        (identifier)
+        (pipe_sequence
+          (pipe_operator)
+          (pipe_call
+            (identifier)
+          )
+        )
+      )
+    )
+    (text)
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+
+====================
+String concatination
+====================
+
+<span>{{ 'Hello ' + firstName + ', how are you?' }}</span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+    )
+    (interpolation
+      (concatination_expression
+        (string)
+        (expression
+          (identifier)
+        )
+        (string)
+      ) 
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
+
+========================
+String concat with pipes
+========================
+
+{{ 'languages.' + translateService.getActiveLang() | transloco }}
+
+---
+
+(fragment
+  (interpolation
+    (concatination_expression
+      (string)
+      (expression
+        (member_expression
+          (identifier)
+          (call_expression
+            (identifier)
+          )
+        )
+        (pipe_sequence
+          (pipe_operator)
+          (pipe_call
+            (identifier)
+          )
+        )
+      )
+    )
+  )
+)
+

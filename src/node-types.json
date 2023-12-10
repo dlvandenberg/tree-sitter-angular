@@ -70,23 +70,77 @@
     }
   },
   {
+    "type": "assignment_expression",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "conditional_expression",
+            "named": true
+          },
+          {
+            "type": "expression",
+            "named": true
+          },
+          {
+            "type": "ternary_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "attribute",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "attribute_name",
+          "named": true
+        },
+        {
+          "type": "attribute_value",
+          "named": true
+        },
         {
           "type": "event_binding",
           "named": true
         },
         {
-          "type": "normal_attribute",
+          "type": "property_binding",
           "named": true
         },
         {
-          "type": "property_binding",
+          "type": "quoted_attribute_value",
+          "named": true
+        },
+        {
+          "type": "structural_directive",
           "named": true
         },
         {
@@ -290,6 +344,179 @@
     }
   },
   {
+    "type": "case_end_expression",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "case_expression",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "array",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "member_expression",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "object",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "control_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "case_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "case_end_expression",
+          "named": true
+        },
+        {
+          "type": "case_expression",
+          "named": true
+        },
+        {
+          "type": "defer_statement",
+          "named": true
+        },
+        {
+          "type": "doctype",
+          "named": true
+        },
+        {
+          "type": "element",
+          "named": true
+        },
+        {
+          "type": "entity",
+          "named": true
+        },
+        {
+          "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "script_element",
+          "named": true
+        },
+        {
+          "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "concatination_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "group",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "member_expression",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "object",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "conditional_expression",
     "named": true,
     "fields": {
@@ -356,6 +583,289 @@
     }
   },
   {
+    "type": "default_end_expression",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "default_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "control_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "default_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "default_end_expression",
+          "named": true
+        },
+        {
+          "type": "default_expression",
+          "named": true
+        },
+        {
+          "type": "defer_statement",
+          "named": true
+        },
+        {
+          "type": "doctype",
+          "named": true
+        },
+        {
+          "type": "element",
+          "named": true
+        },
+        {
+          "type": "entity",
+          "named": true
+        },
+        {
+          "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "script_element",
+          "named": true
+        },
+        {
+          "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "defer_end_expression",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "defer_start_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "control_keyword",
+          "named": true
+        },
+        {
+          "type": "defer_trigger",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "defer_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "defer_end_expression",
+          "named": true
+        },
+        {
+          "type": "defer_start_expression",
+          "named": true
+        },
+        {
+          "type": "defer_statement",
+          "named": true
+        },
+        {
+          "type": "doctype",
+          "named": true
+        },
+        {
+          "type": "element",
+          "named": true
+        },
+        {
+          "type": "entity",
+          "named": true
+        },
+        {
+          "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "error_statement",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "loading_statement",
+          "named": true
+        },
+        {
+          "type": "placeholder_statement",
+          "named": true
+        },
+        {
+          "type": "script_element",
+          "named": true
+        },
+        {
+          "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "defer_trigger",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "defer_trigger_condition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "defer_trigger_condition",
+    "named": true,
+    "fields": {
+      "trigger": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "array",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "conditional_expression",
+            "named": true
+          },
+          {
+            "type": "expression",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "member_expression",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "object",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "ternary_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "prefetch_keyword",
+          "named": true
+        },
+        {
+          "type": "special_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "doctype",
     "named": true,
     "fields": {}
@@ -368,6 +878,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "defer_statement",
+          "named": true
+        },
         {
           "type": "doctype",
           "named": true
@@ -389,6 +903,14 @@
           "named": true
         },
         {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
           "type": "interpolation",
           "named": true
         },
@@ -406,6 +928,279 @@
         },
         {
           "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "else_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "control_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "else_if_expression",
+    "named": true,
+    "fields": {
+      "reference": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "if_reference",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "control_keyword",
+          "named": true
+        },
+        {
+          "type": "if_condition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "else_if_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "defer_statement",
+          "named": true
+        },
+        {
+          "type": "doctype",
+          "named": true
+        },
+        {
+          "type": "element",
+          "named": true
+        },
+        {
+          "type": "else_if_expression",
+          "named": true
+        },
+        {
+          "type": "else_if_statement",
+          "named": true
+        },
+        {
+          "type": "else_statement",
+          "named": true
+        },
+        {
+          "type": "entity",
+          "named": true
+        },
+        {
+          "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "if_end_expression",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "script_element",
+          "named": true
+        },
+        {
+          "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "else_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "defer_statement",
+          "named": true
+        },
+        {
+          "type": "doctype",
+          "named": true
+        },
+        {
+          "type": "element",
+          "named": true
+        },
+        {
+          "type": "else_expression",
+          "named": true
+        },
+        {
+          "type": "entity",
+          "named": true
+        },
+        {
+          "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "if_end_expression",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "script_element",
+          "named": true
+        },
+        {
+          "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "empty_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "control_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "empty_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "defer_statement",
+          "named": true
+        },
+        {
+          "type": "doctype",
+          "named": true
+        },
+        {
+          "type": "element",
+          "named": true
+        },
+        {
+          "type": "empty_expression",
+          "named": true
+        },
+        {
+          "type": "entity",
+          "named": true
+        },
+        {
+          "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "for_end_expression",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "script_element",
+          "named": true
+        },
+        {
+          "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
           "named": true
         },
         {
@@ -446,6 +1241,88 @@
     }
   },
   {
+    "type": "error_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "control_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "error_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "defer_end_expression",
+          "named": true
+        },
+        {
+          "type": "defer_statement",
+          "named": true
+        },
+        {
+          "type": "doctype",
+          "named": true
+        },
+        {
+          "type": "element",
+          "named": true
+        },
+        {
+          "type": "entity",
+          "named": true
+        },
+        {
+          "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "error_expression",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "script_element",
+          "named": true
+        },
+        {
+          "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "event_binding",
     "named": true,
     "fields": {},
@@ -454,7 +1331,7 @@
       "required": true,
       "types": [
         {
-          "type": "assignment_operator",
+          "type": "assignment_expression",
           "named": true
         },
         {
@@ -539,6 +1416,178 @@
     }
   },
   {
+    "type": "for_declaration",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "special_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "for_end_expression",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "for_reference",
+    "named": true,
+    "fields": {
+      "alias": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assignment_expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment_expression",
+          "named": true
+        },
+        {
+          "type": "special_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "for_start_expression",
+    "named": true,
+    "fields": {
+      "reference": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "for_reference",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "control_keyword",
+          "named": true
+        },
+        {
+          "type": "for_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "for_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "defer_statement",
+          "named": true
+        },
+        {
+          "type": "doctype",
+          "named": true
+        },
+        {
+          "type": "element",
+          "named": true
+        },
+        {
+          "type": "empty_statement",
+          "named": true
+        },
+        {
+          "type": "entity",
+          "named": true
+        },
+        {
+          "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "for_end_expression",
+          "named": true
+        },
+        {
+          "type": "for_start_expression",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "script_element",
+          "named": true
+        },
+        {
+          "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "fragment",
     "named": true,
     "fields": {},
@@ -546,6 +1595,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "defer_statement",
+          "named": true
+        },
         {
           "type": "doctype",
           "named": true
@@ -563,6 +1616,14 @@
           "named": true
         },
         {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
           "type": "interpolation",
           "named": true
         },
@@ -572,6 +1633,10 @@
         },
         {
           "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
           "named": true
         },
         {
@@ -613,7 +1678,7 @@
     }
   },
   {
-    "type": "interpolation",
+    "type": "if_condition",
     "named": true,
     "fields": {},
     "children": {
@@ -644,9 +1709,311 @@
     }
   },
   {
+    "type": "if_end_expression",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "if_reference",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "special_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_start_expression",
+    "named": true,
+    "fields": {
+      "reference": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "if_reference",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "control_keyword",
+          "named": true
+        },
+        {
+          "type": "if_condition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "defer_statement",
+          "named": true
+        },
+        {
+          "type": "doctype",
+          "named": true
+        },
+        {
+          "type": "element",
+          "named": true
+        },
+        {
+          "type": "else_if_statement",
+          "named": true
+        },
+        {
+          "type": "else_statement",
+          "named": true
+        },
+        {
+          "type": "entity",
+          "named": true
+        },
+        {
+          "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "if_end_expression",
+          "named": true
+        },
+        {
+          "type": "if_start_expression",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "script_element",
+          "named": true
+        },
+        {
+          "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "interpolation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "concatination_expression",
+          "named": true
+        },
+        {
+          "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "loading_condition",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "special_keyword",
+            "named": true
+          },
+          {
+            "type": "unit",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "loading_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "control_keyword",
+          "named": true
+        },
+        {
+          "type": "loading_condition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "loading_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "defer_end_expression",
+          "named": true
+        },
+        {
+          "type": "defer_statement",
+          "named": true
+        },
+        {
+          "type": "doctype",
+          "named": true
+        },
+        {
+          "type": "element",
+          "named": true
+        },
+        {
+          "type": "entity",
+          "named": true
+        },
+        {
+          "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "error_statement",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "loading_expression",
+          "named": true
+        },
+        {
+          "type": "placeholder_statement",
+          "named": true
+        },
+        {
+          "type": "script_element",
+          "named": true
+        },
+        {
+          "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "member_expression",
     "named": true,
     "fields": {
+      "call": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "call_expression",
+            "named": true
+          }
+        ]
+      },
       "object": {
         "multiple": false,
         "required": true,
@@ -687,7 +2054,7 @@
       },
       "property": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "identifier",
@@ -695,29 +2062,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "normal_attribute",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "attribute_name",
-          "named": true
-        },
-        {
-          "type": "attribute_value",
-          "named": true
-        },
-        {
-          "type": "quoted_attribute_value",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -858,6 +2202,134 @@
     }
   },
   {
+    "type": "placeholder_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "control_keyword",
+          "named": true
+        },
+        {
+          "type": "placeholder_minimum",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "placeholder_minimum",
+    "named": true,
+    "fields": {
+      "minimum": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "special_keyword",
+            "named": true
+          },
+          {
+            "type": "unit",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "placeholder_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "defer_end_expression",
+          "named": true
+        },
+        {
+          "type": "defer_statement",
+          "named": true
+        },
+        {
+          "type": "doctype",
+          "named": true
+        },
+        {
+          "type": "element",
+          "named": true
+        },
+        {
+          "type": "entity",
+          "named": true
+        },
+        {
+          "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "error_statement",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "loading_statement",
+          "named": true
+        },
+        {
+          "type": "placeholder_expression",
+          "named": true
+        },
+        {
+          "type": "script_element",
+          "named": true
+        },
+        {
+          "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "property_binding",
     "named": true,
     "fields": {},
@@ -866,7 +2338,7 @@
       "required": true,
       "types": [
         {
-          "type": "assignment_operator",
+          "type": "assignment_expression",
           "named": true
         },
         {
@@ -978,6 +2450,162 @@
     "fields": {}
   },
   {
+    "type": "structural_assignment",
+    "named": true,
+    "fields": {
+      "alias": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "=",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "special_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "structural_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "special_keyword",
+          "named": true
+        },
+        {
+          "type": "structural_assignment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "structural_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "structural_declaration",
+          "named": true
+        },
+        {
+          "type": "structural_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "structural_expression",
+    "named": true,
+    "fields": {
+      "alias": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "special_keyword",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "style_element",
     "named": true,
     "fields": {},
@@ -995,6 +2623,64 @@
         },
         {
           "type": "start_tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "switch_end_expression",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "switch_start_expression",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "control_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "switch_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "case_statement",
+          "named": true
+        },
+        {
+          "type": "default_statement",
+          "named": true
+        },
+        {
+          "type": "switch_end_expression",
+          "named": true
+        },
+        {
+          "type": "switch_start_expression",
           "named": true
         }
       ]
@@ -1083,7 +2769,7 @@
       "required": true,
       "types": [
         {
-          "type": "assignment_operator",
+          "type": "assignment_expression",
           "named": true
         },
         {
@@ -1212,6 +2898,10 @@
     "named": false
   },
   {
+    "type": ";",
+    "named": false
+  },
+  {
     "type": "<",
     "named": false
   },
@@ -1252,6 +2942,10 @@
     "named": false
   },
   {
+    "type": "@",
+    "named": false
+  },
+  {
     "type": "[",
     "named": false
   },
@@ -1262,10 +2956,6 @@
   {
     "type": "]",
     "named": false
-  },
-  {
-    "type": "assignment_operator",
-    "named": true
   },
   {
     "type": "attribute_name",
@@ -1281,6 +2971,10 @@
   },
   {
     "type": "conditional_operator",
+    "named": true
+  },
+  {
+    "type": "control_keyword",
     "named": true
   },
   {
@@ -1308,7 +3002,15 @@
     "named": true
   },
   {
+    "type": "prefetch_keyword",
+    "named": true
+  },
+  {
     "type": "raw_text",
+    "named": true
+  },
+  {
+    "type": "special_keyword",
     "named": true
   },
   {
@@ -1328,6 +3030,10 @@
     "named": true
   },
   {
+    "type": "unit",
+    "named": true
+  },
+  {
     "type": "{",
     "named": false
   },
@@ -1341,6 +3047,10 @@
   },
   {
     "type": "}",
+    "named": false
+  },
+  {
+    "type": "} @",
     "named": false
   },
   {

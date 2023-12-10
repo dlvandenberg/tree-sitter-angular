@@ -133,6 +133,7 @@ typedef enum {
   VIDEO,
   // Angular's interpolation syntax
   INTERPOLATION,
+  CONTROL_FLOW,
 
   CUSTOM,
 
