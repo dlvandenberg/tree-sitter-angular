@@ -3,6 +3,7 @@
 <h4 align="center">
     <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/dlvandenberg/tree-sitter-angular/ci.yml">
     <img alt="Angular" src="https://img.shields.io/badge/Angular-v17-AF21EA?logo=angular&logoColor=F51365">
+    <img alt="Tree-sitter CLI version" src="https://img.shields.io/github/package-json/dependency-version/dlvandenberg/tree-sitter-angular/dev/tree-sitter-cli/main">
 </h4>
 
 ## Specification
@@ -24,13 +25,15 @@ This parser extends [tree-sitter-html](https://github.com/tree-sitter/tree-sitte
 ## Filetype
 
 By default Angular's template files are marked as HTML. In order for this parser to work, it has to be marked as `angular`.
-Currently Neovim does not do that yet, so to tell nvim-treesitter to user tree-sitter-angular, either put
+Currently Neovim does not do that yet, so to automatically set the filetype for Angular components, put:
 
 ```
 autocmd BufRead,BufEnter *.component.html set filetype=angular
 ```
 
-in `~/.config/nvim/ftdetect/angular.vim`, or put
+in `~/.config/nvim/ftdetect/angular.vim`.
+
+Alternatively, you can use `:set filetype=angular` on a given buffer.
 
 ## Issues
 
