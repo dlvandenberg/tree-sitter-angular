@@ -35,6 +35,55 @@ in `~/.config/nvim/ftdetect/angular.vim`.
 
 Alternatively, you can use `:set filetype=angular` on a given buffer.
 
+## Plugins
+
+As this parser works on `angular` filetypes, it will cause other plugins to possibly not work correctly. Below are some fixes for the plugins that I use which I had to modify.
+
+### VonHeikemen/lsp-zero.nvim
+
+Add this to your config:
+
+```lua
+    local config = require("lspconfig")
+    local util = require("lspconfig.util")
+
+    config.angularls.setup({
+      root_dir = util.root_pattern("angular.json", "project.json"), -- This is for monorepo's
+      filetypes = { "angular", "html", "typescript", "typescriptreact" },
+    })
+```
+
+### stevearc/conform.nvim
+
+Add this to your config:
+
+```lua
+    conform.setup({
+      formatters_by_ft = {
+        angular = { "prettier" },
+      }
+
+      ...
+    }
+```
+
+### numToStr/Comment.nvim
+
+Add this to your config:
+
+```lua
+  config = function()
+    local comment = require("Comment")
+    local ft = require("Comment.ft")
+
+    local commentstr = "<!--%s-->"
+
+    ft.set("angular", { commentstr, commentstr })
+
+    comment.setup()
+  end,
+```
+
 ## Issues
 
 If you experience any issues, please feel free to open an issue with the code that's causing problems.
