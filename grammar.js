@@ -448,6 +448,7 @@ module.exports = grammar(HTML, {
         $.group,
         $.call_expression,
         $.member_expression,
+        $.bracket_expression,
       ),
 
     // Object
@@ -509,6 +510,10 @@ module.exports = grammar(HTML, {
         choice('.', '?.', '!.'),
         choice(field('property', $.identifier), field('call', $.call_expression)),
       ),
+
+    // Bracket expression
+    bracket_expression: ($) =>
+      seq(field('object', $._primitive), '[', field('property', $.identifier), ']'),
 
     // ---------- Base ----------
     _closing_bracket: (_) => token(prec(-1, '}')),

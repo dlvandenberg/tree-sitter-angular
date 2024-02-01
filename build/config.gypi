@@ -405,7 +405,7 @@
     "standalone_static_library": 1,
     "metrics_registry": "https://registry.npmjs.org/",
     "global_prefix": "/Users/dennis.vandenberg/.nvm/versions/node/v18.18.2",
-    "local_prefix": "/Users/dennis.vandenberg/Developer/Persoonlijk/git/Other/tree-sitter-angular-2",
+    "local_prefix": "/Users/dennis.vandenberg/Developer/Persoonlijk/git/Other/tree-sitter-angular",
     "globalconfig": "/Users/dennis.vandenberg/.nvm/versions/node/v18.18.2/etc/npmrc",
     "init_module": "/Users/dennis.vandenberg/.npm-init.js",
     "userconfig": "/Users/dennis.vandenberg/.npmrc",

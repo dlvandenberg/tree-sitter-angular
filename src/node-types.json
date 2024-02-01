@@ -16,6 +16,10 @@
           "named": true
         },
         {
+          "type": "bracket_expression",
+          "named": true
+        },
+        {
           "type": "call_expression",
           "named": true
         },
@@ -163,6 +167,10 @@
             "named": true
           },
           {
+            "type": "bracket_expression",
+            "named": true
+          },
+          {
             "type": "call_expression",
             "named": true
           },
@@ -267,6 +275,10 @@
             "named": true
           },
           {
+            "type": "bracket_expression",
+            "named": true
+          },
+          {
             "type": "call_expression",
             "named": true
           },
@@ -318,6 +330,64 @@
     }
   },
   {
+    "type": "bracket_expression",
+    "named": true,
+    "fields": {
+      "object": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "array",
+            "named": true
+          },
+          {
+            "type": "bracket_expression",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "member_expression",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "object",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "property": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "call_expression",
     "named": true,
     "fields": {
@@ -358,6 +428,10 @@
         "types": [
           {
             "type": "array",
+            "named": true
+          },
+          {
+            "type": "bracket_expression",
             "named": true
           },
           {
@@ -482,6 +556,10 @@
           "named": true
         },
         {
+          "type": "bracket_expression",
+          "named": true
+        },
+        {
           "type": "call_expression",
           "named": true
         },
@@ -530,6 +608,10 @@
           },
           {
             "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "bracket_expression",
             "named": true
           },
           {
@@ -801,6 +883,10 @@
           },
           {
             "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "bracket_expression",
             "named": true
           },
           {
@@ -1382,6 +1468,10 @@
       "types": [
         {
           "type": "array",
+          "named": true
+        },
+        {
+          "type": "bracket_expression",
           "named": true
         },
         {
@@ -2023,6 +2113,10 @@
             "named": true
           },
           {
+            "type": "bracket_expression",
+            "named": true
+          },
+          {
             "type": "call_expression",
             "named": true
           },
@@ -2123,6 +2217,10 @@
       "types": [
         {
           "type": "array",
+          "named": true
+        },
+        {
+          "type": "bracket_expression",
           "named": true
         },
         {
@@ -2723,6 +2821,10 @@
       "types": [
         {
           "type": "array",
+          "named": true
+        },
+        {
+          "type": "bracket_expression",
           "named": true
         },
         {
