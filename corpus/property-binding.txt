@@ -318,10 +318,6 @@ Empty attribute value
 
 <span [property]=""></span>
 
-<span [property]=""
->
-</span>
-
 ---
 
 (fragment
