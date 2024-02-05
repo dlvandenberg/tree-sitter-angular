@@ -404,3 +404,39 @@ Map property binding
     )
   )
 )
+
+==================
+Nullish coalescing
+==================
+
+<span [property]="some?.optional ?? default"></span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier)
+          )
+          (nullish_coalescing_expression
+            (expression
+              (member_expression
+                (identifier)
+                (identifier)
+              )
+            )
+            (coalescing_operator)
+            (identifier)
+          )
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
