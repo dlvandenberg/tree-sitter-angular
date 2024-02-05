@@ -1,5 +1,12 @@
+# NPM
 node_modules
-build
+
+# Build results
+build/
+.build/
+target/
+
+# Logs
 *.log
 log.html
 
@@ -9,4 +16,3 @@ log.html
 *.o
 bindings/c/*.h
 bindings/c/*.pc
-.build/
