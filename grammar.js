@@ -407,6 +407,7 @@ module.exports = grammar(HTML, {
         ),
       ),
 
+    // Nullish coalescing expression
     nullish_coalescing_expression: ($) =>
       prec.right(
         PREC.CALL,
