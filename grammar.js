@@ -272,6 +272,7 @@ module.exports = grammar(HTML, {
         $.unary_expression,
         $.expression,
         $.ternary_expression,
+        $.nullish_coalescing_expression,
         prec(3, $.conditional_expression),
       ),
 
@@ -403,6 +404,16 @@ module.exports = grammar(HTML, {
           choice($.group, $._primitive),
           alias(':', $.ternary_operator),
           choice($.group, $._primitive),
+        ),
+      ),
+
+    nullish_coalescing_expression: ($) =>
+      prec.right(
+        PREC.CALL,
+        seq(
+          field('condition', $._any_expression),
+          alias('??', $.coalescing_operator),
+          field('default', $._primitive),
         ),
       ),
 

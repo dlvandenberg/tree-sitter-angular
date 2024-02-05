@@ -104,6 +104,10 @@
             "named": true
           },
           {
+            "type": "nullish_coalescing_expression",
+            "named": true
+          },
+          {
             "type": "ternary_expression",
             "named": true
           },
@@ -914,6 +918,10 @@
             "named": true
           },
           {
+            "type": "nullish_coalescing_expression",
+            "named": true
+          },
+          {
             "type": "number",
             "named": true
           },
@@ -1437,6 +1445,10 @@
           "named": true
         },
         {
+          "type": "nullish_coalescing_expression",
+          "named": true
+        },
+        {
           "type": "ternary_expression",
           "named": true
         },
@@ -1757,6 +1769,10 @@
           "named": true
         },
         {
+          "type": "nullish_coalescing_expression",
+          "named": true
+        },
+        {
           "type": "ternary_expression",
           "named": true
         },
@@ -1785,6 +1801,10 @@
         },
         {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "nullish_coalescing_expression",
           "named": true
         },
         {
@@ -1949,6 +1969,10 @@
         },
         {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "nullish_coalescing_expression",
           "named": true
         },
         {
@@ -2156,6 +2180,94 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "nullish_coalescing_expression",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "conditional_expression",
+            "named": true
+          },
+          {
+            "type": "expression",
+            "named": true
+          },
+          {
+            "type": "nullish_coalescing_expression",
+            "named": true
+          },
+          {
+            "type": "ternary_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "default": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "array",
+            "named": true
+          },
+          {
+            "type": "bracket_expression",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "member_expression",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "object",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "coalescing_operator",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2456,6 +2568,10 @@
           "named": true
         },
         {
+          "type": "nullish_coalescing_expression",
+          "named": true
+        },
+        {
           "type": "ternary_expression",
           "named": true
         },
@@ -2689,6 +2805,10 @@
           "named": true
         },
         {
+          "type": "nullish_coalescing_expression",
+          "named": true
+        },
+        {
           "type": "special_keyword",
           "named": true
         },
@@ -2805,6 +2925,10 @@
             "named": true
           },
           {
+            "type": "nullish_coalescing_expression",
+            "named": true
+          },
+          {
             "type": "ternary_expression",
             "named": true
           },
@@ -2888,6 +3012,10 @@
         },
         {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "nullish_coalescing_expression",
           "named": true
         },
         {
@@ -3065,6 +3193,10 @@
   },
   {
     "type": "attribute_value",
+    "named": true
+  },
+  {
+    "type": "coalescing_operator",
     "named": true
   },
   {
