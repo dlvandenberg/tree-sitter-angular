@@ -366,3 +366,41 @@ Animation property
     )
   )
 )
+
+===================
+Map property binding
+====================
+
+<span [property]="form.controls[section].touched"></span>
+
+---
+
+(fragment
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier)
+          )
+          (expression
+            (member_expression
+              (bracket_expression
+                (member_expression
+                  (identifier)
+                  (identifier)
+                )
+                (identifier)
+              )
+              (identifier)
+            )
+          )
+        )
+      )
+    )
+    (end_tag
+      (tag_name)
+    )
+  )
+)
