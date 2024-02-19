@@ -548,7 +548,7 @@
     }
   },
   {
-    "type": "concatination_expression",
+    "type": "concatenation_expression",
     "named": true,
     "fields": {},
     "children": {
@@ -1960,7 +1960,7 @@
           "named": true
         },
         {
-          "type": "concatination_expression",
+          "type": "concatenation_expression",
           "named": true
         },
         {
