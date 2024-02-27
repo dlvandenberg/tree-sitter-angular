@@ -84,6 +84,14 @@ Add this to your config:
   end,
 ```
 
+### tpope/vim-commentary
+
+Add this to `~/.config/nvim/ftdetect/angular.vim`:
+
+```
+autocmd FileType angular setlocal commentstring=<!--%s-->
+```
+
 ## Issues
 
 If you experience any issues, please feel free to open an issue with the code that's causing problems.
