@@ -104,7 +104,8 @@ ls.filetype_extend('angular', { 'html' })
 ### nvimtools/none-ls.nvim
 
 Add `angular` to `extra_filetypes` wherever needed.
-Eg :-
+
+For example:
 
 ```lua
 require('null-ls').setup({
