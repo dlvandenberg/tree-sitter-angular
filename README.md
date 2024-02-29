@@ -92,6 +92,32 @@ Add this to `~/.config/nvim/ftdetect/angular.vim`:
 autocmd FileType angular setlocal commentstring=<!--%s-->
 ```
 
+### L3MON4D3/LuaSnip
+
+Add this to your config:
+
+```lua
+local ls = require('luasnip');
+ls.filetype_extend('angular', { 'html' })
+```
+
+### nvimtools/none-ls.nvim
+
+Add `angular` to `extra_filetypes` wherever needed.
+
+For example:
+
+```lua
+require('null-ls').setup({
+  sources = {
+    null_ls.builtins.formatting.prettierd.with({
+      extra_filetypes = { 'angular' }
+    }),
+  },
+});
+
+```
+
 ## Issues
 
 If you experience any issues, please feel free to open an issue with the code that's causing problems.
