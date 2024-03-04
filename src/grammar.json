@@ -1778,7 +1778,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "concatination_expression"
+              "name": "concatenation_expression"
             }
           ]
         },
@@ -1793,7 +1793,7 @@
         }
       ]
     },
-    "concatination_expression": {
+    "concatenation_expression": {
       "type": "PREC",
       "value": 2,
       "content": {

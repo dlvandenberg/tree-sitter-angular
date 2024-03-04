@@ -283,11 +283,11 @@ module.exports = grammar(HTML, {
     interpolation: ($) =>
       seq(
         alias($._interpolation_start, '{{'),
-        choice($._any_expression, $.concatination_expression),
+        choice($._any_expression, $.concatenation_expression),
         alias($._interpolation_end, '}}'),
       ),
 
-    concatination_expression: ($) =>
+    concatenation_expression: ($) =>
       prec(
         2,
         seq($._primitive, '+', $.expression, optional(repeat(seq('+', $._primitive)))),

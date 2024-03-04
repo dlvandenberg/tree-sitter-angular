@@ -182,7 +182,7 @@ Grouping
       (tag_name)
     )
     (interpolation
-      (concatination_expression
+      (concatenation_expression
         (group
           (expression
             (member_expression
@@ -251,7 +251,7 @@ Combined
 )
 
 ====================
-String concatination
+String concatenation
 ====================
 
 <span>{{ 'Hello ' + firstName + ', how are you?' }}</span>
@@ -264,7 +264,7 @@ String concatination
       (tag_name)
     )
     (interpolation
-      (concatination_expression
+      (concatenation_expression
         (string)
         (expression
           (identifier)
@@ -288,7 +288,7 @@ String concat with pipes
 
 (fragment
   (interpolation
-    (concatination_expression
+    (concatenation_expression
       (string)
       (expression
         (member_expression
