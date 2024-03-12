@@ -24,99 +24,26 @@ This parser extends [tree-sitter-html](https://github.com/tree-sitter/tree-sitte
 
 ## Filetype
 
-By default Angular's template files are marked as HTML. In order for this parser to work, it has to be marked as `angular`.
-Currently Neovim does not do that yet, so to automatically set the filetype for Angular components, put:
+By default Angular's template files are marked as HTML and it will use the HTML parser. To use the Angular parser instead, you will need to create a _plugin_ that sets the filetype correctly and registers the filetype for the `angular` parser in treesitter.
 
-```
-autocmd BufRead,BufEnter *.component.html set filetype=angular
-```
-
-in `~/.config/nvim/ftdetect/angular.vim`.
-
-Alternatively, you can use `:set filetype=angular` on a given buffer.
-
-## Plugins
-
-As this parser works on `angular` filetypes, it will cause other plugins to possibly not work correctly. Below are some fixes for the plugins that I use which I had to modify.
-
-### VonHeikemen/lsp-zero.nvim
-
-Add this to your config:
+Create a `plugin` in `~/.config/nvim/plugin/angular.lua` with the following:
 
 ```lua
-    local config = require("lspconfig")
-    local util = require("lspconfig.util")
-
-    config.angularls.setup({
-      root_dir = util.root_pattern("angular.json", "project.json"), -- This is for monorepo's
-      filetypes = { "angular", "html", "typescript", "typescriptreact" },
-    })
-```
-
-### stevearc/conform.nvim
-
-Add this to your config:
-
-```lua
-    conform.setup({
-      formatters_by_ft = {
-        angular = { "prettier" },
-      }
-
-      ...
-    }
-```
-
-### numToStr/Comment.nvim
-
-Add this to your config:
-
-```lua
-  config = function()
-    local comment = require("Comment")
-    local ft = require("Comment.ft")
-
-    local commentstr = "<!--%s-->"
-
-    ft.set("angular", { commentstr, commentstr })
-
-    comment.setup()
-  end,
-```
-
-### tpope/vim-commentary
-
-Add this to `~/.config/nvim/ftdetect/angular.vim`:
-
-```
-autocmd FileType angular setlocal commentstring=<!--%s-->
-```
-
-### L3MON4D3/LuaSnip
-
-Add this to your config:
-
-```lua
-local ls = require('luasnip');
-ls.filetype_extend('angular', { 'html' })
-```
-
-### nvimtools/none-ls.nvim
-
-Add `angular` to `extra_filetypes` wherever needed.
-
-For example:
-
-```lua
-require('null-ls').setup({
-  sources = {
-    null_ls.builtins.formatting.prettierd.with({
-      extra_filetypes = { 'angular' }
-    }),
+vim.filetype.add({
+  pattern = {
+    [".*%.component%.html"] = "angular.html", -- Sets the filetype to `angular.html` if it matches the pattern
   },
-});
+})
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "angular.html",
+  callback = function()
+    vim.treesitter.language.register("angular", "angular.html") -- Register the filetype with treesitter for the `angular` language/parser
+  end,
+})
 ```
+
+By setting the filetype to `angular.html`, other functionality of nvim or other plugins should still work.
 
 ## Issues
 
