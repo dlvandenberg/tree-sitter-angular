@@ -27,7 +27,7 @@ module.exports = grammar(HTML, {
   rules: {
     // ---------- Root ---------
     _node: ($, original) =>
-      choice(prec(1, $.interpolation), prec(1, $._any_statement), original),
+      choice(prec(1, $.icu), prec(1, $.interpolation), prec(1, $._any_statement), original),
 
     // ---------- Overrides ----------
     attribute_name: (_) => /[^<>\*.\[\]\(\)"'=\s]+/,
@@ -278,6 +278,27 @@ module.exports = grammar(HTML, {
 
     assignment_expression: ($) =>
       seq(field('name', $.identifier), '=', field('value', $._any_expression)),
+    
+    // -------- ICU expressions ---------
+    icu_case: ($) => seq(
+      $.icu_category,
+      '{',
+      repeat1($._node),
+      '}'
+    ),
+    // icu_category: () => choice('=0', '=1', 'other'),
+    icu_category: () => /([=<>]\d+|other|[a-z][a-z0-9]+)/i,
+    icu_clause: () => choice('plural', 'select'),
+    icu: ($) =>
+      seq(
+        '{',
+        choice($._any_expression, $.concatenation_expression),
+        ',',
+        $.icu_clause,
+        ',',
+        repeat1($.icu_case),
+        '}',
+      ),
 
     // ---------- Interpolation ---------
     interpolation: ($) =>

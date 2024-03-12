@@ -46,6 +46,14 @@
           "value": 1,
           "content": {
             "type": "SYMBOL",
+            "name": "icu"
+          }
+        },
+        {
+          "type": "PREC",
+          "value": 1,
+          "content": {
+            "type": "SYMBOL",
             "name": "interpolation"
           }
         },
@@ -1757,6 +1765,93 @@
         }
       ]
     },
+    "icu_case": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "icu_category"
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_node"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "icu_category": {
+      "type": "PATTERN",
+      "value": "([=<>]\\d+|other|[a-z][a-z0-9]+)",
+      "flags": "i"
+    },
+    "icu_clause": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "plural"
+        },
+        {
+          "type": "STRING",
+          "value": "select"
+        }
+      ]
+    },
+    "icu": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_any_expression"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "concatenation_expression"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "SYMBOL",
+          "name": "icu_clause"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "icu_case"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
     "interpolation": {
       "type": "SEQ",
       "members": [
@@ -3218,4 +3313,3 @@
   "inline": [],
   "supertypes": []
 }
-

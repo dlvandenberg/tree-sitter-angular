@@ -21,6 +21,7 @@ This parser extends [tree-sitter-html](https://github.com/tree-sitter/tree-sitte
 - [x] For-statements (v17)
 - [x] Switch-statements (v17)
 - [x] Defer-statements (v17)
+- [x] ICU message format
 
 ## Filetype
 
