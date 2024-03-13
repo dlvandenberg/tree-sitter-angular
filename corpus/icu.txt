@@ -11,7 +11,7 @@ other {some minutes ago}}
 
 (fragment
   (text)
-  (icu
+  (icu_expression
     (expression
       (identifier))
     (icu_clause)
@@ -36,7 +36,7 @@ Updated {minutes, plural, =0 {just now} =1 {one minute ago} other {{{minutes}} m
 
 (fragment
   (text)
-  (icu
+  (icu_expression
     (expression
       (identifier))
     (icu_clause)
@@ -63,7 +63,7 @@ The author is {gender, select, male {male} female {female} other {other}}
 
 (fragment
   (text)
-  (icu
+  (icu_expression
     (expression
       (identifier))
     (icu_clause)
@@ -90,7 +90,7 @@ Updated: {minutes, plural,
 
 (fragment
   (text)
-  (icu
+  (icu_expression
     (expression
       (identifier))
     (icu_clause)
@@ -106,7 +106,7 @@ Updated: {minutes, plural,
         (expression
           (identifier)))
       (text)
-      (icu
+      (icu_expression
         (expression
           (identifier))
         (icu_clause)
@@ -133,7 +133,7 @@ other {some minutes ago}}
 
 (fragment
   (text)
-  (icu
+  (icu_expression
     (expression
       (identifier)
       (pipe_sequence

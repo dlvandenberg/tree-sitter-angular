@@ -46,7 +46,7 @@
           "value": 1,
           "content": {
             "type": "SYMBOL",
-            "name": "icu"
+            "name": "icu_expression"
           }
         },
         {
@@ -1765,7 +1765,7 @@
         }
       ]
     },
-    "icu": {
+    "icu_expression": {
       "type": "SEQ",
       "members": [
         {
@@ -1849,8 +1849,7 @@
     },
     "icu_category": {
       "type": "PATTERN",
-      "value": "[^{}]+",
-      "flags": "i"
+      "value": "[^{}]+"
     },
     "interpolation": {
       "type": "SEQ",
@@ -3313,3 +3312,4 @@
   "inline": [],
   "supertypes": []
 }
+
