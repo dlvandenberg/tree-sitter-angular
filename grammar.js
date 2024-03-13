@@ -280,15 +280,6 @@ module.exports = grammar(HTML, {
       seq(field('name', $.identifier), '=', field('value', $._any_expression)),
     
     // -------- ICU expressions ---------
-    icu_case: ($) => seq(
-      $.icu_category,
-      '{',
-      repeat1($._node),
-      '}'
-    ),
-    // icu_category: () => choice('=0', '=1', 'other'),
-    icu_category: () => /([=<>]\d+|other|[a-z][a-z0-9]+)/i,
-    icu_clause: () => choice('plural', 'select'),
     icu: ($) =>
       seq(
         '{',
@@ -299,6 +290,17 @@ module.exports = grammar(HTML, {
         repeat1($.icu_case),
         '}',
       ),
+      
+    icu_clause: () => choice('plural', 'select'),
+
+    icu_case: ($) => seq(
+      $.icu_category,
+      '{',
+      repeat1($._node),
+      '}'
+    ),
+
+    icu_category: () => /([=<>]\d+|other|[a-z][a-z0-9]+)/i,
 
     // ---------- Interpolation ---------
     interpolation: ($) =>
