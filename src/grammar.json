@@ -1765,48 +1765,6 @@
         }
       ]
     },
-    "icu_case": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "icu_category"
-        },
-        {
-          "type": "STRING",
-          "value": "{"
-        },
-        {
-          "type": "REPEAT1",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_node"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "}"
-        }
-      ]
-    },
-    "icu_category": {
-      "type": "PATTERN",
-      "value": "([=<>]\\d+|other|[a-z][a-z0-9]+)",
-      "flags": "i"
-    },
-    "icu_clause": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "plural"
-        },
-        {
-          "type": "STRING",
-          "value": "select"
-        }
-      ]
-    },
     "icu": {
       "type": "SEQ",
       "members": [
@@ -1851,6 +1809,48 @@
           "value": "}"
         }
       ]
+    },
+    "icu_clause": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "plural"
+        },
+        {
+          "type": "STRING",
+          "value": "select"
+        }
+      ]
+    },
+    "icu_case": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "icu_category"
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_node"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "icu_category": {
+      "type": "PATTERN",
+      "value": "[^{}]+",
+      "flags": "i"
     },
     "interpolation": {
       "type": "SEQ",

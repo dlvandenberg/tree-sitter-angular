@@ -300,7 +300,7 @@ module.exports = grammar(HTML, {
       '}'
     ),
 
-    icu_category: () => /([=<>]\d+|other|[a-z][a-z0-9]+)/i,
+    icu_category: () => /[^{}]+/i,
 
     // ---------- Interpolation ---------
     interpolation: ($) =>
