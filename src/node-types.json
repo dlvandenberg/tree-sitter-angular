@@ -521,6 +521,10 @@
           "named": true
         },
         {
+          "type": "icu",
+          "named": true
+        },
+        {
           "type": "if_statement",
           "named": true
         },
@@ -729,6 +733,10 @@
           "named": true
         },
         {
+          "type": "icu",
+          "named": true
+        },
+        {
           "type": "if_statement",
           "named": true
         },
@@ -821,6 +829,10 @@
         },
         {
           "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "icu",
           "named": true
         },
         {
@@ -1001,6 +1013,10 @@
           "named": true
         },
         {
+          "type": "icu",
+          "named": true
+        },
+        {
           "type": "if_statement",
           "named": true
         },
@@ -1125,6 +1141,10 @@
           "named": true
         },
         {
+          "type": "icu",
+          "named": true
+        },
+        {
           "type": "if_end_expression",
           "named": true
         },
@@ -1189,6 +1209,10 @@
         },
         {
           "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "icu",
           "named": true
         },
         {
@@ -1275,6 +1299,10 @@
         },
         {
           "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "icu",
           "named": true
         },
         {
@@ -1387,6 +1415,10 @@
         },
         {
           "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "icu",
           "named": true
         },
         {
@@ -1663,6 +1695,10 @@
           "named": true
         },
         {
+          "type": "icu",
+          "named": true
+        },
+        {
           "type": "if_statement",
           "named": true
         },
@@ -1719,6 +1755,10 @@
         },
         {
           "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "icu",
           "named": true
         },
         {
@@ -1782,6 +1822,125 @@
         }
       ]
     }
+  },
+  {
+    "type": "icu",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "concatenation_expression",
+          "named": true
+        },
+        {
+          "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "icu_case",
+          "named": true
+        },
+        {
+          "type": "icu_clause",
+          "named": true
+        },
+        {
+          "type": "nullish_coalescing_expression",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "icu_case",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "defer_statement",
+          "named": true
+        },
+        {
+          "type": "doctype",
+          "named": true
+        },
+        {
+          "type": "element",
+          "named": true
+        },
+        {
+          "type": "entity",
+          "named": true
+        },
+        {
+          "type": "erroneous_end_tag",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "icu",
+          "named": true
+        },
+        {
+          "type": "icu_category",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "script_element",
+          "named": true
+        },
+        {
+          "type": "style_element",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "icu_clause",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "if_condition",
@@ -1910,6 +2069,10 @@
         },
         {
           "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "icu",
           "named": true
         },
         {
@@ -2077,6 +2240,10 @@
         },
         {
           "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "icu",
           "named": true
         },
         {
@@ -2502,6 +2669,10 @@
         },
         {
           "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "icu",
           "named": true
         },
         {
@@ -3224,6 +3395,10 @@
     "named": true
   },
   {
+    "type": "icu_category",
+    "named": true
+  },
+  {
     "type": "identifier",
     "named": true
   },
@@ -3236,12 +3411,20 @@
     "named": true
   },
   {
+    "type": "plural",
+    "named": false
+  },
+  {
     "type": "prefetch_keyword",
     "named": true
   },
   {
     "type": "raw_text",
     "named": true
+  },
+  {
+    "type": "select",
+    "named": false
   },
   {
     "type": "special_keyword",
