@@ -542,8 +542,25 @@ module.exports = grammar(HTML, {
     member_expression: ($) =>
       seq(
         field('object', $._primitive),
-        choice('.', '?.', '!.'),
-        choice(field('property', $.identifier), field('call', $.call_expression)),
+        choice(
+          seq(
+            choice('.', '?.', '!.'),
+            choice(field('property', $.identifier), field('call', $.call_expression)),
+          ),
+          $.member_bracket_expression,
+        ),
+      ),
+
+    // Bracket expression that is used in member_expression
+    member_bracket_expression: ($) =>
+      prec.left(
+        PREC.CALL,
+        seq(
+          '[',
+          field('property', $.string),
+          ']',
+          optional($.member_expression),
+        ),
       ),
 
     // Bracket expression

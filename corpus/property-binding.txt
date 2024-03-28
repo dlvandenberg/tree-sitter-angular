@@ -100,6 +100,86 @@ Array Binding with pipes
   )
 )
 
+=======================================
+Binding with a static array access full
+=======================================
+
+<element
+  [variant]="obj.access['thing'].thing"
+></element>
+
+---
+
+    (fragment
+      (element
+        (start_tag
+          (tag_name)
+          (attribute
+            (property_binding
+              (binding_name
+                (identifier))
+              (expression
+                (member_expression
+                  (member_expression
+                    (member_expression
+                      (identifier)
+                      (identifier))
+                    (member_bracket_expression
+                      (string)))
+                  (identifier))))))
+        (end_tag
+          (tag_name))))
+
+==================================
+Binding with a static array access
+==================================
+
+<element
+  [variant]="obj['thing']"
+></element>
+
+---
+
+    (fragment
+      (element
+        (start_tag
+          (tag_name)
+          (attribute
+            (property_binding
+              (binding_name
+                (identifier))
+              (expression
+                (member_expression
+                  (identifier)
+                  (member_bracket_expression
+                    (string)))))))
+        (end_tag
+          (tag_name))))
+
+===================================
+Binding with a dynamic array access
+===================================
+
+<element
+  [variant]="obj[variable]"
+></element>
+
+---
+
+    (fragment
+      (element
+        (start_tag
+          (tag_name)
+          (attribute
+            (property_binding
+              (binding_name
+                (identifier))
+              (expression
+                (bracket_expression
+                  (identifier)
+                  (identifier))))))
+        (end_tag
+          (tag_name))))
 
 ======================
 String literal binding
