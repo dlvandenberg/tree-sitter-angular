@@ -54,11 +54,12 @@
   <div>
     <img [src]="imageUrl" />
   </div>
+  <input [cond]="obj.access['thing'].thing" />
 </div>
 
 <div class="icu">
   <span i18n>
-     Updated {minutes, plural, =0 {just now} =1 {one minute ago} other {{{minutes}}}}
+    Updated {minutes, plural, =0 {just now} =1 {one minute ago} other {{{minutes}}}}
   </span>
 </div>
 
