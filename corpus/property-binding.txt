@@ -405,6 +405,117 @@ Map property binding
   )
 )
 
+=======================================
+Binding with a static array access full
+=======================================
+
+<element
+  [variant]="obj.access['thing'].thing"
+></element>
+
+---
+
+    (fragment
+      (element
+        (start_tag
+          (tag_name)
+          (attribute
+            (property_binding
+              (binding_name
+                (identifier)
+              )
+              (expression
+                (member_expression
+                  (bracket_expression
+                    (member_expression
+                      (identifier)
+                      (identifier)
+                    )
+                    (static_member_expression
+                      (identifier)
+                    )
+                  )
+                  (identifier)
+                )
+              )
+            )
+          )
+        )
+        (end_tag
+          (tag_name)
+        )
+      )
+    )
+
+==================================
+Binding with a static array access
+==================================
+
+<element
+  [variant]="obj['thing']"
+></element>
+
+---
+
+    (fragment
+      (element
+        (start_tag
+          (tag_name)
+          (attribute
+            (property_binding
+              (binding_name
+                (identifier)
+              )
+              (expression
+                (bracket_expression
+                  (identifier)
+                  (static_member_expression
+                    (identifier)
+                  )
+                )
+              )
+            )
+          )
+        )
+        (end_tag
+          (tag_name)
+        )
+      )
+    )
+
+===================================
+Binding with a dynamic array access
+===================================
+
+<element
+  [variant]="obj[variable]"
+></element>
+
+---
+
+    (fragment
+      (element
+        (start_tag
+          (tag_name)
+          (attribute
+            (property_binding
+              (binding_name
+                (identifier))
+              (expression
+                (bracket_expression
+                  (identifier)
+                  (identifier)
+                )
+              )
+            )
+          )
+        )
+        (end_tag
+          (tag_name)
+        )
+      )
+    )
+
 ==================
 Nullish coalescing
 ==================

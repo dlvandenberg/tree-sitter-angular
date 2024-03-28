@@ -386,6 +386,10 @@
           {
             "type": "identifier",
             "named": true
+          },
+          {
+            "type": "static_member_expression",
+            "named": true
           }
         ]
       }
@@ -2824,6 +2828,21 @@
         },
         {
           "type": "tag_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "static_member_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
           "named": true
         }
       ]

@@ -542,13 +542,27 @@ module.exports = grammar(HTML, {
     member_expression: ($) =>
       seq(
         field('object', $._primitive),
-        choice('.', '?.', '!.'),
-        choice(field('property', $.identifier), field('call', $.call_expression)),
+        choice(
+          seq(
+            choice('.', '?.', '!.'),
+            choice(field('property', $.identifier), field('call', $.call_expression)),
+          ),
+        ),
       ),
 
     // Bracket expression
     bracket_expression: ($) =>
-      seq(field('object', $._primitive), '[', field('property', $.identifier), ']'),
+      prec.left(
+        PREC.CALL,
+        seq(
+          field('object', $._primitive),
+          '[',
+          field('property', choice($.identifier, $.static_member_expression)),
+          ']',
+        ),
+      ),
+
+    static_member_expression: ($) => seq($._single_quote, $.identifier, $._single_quote),
 
     // ---------- Base ----------
     _closing_bracket: (_) => token(prec(-1, '}')),
