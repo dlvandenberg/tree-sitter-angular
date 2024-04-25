@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "description": "Tree-sitter grammar for the Angular framework",
   "main": "bindings/node",
+  "types": "bindings/node",
   "scripts": {
     "build": "tree-sitter generate && node-gyp build",
     "parse": "tree-sitter parse examples/*.html",
     "lint": "eslint grammar.js",
     "test": "tree-sitter test && tree-sitter parse examples/*.html --quiet --time",
-    "test:windows": "tree-sitter test"
+    "test:windows": "tree-sitter test",
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip"
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,14 @@
     "Tree-Sitter",
     "parser"
   ],
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ],
   "author": "Dennis van den Berg",
   "url": "https://vdberg.dev",
   "license": "MIT",
@@ -32,11 +43,21 @@
     "@stylistic/eslint-plugin-js": "^1.4.1",
     "eslint": "^8.54.0",
     "eslint-config-google": "^0.14.0",
-    "tree-sitter-cli": "^0.20.8"
+    "tree-sitter-cli": "^0.22.0",
+    "prebuildify": "^6.0.0"
   },
   "dependencies": {
-    "nan": "^2.18.0",
-    "tree-sitter-html": "^0.20.0"
+    "tree-sitter-html": "github:tree-sitter/tree-sitter-html",
+    "node-addon-api": "^7.1.0",
+    "node-gyp-build": "^4.8.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
   },
   "tree-sitter": {
     "scope": "source.angular",
