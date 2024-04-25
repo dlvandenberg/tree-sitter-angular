@@ -1849,8 +1849,7 @@
     },
     "icu_category": {
       "type": "PATTERN",
-      "value": "[^{}]+",
-      "flags": "i"
+      "value": "[^{}]+"
     },
     "interpolation": {
       "type": "SEQ",
@@ -3353,3 +3352,4 @@
   "inline": [],
   "supertypes": []
 }
+
