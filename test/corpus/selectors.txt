@@ -6,7 +6,7 @@ Component selector
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name) 
@@ -26,7 +26,7 @@ Self closing selector
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)

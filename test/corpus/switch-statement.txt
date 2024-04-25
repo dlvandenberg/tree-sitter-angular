@@ -13,7 +13,7 @@ Switch statement
 
 ---
 
-(fragment
+(document
   (switch_statement
     (switch_start_expression
       (control_keyword)
@@ -64,7 +64,7 @@ Switch-default
 
 ---
 
-(fragment
+(document
   (switch_statement
     (switch_start_expression
       (control_keyword)

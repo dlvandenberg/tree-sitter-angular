@@ -7,7 +7,7 @@ Template variable
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)

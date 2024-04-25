@@ -8,7 +8,7 @@ For-statement
 
 ---
 
-(fragment
+(document
   (for_statement
     (for_start_expression
       (control_keyword)
@@ -57,7 +57,7 @@ For-statement with aliases
 
 ---
 
-(fragment
+(document
   (for_statement
     (for_start_expression
       (control_keyword)
@@ -115,7 +115,7 @@ For with pipes
 
 ---
 
-(fragment
+(document
   (for_statement
     (for_start_expression
       (control_keyword)
@@ -172,7 +172,7 @@ For-empty
 
 ---
 
-(fragment
+(document
   (for_statement
     (for_start_expression
       (control_keyword)

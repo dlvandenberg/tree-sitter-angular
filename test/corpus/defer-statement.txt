@@ -8,7 +8,7 @@ Defer statement
 
 ---
 
-(fragment
+(document
   (defer_statement
     (defer_start_expression
       (control_keyword)
@@ -36,7 +36,7 @@ Defer with trigger
 
 ---
 
-(fragment
+(document
   (defer_statement
     (defer_start_expression
       (control_keyword)
@@ -66,7 +66,7 @@ Defer with multiple triggers
 
 ---
 
-(fragment
+(document
   (defer_statement
     (defer_start_expression
       (control_keyword)
@@ -105,7 +105,7 @@ Defer with prefetch
 
 ---
 
-(fragment
+(document
   (defer_statement
     (defer_start_expression
       (control_keyword)
@@ -140,7 +140,7 @@ Defer with conditional trigger
 
 ---
 
-(fragment
+(document
   (defer_statement
     (defer_start_expression
       (control_keyword)
@@ -178,7 +178,7 @@ Placeholder
 
 ---
 
-(fragment
+(document
   (defer_statement
     (defer_start_expression
       (control_keyword)
@@ -214,7 +214,7 @@ Placeholder with minimum
 
 ---
 
-(fragment
+(document
   (defer_statement
     (defer_start_expression
       (control_keyword)
@@ -255,7 +255,7 @@ Loading
 
 ---
 
-(fragment
+(document
   (defer_statement
     (defer_start_expression
       (control_keyword)
@@ -291,7 +291,7 @@ Loading with minimum
 
 ---
 
-(fragment
+(document
   (defer_statement
     (defer_start_expression
       (control_keyword)
@@ -332,7 +332,7 @@ Loading with after
 
 ---
 
-(fragment
+(document
   (defer_statement
     (defer_start_expression
       (control_keyword)
@@ -373,7 +373,7 @@ Loading minimum and after
 
 ---
 
-(fragment
+(document
   (defer_statement
     (defer_start_expression
       (control_keyword)
@@ -417,7 +417,7 @@ Error
 
 ---
 
-(fragment
+(document
   (defer_statement
     (defer_start_expression
       (control_keyword)
@@ -457,7 +457,7 @@ Defer-placeholder-loading-error
 
 ---
 
-(fragment
+(document
   (defer_statement
     (defer_start_expression
       (control_keyword)

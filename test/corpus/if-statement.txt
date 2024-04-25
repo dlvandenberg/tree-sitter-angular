@@ -8,7 +8,7 @@ If statement
 
 ---
 
-(fragment
+(document
     (if_statement
       (if_start_expression
         (control_keyword)
@@ -44,7 +44,7 @@ If-else statement
 
 ---
 
-(fragment
+(document
     (if_statement
       (if_start_expression
         (control_keyword)
@@ -101,7 +101,7 @@ Else statement
 
 ---
 
-(fragment
+(document
     (if_statement
       (if_start_expression
         (control_keyword)
@@ -154,7 +154,7 @@ Nested if
 
 ---
 
-(fragment
+(document
   (if_statement
     (if_start_expression
       (control_keyword)
@@ -224,7 +224,7 @@ If with reference
 
 ---
 
-(fragment
+(document
   (if_statement
     (if_start_expression
       (control_keyword)
@@ -277,7 +277,7 @@ If with object reference
 
 ---
 
-(fragment
+(document
   (if_statement
     (if_start_expression
       (control_keyword)
@@ -333,7 +333,7 @@ Unary and conditional expr
 
 ---
 
-(fragment
+(document
   (if_statement
     (if_start_expression
       (control_keyword)
@@ -378,7 +378,7 @@ Multiple if conditions
 
 ---
 
-(fragment
+(document
   (if_statement
     (if_start_expression
       (control_keyword)

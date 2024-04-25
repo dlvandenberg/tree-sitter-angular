@@ -9,7 +9,7 @@ other {some minutes ago}}
 
 ---
 
-(fragment
+(document
   (text)
   (icu_expression
     (expression
@@ -34,7 +34,7 @@ Updated {minutes, plural, =0 {just now} =1 {one minute ago} other {{{minutes}} m
 
 ---
 
-(fragment
+(document
   (text)
   (icu_expression
     (expression
@@ -61,7 +61,7 @@ The author is {gender, select, male {male} female {female} other {other}}
 
 ---
 
-(fragment
+(document
   (text)
   (icu_expression
     (expression
@@ -88,7 +88,7 @@ Updated: {minutes, plural,
   
 ---
 
-(fragment
+(document
   (text)
   (icu_expression
     (expression
@@ -131,7 +131,7 @@ other {some minutes ago}}
 
 ---
 
-(fragment
+(document
   (text)
   (icu_expression
     (expression

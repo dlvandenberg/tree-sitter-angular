@@ -7,7 +7,7 @@ NgIf
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -67,7 +67,7 @@ NgIf else
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -123,7 +123,7 @@ NgIf with alias
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -182,7 +182,7 @@ NgIf binary expression
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -328,7 +328,7 @@ NgFor
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -368,7 +368,7 @@ NgFor with alias
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -430,7 +430,7 @@ NgSwitch
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -500,7 +500,7 @@ Template Outlet context
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)

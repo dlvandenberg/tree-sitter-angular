@@ -7,7 +7,7 @@ Basic
 
 ---
 
-(fragment
+(document
   (interpolation
     (expression
       (identifier)
@@ -36,7 +36,7 @@ With pipes
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -66,7 +66,7 @@ Pipe with arguments
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -100,7 +100,7 @@ Conditional expression
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -130,7 +130,7 @@ Conditional with pipes
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -176,7 +176,7 @@ Grouping
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -220,7 +220,7 @@ Combined
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -258,7 +258,7 @@ String concatenation
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -286,7 +286,7 @@ String concat with pipes
 
 ---
 
-(fragment
+(document
   (interpolation
     (concatenation_expression
       (string)

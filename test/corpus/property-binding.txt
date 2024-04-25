@@ -6,7 +6,7 @@ Property binding
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
@@ -32,7 +32,7 @@ Array Property binding
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
@@ -65,7 +65,7 @@ Array Binding with pipes
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
@@ -109,7 +109,7 @@ String literal binding
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
@@ -149,7 +149,7 @@ Subproperty
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
@@ -179,7 +179,7 @@ With pipes
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
@@ -211,7 +211,7 @@ Two-way binding
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
@@ -237,7 +237,7 @@ Event binding
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
@@ -268,7 +268,7 @@ Event binding expression
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
@@ -298,7 +298,7 @@ Regular attribute
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
@@ -320,7 +320,7 @@ Empty attribute value
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -346,7 +346,7 @@ Animation property
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -375,7 +375,7 @@ Map property binding
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -415,7 +415,7 @@ Binding with a static array access full
 
 ---
 
-    (fragment
+    (document
       (element
         (start_tag
           (tag_name)
@@ -457,7 +457,7 @@ Binding with a static array access
 
 ---
 
-    (fragment
+    (document
       (element
         (start_tag
           (tag_name)
@@ -493,7 +493,7 @@ Binding with a dynamic array access
 
 ---
 
-    (fragment
+    (document
       (element
         (start_tag
           (tag_name)
@@ -524,7 +524,7 @@ Nullish coalescing
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
