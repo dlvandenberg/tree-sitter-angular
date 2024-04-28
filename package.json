@@ -59,10 +59,12 @@
       "optional": true
     }
   },
-  "tree-sitter": {
-    "scope": "source.angular",
-    "file-types": [
-      "component.html"
-    ]
-  }
+  "tree-sitter": [
+    {
+      "scope": "source.angular",
+      "file-types": [
+        "component.html"
+      ]
+    }
+  ]
 }
