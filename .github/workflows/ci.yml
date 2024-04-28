@@ -33,5 +33,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
+      - run: node-gyp -v
       - run: npm install
       - run: npm run test:windows
+      - uses: actions/upload-artifact@v4
+        with:
+          path: C:\npm\cache\_logs\
