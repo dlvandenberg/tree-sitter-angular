@@ -33,8 +33,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: Install Windows Build Tools
-        run: npm install --global --production windows-build-tools
+      - name: Check environment variables
+        run: |
+          echo "PATH=$PATH"
+          node -v
+          npm -v
 
-      - run: npm install
+      - run: npm install --verbose
       - run: npm run test:windows
