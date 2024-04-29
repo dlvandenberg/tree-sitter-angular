@@ -9,14 +9,10 @@ Component selector
 (document
   (element
     (start_tag
-      (tag_name) 
-    )
+      (tag_name))
     (text)
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))
 
 =====================
 Self closing selector
@@ -29,7 +25,4 @@ Self closing selector
 (document
   (element
     (self_closing_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))

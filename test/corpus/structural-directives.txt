@@ -16,21 +16,12 @@ NgIf
           (identifier)
           (structural_expression
             (expression
-              (identifier)
-            )
-          )
-        )
-      )
-    )
+              (identifier))))))
     (interpolation
       (expression
-        (identifier)
-      )
-    )
+        (identifier)))
     (end_tag
-      (tag_name)
-    )
-  )
+      (tag_name)))
   (element
     (start_tag
       (tag_name)
@@ -41,22 +32,12 @@ NgIf
             (conditional_expression
               (identifier)
               (conditional_operator)
-              (identifier)
-            )
-          )
-        )
-      )
-    )
+              (identifier))))))
     (interpolation
       (expression
-        (identifier)
-      )
-    )
+        (identifier)))
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))
 
 =========
 NgIf else
@@ -76,40 +57,24 @@ NgIf else
           (identifier)
           (structural_expression
             (expression
-              (identifier)
-            )
+              (identifier))
             (special_keyword)
-            (identifier)
-          )
-        )
-      )
-    )
+            (identifier)))))
     (interpolation
       (expression
-        (identifier)
-      )
-    )
+        (identifier)))
     (end_tag
-      (tag_name)
-    )
-  )
+      (tag_name)))
   (element
     (start_tag
       (tag_name)
       (attribute
-        (attribute_name)
-      )
-    )
+        (attribute_name)))
     (interpolation
       (expression
-        (identifier)
-      )
-    )   
+        (identifier)))
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))
 
 ===============
 NgIf with alias
@@ -140,33 +105,16 @@ NgIf with alias
                     (pipe_sequence
                       (pipe_operator)
                       (pipe_call
-                        (identifier)
-                      )
-                    )
-                  )
-                )
-              )
-            )
+                        (identifier)))))))
             (special_keyword)
-            (identifier)
-          )
-        )
-      )
-    )
+            (identifier)))))
     (interpolation
       (expression
         (member_expression
           (identifier)
-          (identifier)
-        )
-      )
-    )
+          (identifier))))
     (end_tag
-      (tag_name)
-    )
-  )
-)
-
+      (tag_name))))
 
 ======================
 NgIf binary expression
@@ -192,16 +140,9 @@ NgIf binary expression
           (structural_expression
             (binary_expression
               (identifier)
-              (identifier)
-            )
-          )
-        )
-      )
-    )
+              (identifier))))))
     (end_tag
-      (tag_name)
-    )
-  )
+      (tag_name)))
   (element
     (start_tag
       (tag_name)
@@ -211,16 +152,9 @@ NgIf binary expression
           (structural_expression
             (binary_expression
               (identifier)
-              (identifier)
-            )
-          )
-        )
-      )
-    )
+              (identifier))))))
     (end_tag
-      (tag_name)
-    )
-  )
+      (tag_name)))
   (element
     (start_tag
       (tag_name)
@@ -230,16 +164,9 @@ NgIf binary expression
           (structural_expression
             (binary_expression
               (identifier)
-              (identifier)
-            )
-          )
-        )
-      )
-    )
+              (identifier))))))
     (end_tag
-      (tag_name)
-    )
-  )
+      (tag_name)))
   (element
     (start_tag
       (tag_name)
@@ -249,16 +176,9 @@ NgIf binary expression
           (structural_expression
             (binary_expression
               (identifier)
-              (identifier)
-            )
-          )
-        )
-      )
-    )
+              (identifier))))))
     (end_tag
-      (tag_name)
-    )
-  )
+      (tag_name)))
   (element
     (start_tag
       (tag_name)
@@ -268,16 +188,9 @@ NgIf binary expression
           (structural_expression
             (binary_expression
               (identifier)
-              (identifier)
-            )
-          )
-        )
-      )
-    )
+              (identifier))))))
     (end_tag
-      (tag_name)
-    )
-  )
+      (tag_name)))
   (element
     (start_tag
       (tag_name)
@@ -288,16 +201,9 @@ NgIf binary expression
             (conditional_expression
               (identifier)
               (conditional_operator)
-              (identifier)
-            )
-          )
-        )
-      )
-    )
+              (identifier))))))
     (end_tag
-      (tag_name)
-    )
-  )
+      (tag_name)))
   (element
     (start_tag
       (tag_name)
@@ -308,17 +214,9 @@ NgIf binary expression
             (conditional_expression
               (identifier)
               (conditional_operator)
-              (identifier)
-            )
-          )
-        )
-      )
-    )
+              (identifier))))))
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))
 
 =====
 NgFor
@@ -341,23 +239,12 @@ NgFor
               (identifier)
               (identifier)
               (expression
-                (identifier)
-              )
-            )
-          )
-        )
-      )
-    )
+                (identifier)))))))
     (interpolation
       (expression
-        (identifier)
-      )
-    )
+        (identifier)))
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))
 
 ================
 NgFor with alias
@@ -381,43 +268,27 @@ NgFor with alias
               (identifier)
               (identifier)
               (expression
-                (identifier)
-              )
-            )
+                (identifier)))
             (structural_assignment
               (special_keyword)
               (identifier)
               (expression
-                (identifier)
-              )
-            )
+                (identifier)))
             (structural_assignment
               (special_keyword)
               (identifier)
               (expression
-                (identifier)
-              )
-            )
+                (identifier)))
             (structural_assignment
               (special_keyword)
               (identifier)
               (expression
-                (identifier)
-              )
-            )
+                (identifier)))
             (structural_assignment
               (identifier)
-              (identifier)
-            )
-          )
-        )
-      )
-    )
+              (identifier))))))
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))
 
 ========
 NgSwitch
@@ -437,17 +308,11 @@ NgSwitch
       (attribute
         (property_binding
           (binding_name
-            (identifier)
-          )
+            (identifier))
           (expression
             (member_expression
               (identifier)
-              (identifier)
-            )
-          )
-        )
-      )
-    )
+              (identifier))))))
     (element
       (start_tag
         (tag_name)
@@ -456,35 +321,19 @@ NgSwitch
             (identifier)
             (structural_expression
               (expression
-                (string)
-              )
-            )
-          )
-        )
-      )
+                (string))))))
       (end_tag
-        (tag_name)
-      )
-    )
+        (tag_name)))
     (element
       (start_tag
         (tag_name)
         (attribute
           (structural_directive
-            (identifier)
-          )
-        )
-      )
+            (identifier))))
       (end_tag
-        (tag_name)
-      )
-    )
+        (tag_name)))
     (end_tag
-      (tag_name)
-    )
-  )
-)
-
+      (tag_name))))
 
 =======================
 Template Outlet context
@@ -513,47 +362,28 @@ Template Outlet context
                 (binary_expression
                   (member_expression
                     (identifier)
-                    (identifier)
-                  )
-                  (identifier)
-                )
+                    (identifier))
+                  (identifier))
                 (conditional_operator)
                 (binary_expression
                   (member_expression
                     (identifier)
-                    (identifier)
-                  )
-                  (identifier)
-                )
-              )
+                    (identifier))
+                  (identifier)))
               (ternary_operator)
               (identifier)
               (ternary_operator)
-              (identifier)
-            )
+              (identifier))
             (special_keyword)
             (expression
               (object
                 (pair
                   (identifier)
                   (expression
-                    (identifier)
-                  )
-                )
+                    (identifier)))
                 (pair
                   (identifier)
                   (expression
-                    (identifier)
-                  )
-                )
-              )
-            )
-          )
-        )
-      )
-    )
+                    (identifier)))))))))
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))

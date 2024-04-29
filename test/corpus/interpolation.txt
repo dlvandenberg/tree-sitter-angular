@@ -10,23 +10,15 @@ Basic
 (document
   (interpolation
     (expression
-      (identifier)
-    )
-  )
+      (identifier)))
   (element
     (start_tag
-      (tag_name)
-    )
+      (tag_name))
     (interpolation
       (expression
-        (identifier)
-      )
-    )
+        (identifier)))
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))
 
 ==========
 With pipes
@@ -39,24 +31,16 @@ With pipes
 (document
   (element
     (start_tag
-      (tag_name)
-    )
+      (tag_name))
     (interpolation
       (expression
         (identifier)
         (pipe_sequence
           (pipe_operator)
           (pipe_call
-            (identifier)
-          )
-        )
-      )
-    )
+            (identifier)))))
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))
 
 ===================
 Pipe with arguments
@@ -69,8 +53,7 @@ Pipe with arguments
 (document
   (element
     (start_tag
-      (tag_name)
-    )
+      (tag_name))
     (interpolation
       (expression
         (identifier)
@@ -80,17 +63,9 @@ Pipe with arguments
             (identifier)
             (pipe_arguments
               (identifier)
-              (identifier)
-            )
-          )
-        )
-      )
-    )
+              (identifier))))))
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))
 
 ======================
 Conditional expression
@@ -103,24 +78,17 @@ Conditional expression
 (document
   (element
     (start_tag
-      (tag_name)
-    )
+      (tag_name))
     (interpolation
       (ternary_expression
         (expression
-          (identifier)
-        )
+          (identifier))
         (ternary_operator)
         (string)
         (ternary_operator)
-        (string)
-      )
-    )
+        (string)))
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))
 
 ======================
 Conditional with pipes
@@ -133,13 +101,11 @@ Conditional with pipes
 (document
   (element
     (start_tag
-      (tag_name)
-    )
+      (tag_name))
     (interpolation
       (ternary_expression
         (expression
-          (identifier)
-        )
+          (identifier))
         (ternary_operator)
         (group
           (expression
@@ -147,26 +113,15 @@ Conditional with pipes
             (pipe_sequence
               (pipe_operator)
               (pipe_call
-                (identifier)
-              )
-            )
-          )
-        )
+                (identifier)))))
         (ternary_operator)
           (member_expression
             (member_expression
               (identifier)
-              (identifier)
-            )
-            (identifier)
-          )
-      )
-    )
+              (identifier))
+            (identifier))))
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))
 
 ========
 Grouping
@@ -179,8 +134,7 @@ Grouping
 (document
   (element
     (start_tag
-      (tag_name)
-    )
+      (tag_name))
     (interpolation
       (concatenation_expression
         (group
@@ -192,25 +146,12 @@ Grouping
                   (pipe_sequence
                     (pipe_operator)
                     (pipe_call
-                      (identifier)
-                    )
-                  )
-                )
-              )
-              (identifier)
-            )
-          )
-        )
+                      (identifier)))))
+              (identifier))))
         (expression
-         (string)
-        )
-      )
-    )
+         (string))))
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))
 
 ========
 Combined
@@ -223,14 +164,11 @@ Combined
 (document
   (element
     (start_tag
-      (tag_name)
-    )
+      (tag_name))
     (text)
     (interpolation
       (expression
-        (identifier)
-      )
-    )
+        (identifier)))
     (text)
     (interpolation
       (expression
@@ -238,17 +176,10 @@ Combined
         (pipe_sequence
           (pipe_operator)
           (pipe_call
-            (identifier)
-          )
-        )
-      )
-    )
+            (identifier)))))
     (text)
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))
 
 ====================
 String concatenation
@@ -261,22 +192,15 @@ String concatenation
 (document
   (element
     (start_tag
-      (tag_name)
-    )
+      (tag_name))
     (interpolation
       (concatenation_expression
         (string)
         (expression
-          (identifier)
-        )
-        (string)
-      ) 
-    )
+          (identifier))
+        (string)))
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))
 
 ========================
 String concat with pipes
@@ -294,17 +218,9 @@ String concat with pipes
         (member_expression
           (identifier)
           (call_expression
-            (identifier)
-          )
-        )
+            (identifier)))
         (pipe_sequence
           (pipe_operator)
           (pipe_call
-            (identifier)
-          )
-        )
-      )
-    )
-  )
-)
+            (identifier)))))))
 
