@@ -6,23 +6,16 @@ Property binding
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
       (attribute
         (property_binding
           (binding_name
-            (identifier)
-          )
+            (identifier))
           (expression
-            (identifier)
-          )
-        )
-      )
-    )
-  )
-)
+            (identifier)))))))
 
 ======================
 Array Property binding
@@ -32,30 +25,20 @@ Array Property binding
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
       (attribute
         (property_binding
           (binding_name
-            (identifier)
-          )
+            (identifier))
           (expression
             (array
               (expression
-                (string)
-              )
+                (string))
               (expression
-                (string)
-              )
-            )
-          )
-        )
-      )
-    )
-  )
-)
+                (string)))))))))
 
 ========================
 Array Binding with pipes
@@ -65,15 +48,14 @@ Array Binding with pipes
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
       (attribute
         (property_binding
           (binding_name
-            (identifier)
-          )
+            (identifier))
           (expression
             (array
               (expression
@@ -83,23 +65,9 @@ Array Binding with pipes
                     (pipe_sequence
                       (pipe_operator)
                       (pipe_call
-                        (identifier)
-                      )
-                    )
-                  )
-                )
-              )
+                        (identifier))))))
               (expression
-                (identifier)
-              )
-            )
-          )
-        )
-      )
-    )
-  )
-)
-
+                (identifier)))))))))
 
 ======================
 String literal binding
@@ -109,37 +77,25 @@ String literal binding
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
       (attribute
         (property_binding
           (binding_name
-            (identifier)
-          )
+            (identifier))
           (binary_expression
             (string)
             (member_expression
               (identifier)
-              (identifier)
-            )
-          )
-        )
-      )
+              (identifier)))))
       (attribute
         (property_binding
           (binding_name
-            (identifier)
-          )
+            (identifier))
           (expression
-            (string)
-          )
-        )
-      )
-    )
-  )
-)
+            (string)))))))
 
 ===========
 Subproperty
@@ -149,7 +105,7 @@ Subproperty
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
@@ -158,18 +114,9 @@ Subproperty
           (binding_name
             (member_expression
               (identifier)
-              (identifier)
-            )
-          )
+              (identifier)))
           (expression
-            (identifier)
-          )
-        )
-      )
-    )
-  )
-)
-
+            (identifier)))))))
 
 ==========
 With pipes
@@ -179,29 +126,20 @@ With pipes
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
       (attribute
         (property_binding
           (binding_name
-              (identifier)
-          )
+              (identifier))
           (expression
             (identifier)
             (pipe_sequence
               (pipe_operator)
               (pipe_call
-                (identifier)
-              )
-            )
-          )
-        )
-      )
-    )
-  )
-)
+                (identifier)))))))))
 
 ===============
 Two-way binding
@@ -211,23 +149,16 @@ Two-way binding
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
       (attribute
         (two_way_binding
           (binding_name
-            (identifier)
-          )
+            (identifier))
           (expression
-            (identifier)
-          )
-        )
-      )
-    )
-  )
-)
+            (identifier)))))))
 
 =============
 Event binding
@@ -237,28 +168,19 @@ Event binding
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
       (attribute
         (event_binding
           (binding_name
-            (identifier)
-          )
+            (identifier))
           (expression
             (call_expression
               (identifier)
               (arguments
-                (identifier)
-              )
-            )
-          )
-        )
-      )
-    )
-  )
-)
+                (identifier)))))))))
 
 ========================
 Event binding expression
@@ -268,27 +190,18 @@ Event binding expression
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
       (attribute
         (event_binding
           (binding_name
-            (identifier)
-          )
+            (identifier))
           (assignment_expression
             (identifier)
             (expression
-              (identifier)
-            )
-          )
-        )
-      )
-    )
-  )
-)
-
+              (identifier))))))))
 
 =================
 Regular attribute
@@ -298,19 +211,14 @@ Regular attribute
 
 ---
 
-(fragment
+(document
   (element
     (self_closing_tag
       (tag_name)
       (attribute
         (attribute_name)
         (quoted_attribute_value
-         (attribute_value)
-        )
-      )
-    )
-  )
-)
+         (attribute_value))))))
 
 =====================
 Empty attribute value
@@ -320,7 +228,7 @@ Empty attribute value
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
@@ -346,26 +254,18 @@ Animation property
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
       (attribute
         (property_binding
           (binding_name
-            (identifier)
-          )
+            (identifier))
           (expression
-            (identifier)
-          )
-        )
-      )
-    )
+            (identifier)))))
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))
 
 ===================
 Map property binding
@@ -375,35 +275,24 @@ Map property binding
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
       (attribute
         (property_binding
           (binding_name
-            (identifier)
-          )
+            (identifier))
           (expression
             (member_expression
               (bracket_expression
                 (member_expression
                   (identifier)
-                  (identifier)
-                )
-                (identifier)
-              )
-              (identifier)
-            )
-          )
-        )
-      )
-    )
+                  (identifier))
+                (identifier))
+              (identifier))))))
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))
 
 =======================================
 Binding with a static array access full
@@ -415,37 +304,25 @@ Binding with a static array access full
 
 ---
 
-    (fragment
-      (element
-        (start_tag
-          (tag_name)
-          (attribute
-            (property_binding
-              (binding_name
-                (identifier)
-              )
-              (expression
+(document
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (expression
+            (member_expression
+              (bracket_expression
                 (member_expression
-                  (bracket_expression
-                    (member_expression
-                      (identifier)
-                      (identifier)
-                    )
-                    (static_member_expression
-                      (identifier)
-                    )
-                  )
                   (identifier)
-                )
-              )
-            )
-          )
-        )
-        (end_tag
-          (tag_name)
-        )
-      )
-    )
+                  (identifier))
+                (static_member_expression
+                  (identifier)))
+              (identifier))))))
+    (end_tag
+      (tag_name))))
 
 ==================================
 Binding with a static array access
@@ -457,31 +334,21 @@ Binding with a static array access
 
 ---
 
-    (fragment
-      (element
-        (start_tag
-          (tag_name)
-          (attribute
-            (property_binding
-              (binding_name
-                (identifier)
-              )
-              (expression
-                (bracket_expression
-                  (identifier)
-                  (static_member_expression
-                    (identifier)
-                  )
-                )
-              )
-            )
-          )
-        )
-        (end_tag
-          (tag_name)
-        )
-      )
-    )
+(document
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (expression
+            (bracket_expression
+              (identifier)
+              (static_member_expression
+                (identifier)))))))
+    (end_tag
+      (tag_name))))
 
 ===================================
 Binding with a dynamic array access
@@ -493,28 +360,20 @@ Binding with a dynamic array access
 
 ---
 
-    (fragment
-      (element
-        (start_tag
-          (tag_name)
-          (attribute
-            (property_binding
-              (binding_name
-                (identifier))
-              (expression
-                (bracket_expression
-                  (identifier)
-                  (identifier)
-                )
-              )
-            )
-          )
-        )
-        (end_tag
-          (tag_name)
-        )
-      )
-    )
+(document
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (expression
+            (bracket_expression
+              (identifier)
+              (identifier))))))
+    (end_tag
+      (tag_name))))
 
 ==================
 Nullish coalescing
@@ -524,30 +383,20 @@ Nullish coalescing
 
 ---
 
-(fragment
+(document
   (element
     (start_tag
       (tag_name)
       (attribute
         (property_binding
           (binding_name
-            (identifier)
-          )
+            (identifier))
           (nullish_coalescing_expression
             (expression
               (member_expression
                 (identifier)
-                (identifier)
-              )
-            )
+                (identifier)))
             (coalescing_operator)
-            (identifier)
-          )
-        )
-      )
-    )
+            (identifier)))))
     (end_tag
-      (tag_name)
-    )
-  )
-)
+      (tag_name))))

@@ -13,41 +13,29 @@ Switch statement
 
 ---
 
-(fragment
+(document
   (switch_statement
     (switch_start_expression
       (control_keyword)
       (expression
-        (identifier)
-      )
-    )
+        (identifier)))
     (case_statement
       (case_expression
         (control_keyword)
-        (identifier)
-      )
+        (identifier))
       (element
         (self_closing_tag
-          (tag_name)
-        )
-      )
-      (case_end_expression)
-    )
+          (tag_name)))
+      (case_end_expression))
     (case_statement
       (case_expression
         (control_keyword)
-        (identifier)
-      )
+        (identifier))
       (element
         (self_closing_tag
-          (tag_name)
-        )
-      )
-      (case_end_expression)
-    )
-    (switch_end_expression)
-  )
-)
+          (tag_name)))
+      (case_end_expression))
+    (switch_end_expression)))
 
 ==============
 Switch-default
@@ -64,37 +52,25 @@ Switch-default
 
 ---
 
-(fragment
+(document
   (switch_statement
     (switch_start_expression
       (control_keyword)
       (expression
-        (identifier)
-      )
-    )
+        (identifier)))
     (case_statement
       (case_expression
         (control_keyword)
-        (identifier)
-      )
+        (identifier))
       (element
         (self_closing_tag
-          (tag_name)
-        )
-      )
-      (case_end_expression)
-    )
+          (tag_name)))
+      (case_end_expression))
     (default_statement
       (default_expression
-        (control_keyword)
-      )
+        (control_keyword))
       (element
         (self_closing_tag
-          (tag_name)
-        )
-      )
-      (default_end_expression)
-    )
-    (switch_end_expression)
-  )
-)
+          (tag_name)))
+      (default_end_expression))
+    (switch_end_expression)))

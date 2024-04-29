@@ -8,29 +8,21 @@ If statement
 
 ---
 
-(fragment
+(document
     (if_statement
       (if_start_expression
         (control_keyword)
         (if_condition
           (binary_expression
             (identifier)
-            (identifier)
-          )
-        )
-      )
+            (identifier))))
       (element
         (start_tag
-          (tag_name)
-        )
+          (tag_name))
         (text)
         (end_tag
-          (tag_name)
-        )
-      )
-      (if_end_expression)
-    )
-)
+          (tag_name)))
+      (if_end_expression)))
 
 =================
 If-else statement
@@ -44,26 +36,20 @@ If-else statement
 
 ---
 
-(fragment
+(document
     (if_statement
       (if_start_expression
         (control_keyword)
         (if_condition
           (binary_expression
             (identifier)
-            (identifier)
-          )
-        )
-      )
+            (identifier))))
       (element
         (start_tag
-          (tag_name)
-        )
+          (tag_name))
         (text)
         (end_tag
-          (tag_name)
-        )
-      )
+          (tag_name)))
       (else_if_statement
         (else_if_expression
           (control_keyword)
@@ -71,23 +57,14 @@ If-else statement
           (if_condition
             (binary_expression
               (identifier)
-              (identifier)
-            )
-          )
-        )
+              (identifier))))
         (element
           (start_tag
-            (tag_name)
-          )
+            (tag_name))
           (text)
           (end_tag
-            (tag_name)
-          )
-        )
-        (if_end_expression)
-      )
-    )
-)
+            (tag_name)))
+        (if_end_expression))))
 
 =================
 Else statement
@@ -101,43 +78,30 @@ Else statement
 
 ---
 
-(fragment
+(document
     (if_statement
       (if_start_expression
         (control_keyword)
         (if_condition
           (binary_expression
             (identifier)
-            (identifier)
-          )
-        )
-      )
+            (identifier))))
       (element
         (start_tag
-          (tag_name)
-        )
+          (tag_name))
         (text)
         (end_tag
-          (tag_name)
-        )
-      )
+          (tag_name)))
       (else_statement
         (else_expression
-          (control_keyword)
-        )
+          (control_keyword))
         (element
           (start_tag
-            (tag_name)
-          )
+            (tag_name))
           (text)
           (end_tag
-            (tag_name)
-          )
-        )
-        (if_end_expression)
-      )
-    )
-)
+            (tag_name)))
+        (if_end_expression))))
 
 =========
 Nested if
@@ -154,7 +118,7 @@ Nested if
 
 ---
 
-(fragment
+(document
   (if_statement
     (if_start_expression
       (control_keyword)
@@ -162,57 +126,37 @@ Nested if
         (conditional_expression
           (identifier)
           (conditional_operator)
-          (identifier)
-        )
-      )
-    )
+          (identifier))))
     (element
       (start_tag
-        (tag_name)
-      )
+        (tag_name))
       (text)
       (end_tag
-        (tag_name)
-      )
-    )
+        (tag_name)))
     (if_statement
       (if_start_expression
         (control_keyword)
         (if_condition
           (binary_expression
             (identifier)
-            (identifier)
-          )
-        )
-      )
+            (identifier))))
       (element
         (start_tag
-          (tag_name)
-        )
+          (tag_name))
         (text)
         (end_tag
-          (tag_name)
-        )
-      )
+          (tag_name)))
       (else_statement
         (else_expression
-          (control_keyword)
-        )
+          (control_keyword))
         (element
           (start_tag
-            (tag_name)
-          )
+            (tag_name))
           (text)
           (end_tag
-            (tag_name)
-          )
-        )
-        (if_end_expression)
-      )
-    )
-    (if_end_expression)
-  )
-)
+            (tag_name)))
+        (if_end_expression)))
+    (if_end_expression)))
 
 =================
 If with reference
@@ -224,7 +168,7 @@ If with reference
 
 ---
 
-(fragment
+(document
   (if_statement
     (if_start_expression
       (control_keyword)
@@ -234,38 +178,23 @@ If with reference
           (pipe_sequence
             (pipe_operator)
             (pipe_call
-              (identifier)
-            )
-          )
-        )
-      )
+              (identifier)))))
       (if_reference
         (special_keyword)
-        (identifier)
-      )
-    )
+        (identifier)))
     (element
       (start_tag
-        (tag_name)
-      )
+        (tag_name))
       (interpolation
         (expression
           (identifier)
           (pipe_sequence
             (pipe_operator)
             (pipe_call
-              (identifier)
-            )
-          )
-        )
-      )
+              (identifier)))))
       (end_tag
-        (tag_name)
-      )
-    )
-    (if_end_expression)
-  )
-)
+        (tag_name)))
+    (if_end_expression)))
 
 ========================
 If with object reference
@@ -277,7 +206,7 @@ If with object reference
 
 ---
 
-(fragment
+(document
   (if_statement
     (if_start_expression
       (control_keyword)
@@ -288,40 +217,23 @@ If with object reference
               (identifier)
               (expression
                 (call_expression
-                  (identifier)
-                )
-              )
-            )
-          )
-        )
-      )
+                  (identifier)))))))
       (if_reference
         (special_keyword)
-        (identifier)
-      )
-    )
+        (identifier)))
     (element
       (start_tag
-        (tag_name)
-      )
+        (tag_name))
       (interpolation
         (expression
           (identifier)
           (pipe_sequence
             (pipe_operator)
             (pipe_call
-              (identifier)
-            )
-          )
-        )
-      )
+              (identifier)))))
       (end_tag
-        (tag_name)
-      )
-    )
-    (if_end_expression)
-  )
-)
+        (tag_name)))
+    (if_end_expression)))
 
 ==========================
 Unary and conditional expr
@@ -333,7 +245,7 @@ Unary and conditional expr
 
 ---
 
-(fragment
+(document
   (if_statement
     (if_start_expression
       (control_keyword)
@@ -342,31 +254,19 @@ Unary and conditional expr
           (unary_expression
             (unary_operator)
             (expression
-              (identifier)
-            )
-          )
+              (identifier)))
           (conditional_operator)
           (unary_expression
             (unary_operator)
             (expression
-              (identifier)
-            )
-          )
-        )
-      )
-    )
+              (identifier))))))
     (element
       (start_tag
-        (tag_name)
-      )
+        (tag_name))
       (text)
       (end_tag
-        (tag_name)
-      )
-    )
-    (if_end_expression)
-  )
-)
+        (tag_name)))
+    (if_end_expression)))
 
 ======================
 Multiple if conditions
@@ -378,7 +278,7 @@ Multiple if conditions
 
 ---
 
-(fragment
+(document
   (if_statement
     (if_start_expression
       (control_keyword)
@@ -386,25 +286,15 @@ Multiple if conditions
         (conditional_expression
           (binary_expression
             (identifier)
-            (identifier)
-          )
+            (identifier))
           (conditional_operator)
           (binary_expression
             (identifier)
-            (identifier)
-          )
-        )
-      )
-    )
+            (identifier)))))
     (element
       (start_tag
-        (tag_name)
-      )
+        (tag_name))
       (text)
       (end_tag
-        (tag_name)
-      )
-    )
-    (if_end_expression)
-  )
-)
+        (tag_name)))
+    (if_end_expression)))

@@ -8,7 +8,7 @@ For-statement
 
 ---
 
-(fragment
+(document
   (for_statement
     (for_start_expression
       (control_keyword)
@@ -16,36 +16,23 @@ For-statement
         (identifier)
         (special_keyword)
         (expression
-          (identifier)
-        )
+          (identifier))
         (special_keyword)
         (expression
           (member_expression
             (identifier)
-            (identifier)
-          )
-        )
-      )
-    )
+            (identifier)))))
     (element
       (start_tag
-        (tag_name)
-      )
+        (tag_name))
       (interpolation
         (expression
           (member_expression
             (identifier)
-            (identifier)
-          )
-        )
-      )
+            (identifier))))
       (end_tag
-        (tag_name)
-      )
-    )
-    (for_end_expression)
-  )
-)
+        (tag_name)))
+    (for_end_expression)))
 
 ==========================
 For-statement with aliases
@@ -57,7 +44,7 @@ For-statement with aliases
 
 ---
 
-(fragment
+(document
   (for_statement
     (for_start_expression
       (control_keyword)
@@ -65,45 +52,29 @@ For-statement with aliases
         (identifier)
         (special_keyword)
         (expression
-          (identifier)
-        )
+          (identifier))
         (special_keyword)
         (expression
-          (identifier)
-        )
-      )
+          (identifier)))
       (for_reference
         (special_keyword)
         (assignment_expression
           (identifier)
           (expression
-            (identifier)
-          )
-        )
+            (identifier)))
         (assignment_expression
           (identifier)
           (expression
-            (identifier)
-          )
-        )
-      )
-    )
+            (identifier)))))
     (element
       (start_tag
-        (tag_name)
-      )
+        (tag_name))
       (interpolation
         (expression
-          (identifier)
-        )
-      )
+          (identifier)))
       (end_tag
-        (tag_name)
-      )
-    )
-    (for_end_expression)
-  )
-)
+        (tag_name)))
+    (for_end_expression)))
 
 ==============
 For with pipes
@@ -115,7 +86,7 @@ For with pipes
 
 ---
 
-(fragment
+(document
   (for_statement
     (for_start_expression
       (control_keyword)
@@ -127,38 +98,23 @@ For with pipes
           (pipe_sequence
             (pipe_operator)
             (pipe_call
-              (identifier)
-            )
-          )
-        )
+              (identifier))))
         (special_keyword)
         (expression
           (member_expression
             (identifier)
-            (identifier)
-          )
-        )
-      )
-    )
+            (identifier)))))
     (element
       (start_tag
-        (tag_name)
-      )
+        (tag_name))
       (interpolation
         (expression
           (member_expression
             (identifier)
-            (identifier)
-          )
-        )
-      )
+            (identifier))))
       (end_tag
-        (tag_name)
-      )
-    )
-    (for_end_expression)
-  )
-)
+        (tag_name)))
+    (for_end_expression)))
 
 =========
 For-empty
@@ -172,7 +128,7 @@ For-empty
 
 ---
 
-(fragment
+(document
   (for_statement
     (for_start_expression
       (control_keyword)
@@ -180,41 +136,25 @@ For-empty
         (identifier)
         (special_keyword)
         (expression
-          (identifier)
-        )
+          (identifier))
         (special_keyword)
         (expression
-          (identifier)
-        )
-      )
-    )
+          (identifier))))
     (element
       (start_tag
-        (tag_name)
-      )
+        (tag_name))
       (interpolation
         (expression
-          (identifier)
-        )
-      )
+          (identifier)))
       (end_tag
-        (tag_name)
-      )
-    )
+        (tag_name)))
     (empty_statement
       (empty_expression
-        (control_keyword)
-      )
+        (control_keyword))
       (element
         (start_tag
-          (tag_name)
-        )
+          (tag_name))
         (text)
         (end_tag
-          (tag_name)
-        )
-      )
-      (for_end_expression)
-    )
-  )
-)
+          (tag_name)))
+      (for_end_expression))))
