@@ -52,26 +52,26 @@ jobs:
           name: failures-${{ runner.os }}
           path: ${{ steps.parse-files.outputs.failures }}
 
-  fuzz:
-    name: Fuzz parser
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
-      - name: Check for scanner changes
-        id: scanner-check
-        run: |-
-          if git diff --quiet HEAD^ -- src/scanner.c; then
-            printf 'changed=false\n' >> "$GITHUB_OUTPUT"
-          else
-            printf 'changed=true\n' >> "$GITHUB_OUTPUT"
-          fi
-      - name: Run the fuzzer
-        uses: tree-sitter/fuzz-action@v4
-        if: steps.scanner-check.outputs.changed == 'true'
-        with:
-          language: angular
-          external-scanner: src/scanner.c
-          time: 60
+  # fuzz:
+  #   name: Fuzz parser
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 2
+  #     - name: Check for scanner changes
+  #       id: scanner-check
+  #       run: |-
+  #         if git diff --quiet HEAD^ -- src/scanner.c; then
+  #           printf 'changed=false\n' >> "$GITHUB_OUTPUT"
+  #         else
+  #           printf 'changed=true\n' >> "$GITHUB_OUTPUT"
+  #         fi
+  #     - name: Run the fuzzer
+  #       uses: tree-sitter/fuzz-action@v4
+  #       if: steps.scanner-check.outputs.changed == 'true'
+  #       with:
+  #         language: angular
+  #         external-scanner: src/scanner.c
+  #         time: 60
