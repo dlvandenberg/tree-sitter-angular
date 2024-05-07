@@ -47,7 +47,7 @@
     "prebuildify": "^6.0.0"
   },
   "dependencies": {
-    "tree-sitter-html": "^0.20.1",
+    "tree-sitter-html": "^0.20.3",
     "node-addon-api": "^8.0.0",
     "node-gyp-build": "^4.8.0"
   },
