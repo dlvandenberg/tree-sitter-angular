@@ -44,7 +44,13 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 ```
 
-By setting the filetype to `angular.html`, other functionality of nvim or other plugins should still work.
+You may need to include this new filetype (`angular.html`) for other plugins, like [LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#angularls) for example:
+
+```lua
+require('lspconfig').angularls.setup {
+  filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'angular.html' }
+}
+```
 
 ## Issues
 
