@@ -387,3 +387,35 @@ Template Outlet context
                     (identifier)))))))))
     (end_tag
       (tag_name))))
+
+=========================
+Directive with parameters
+=========================
+
+<span *appMyDirective="person.name; query: service.query() ?? ''"></span>
+
+---
+
+(document
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (structural_directive
+          (identifier)
+          (structural_expression
+            (expression
+              (member_expression
+                (identifier)
+                (identifier)))
+            (identifier)
+            (nullish_coalescing_expression
+              (expression
+                (member_expression
+                  (identifier)
+                  (call_expression
+                    (identifier))))
+              (coalescing_operator)
+              (string))))))
+    (end_tag
+      (tag_name))))

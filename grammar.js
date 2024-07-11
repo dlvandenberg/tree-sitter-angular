@@ -378,7 +378,12 @@ module.exports = grammar(HTML, {
     _else_template_expression: ($) =>
       seq(';', alias('else', $.special_keyword), $.identifier),
     _context_expression: ($) =>
-      seq(';', alias('context', $.special_keyword), ':', $.expression),
+      seq(
+        ';',
+        choice(alias('context', $.special_keyword), field('named', $.identifier)),
+        ':',
+        $._any_expression,
+      ),
 
     // ---------- Bindings ----------
     property_binding: ($) => seq('[', $.binding_name, ']', $._binding_assignment),
@@ -432,13 +437,10 @@ module.exports = grammar(HTML, {
 
     // Nullish coalescing expression
     nullish_coalescing_expression: ($) =>
-      prec.right(
-        PREC.CALL,
-        seq(
-          field('condition', $._any_expression),
-          alias('??', $.coalescing_operator),
-          field('default', $._primitive),
-        ),
+      seq(
+        field('condition', $._any_expression),
+        alias('??', $.coalescing_operator),
+        field('default', $._primitive),
       ),
 
     // Conditional expression

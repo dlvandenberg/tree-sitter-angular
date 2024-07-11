@@ -2972,6 +2972,16 @@
             "named": true
           }
         ]
+      },
+      "named": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
       }
     },
     "children": {

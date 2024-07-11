@@ -1,4 +1,8 @@
 {
+  "0": "h",
+  "1": "t",
+  "2": "m",
+  "3": "l",
   "name": "angular",
   "rules": {
     "document": {
@@ -2255,13 +2259,26 @@
           "value": ";"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "STRING",
-            "value": "context"
-          },
-          "named": true,
-          "value": "special_keyword"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "context"
+              },
+              "named": true,
+              "value": "special_keyword"
+            },
+            {
+              "type": "FIELD",
+              "name": "named",
+              "content": {
+                "type": "SYMBOL",
+                "name": "identifier"
+              }
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -2269,7 +2286,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "expression"
+          "name": "_any_expression"
         }
       ]
     },
@@ -2585,38 +2602,34 @@
       }
     },
     "nullish_coalescing_expression": {
-      "type": "PREC_RIGHT",
-      "value": 1,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "FIELD",
-            "name": "condition",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_any_expression"
-            }
-          },
-          {
-            "type": "ALIAS",
-            "content": {
-              "type": "STRING",
-              "value": "??"
-            },
-            "named": true,
-            "value": "coalescing_operator"
-          },
-          {
-            "type": "FIELD",
-            "name": "default",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_primitive"
-            }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "condition",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_any_expression"
           }
-        ]
-      }
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "??"
+          },
+          "named": true,
+          "value": "coalescing_operator"
+        },
+        {
+          "type": "FIELD",
+          "name": "default",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_primitive"
+          }
+        }
+      ]
     },
     "conditional_expression": {
       "type": "PREC_RIGHT",
