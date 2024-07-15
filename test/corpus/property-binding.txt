@@ -400,3 +400,66 @@ Nullish coalescing
             (identifier)))))
     (end_tag
       (tag_name))))
+
+
+==================
+Ternary expression
+==================
+
+<span [property]="condition ? true : false"></span>
+
+---
+
+(document
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (ternary_expression
+            (expression
+              (identifier))
+            (ternary_operator)
+            (identifier)
+            (ternary_operator)
+            (expression
+              (identifier))))))
+    (end_tag
+      (tag_name))))
+
+==================
+Nested ternary expression
+==================
+
+<span [property]="condition ? 'resultA' : otherCondition || elseCond ? 'resultB' : 'resultC'"></span>
+
+---
+
+(document
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (ternary_expression
+            (expression
+              (identifier))
+            (ternary_operator)
+            (string)
+            (ternary_operator)
+            (ternary_expression
+              (conditional_expression
+                (identifier)
+                (conditional_operator)
+                (identifier))
+              (ternary_operator)
+              (string)
+              (ternary_operator)
+              (expression
+                (string)))))))
+    (end_tag
+      (tag_name))))

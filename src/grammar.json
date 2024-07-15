@@ -2594,7 +2594,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "_primitive"
+                "name": "_any_expression"
               }
             ]
           }

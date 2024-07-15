@@ -373,7 +373,8 @@ Template Outlet context
               (ternary_operator)
               (identifier)
               (ternary_operator)
-              (identifier))
+              (expression
+                (identifier)))
             (special_keyword)
             (expression
               (object
