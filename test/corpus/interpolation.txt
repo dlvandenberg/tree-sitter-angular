@@ -86,7 +86,8 @@ Conditional expression
         (ternary_operator)
         (string)
         (ternary_operator)
-        (string)))
+        (expression
+          (string))))
     (end_tag
       (tag_name))))
 
@@ -115,11 +116,12 @@ Conditional with pipes
               (pipe_call
                 (identifier)))))
         (ternary_operator)
+        (expression
           (member_expression
             (member_expression
               (identifier)
               (identifier))
-            (identifier))))
+            (identifier)))))
     (end_tag
       (tag_name))))
 

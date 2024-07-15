@@ -431,7 +431,7 @@ module.exports = grammar(HTML, {
           alias('?', $.ternary_operator),
           choice($.group, $._primitive),
           alias(':', $.ternary_operator),
-          choice($.group, $._primitive),
+          choice($.group, $._any_expression),
         ),
       ),
 
