@@ -15,27 +15,24 @@ Switch statement
 
 (document
   (switch_statement
-    (switch_start_expression
-      (control_keyword)
-      (expression
-        (identifier)))
-    (case_statement
-      (case_expression
+    (control_keyword)
+    value: (expression
+      (identifier))
+    body: (switch_body
+      (case_statement
         (control_keyword)
-        (identifier))
-      (element
-        (self_closing_tag
-          (tag_name)))
-      (case_end_expression))
-    (case_statement
-      (case_expression
+        value: (identifier)
+        body: (statement_block
+          (element
+            (self_closing_tag
+              (tag_name)))))
+      (case_statement
         (control_keyword)
-        (identifier))
-      (element
-        (self_closing_tag
-          (tag_name)))
-      (case_end_expression))
-    (switch_end_expression)))
+        value: (identifier)
+        body: (statement_block
+          (element
+            (self_closing_tag
+              (tag_name))))))))
 
 ==============
 Switch-default
@@ -54,23 +51,20 @@ Switch-default
 
 (document
   (switch_statement
-    (switch_start_expression
-      (control_keyword)
-      (expression
-        (identifier)))
-    (case_statement
-      (case_expression
+    (control_keyword)
+    value: (expression
+      (identifier))
+    body: (switch_body
+      (case_statement
         (control_keyword)
-        (identifier))
-      (element
-        (self_closing_tag
-          (tag_name)))
-      (case_end_expression))
-    (default_statement
-      (default_expression
-        (control_keyword))
-      (element
-        (self_closing_tag
-          (tag_name)))
-      (default_end_expression))
-    (switch_end_expression)))
+        value: (identifier)
+        body: (statement_block
+          (element
+            (self_closing_tag
+              (tag_name)))))
+      (default_statement
+        (control_keyword)
+        body: (statement_block
+          (element
+            (self_closing_tag
+              (tag_name))))))))
