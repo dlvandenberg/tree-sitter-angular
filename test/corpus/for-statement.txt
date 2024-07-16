@@ -10,29 +10,28 @@ For-statement
 
 (document
   (for_statement
-    (for_start_expression
-      (control_keyword)
-      (for_declaration
-        (identifier)
-        (special_keyword)
-        (expression
-          (identifier))
-        (special_keyword)
-        (expression
-          (member_expression
-            (identifier)
-            (identifier)))))
-    (element
-      (start_tag
-        (tag_name))
-      (interpolation
-        (expression
-          (member_expression
-            (identifier)
-            (identifier))))
-      (end_tag
-        (tag_name)))
-    (for_end_expression)))
+    (control_keyword)
+    declaration: (for_declaration
+      name: (identifier)
+      (special_keyword)
+      value: (expression
+        (identifier))
+      (special_keyword)
+      track: (expression
+        (member_expression
+          object: (identifier)
+          property: (identifier))))
+    body: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (interpolation
+          (expression
+            (member_expression
+              object: (identifier)
+              property: (identifier))))
+        (end_tag
+          (tag_name))))))
 
 ==========================
 For-statement with aliases
@@ -46,35 +45,34 @@ For-statement with aliases
 
 (document
   (for_statement
-    (for_start_expression
-      (control_keyword)
-      (for_declaration
-        (identifier)
-        (special_keyword)
-        (expression
-          (identifier))
-        (special_keyword)
-        (expression
+    (control_keyword)
+    declaration: (for_declaration
+      name: (identifier)
+      (special_keyword)
+      value: (expression
+        (identifier))
+      (special_keyword)
+      track: (expression
+        (identifier)))
+    reference: (for_reference
+      (special_keyword)
+      alias: (assignment_expression
+        name: (identifier)
+        value: (expression
           (identifier)))
-      (for_reference
-        (special_keyword)
-        (assignment_expression
-          (identifier)
+      alias: (assignment_expression
+        name: (identifier)
+        value: (expression
+          (identifier))))
+    body: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (interpolation
           (expression
             (identifier)))
-        (assignment_expression
-          (identifier)
-          (expression
-            (identifier)))))
-    (element
-      (start_tag
-        (tag_name))
-      (interpolation
-        (expression
-          (identifier)))
-      (end_tag
-        (tag_name)))
-    (for_end_expression)))
+        (end_tag
+          (tag_name))))))
 
 ==============
 For with pipes
@@ -88,33 +86,32 @@ For with pipes
 
 (document
   (for_statement
-    (for_start_expression
-      (control_keyword)
-      (for_declaration
+    (control_keyword)
+    declaration: (for_declaration
+      name: (identifier)
+      (special_keyword)
+      value: (expression
         (identifier)
-        (special_keyword)
-        (expression
-          (identifier)
-          (pipe_sequence
-            (pipe_operator)
-            (pipe_call
-              (identifier))))
-        (special_keyword)
-        (expression
-          (member_expression
-            (identifier)
-            (identifier)))))
-    (element
-      (start_tag
-        (tag_name))
-      (interpolation
-        (expression
-          (member_expression
-            (identifier)
-            (identifier))))
-      (end_tag
-        (tag_name)))
-    (for_end_expression)))
+        pipes: (pipe_sequence
+          (pipe_operator)
+          (pipe_call
+           name: (identifier))))
+      (special_keyword)
+      track: (expression
+        (member_expression
+          object: (identifier)
+          property: (identifier))))
+    body: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (interpolation
+          (expression
+            (member_expression
+              object: (identifier)
+              property: (identifier))))
+        (end_tag
+          (tag_name))))))
 
 =========
 For-empty
@@ -130,31 +127,30 @@ For-empty
 
 (document
   (for_statement
-    (for_start_expression
-      (control_keyword)
-      (for_declaration
-        (identifier)
-        (special_keyword)
-        (expression
-          (identifier))
-        (special_keyword)
-        (expression
-          (identifier))))
-    (element
-      (start_tag
-        (tag_name))
-      (interpolation
-        (expression
-          (identifier)))
-      (end_tag
-        (tag_name)))
-    (empty_statement
-      (empty_expression
-        (control_keyword))
+    (control_keyword)
+    declaration: (for_declaration
+      name: (identifier)
+      (special_keyword)
+      value: (expression
+        (identifier))
+      (special_keyword)
+      track: (expression
+        (identifier)))
+    body: (statement_block
       (element
         (start_tag
           (tag_name))
-        (text)
+        (interpolation
+          (expression
+            (identifier)))
         (end_tag
-          (tag_name)))
-      (for_end_expression))))
+          (tag_name))))
+    (empty_statement
+      (control_keyword)
+      body: (statement_block
+        (element
+          (start_tag
+            (tag_name))
+          (text)
+          (end_tag
+            (tag_name)))))))

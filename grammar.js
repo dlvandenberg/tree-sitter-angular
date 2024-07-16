@@ -180,30 +180,25 @@ module.exports = grammar(HTML, {
 
     // ---------- For Statement ----------
     for_statement: ($) =>
-      seq(
-        $.for_start_expression,
-        repeat($._node),
-        choice($.empty_statement, $.for_end_expression),
+      prec.right(
+        seq(
+          alias($._control_flow_start, '@'),
+          alias('for', $.control_keyword),
+          '(',
+          field('declaration', $.for_declaration),
+          optional(field('reference', $.for_reference)),
+          ')',
+          field('body', $.statement_block),
+          optional($.empty_statement),
+        ),
       ),
 
     empty_statement: ($) =>
-      seq($.empty_expression, repeat($._node), $.for_end_expression),
-
-    for_start_expression: ($) =>
       seq(
         alias($._control_flow_start, '@'),
-        alias('for', $.control_keyword),
-        '(',
-        $.for_declaration,
-        optional(field('reference', $.for_reference)),
-        ')',
-        '{',
+        alias('empty', $.control_keyword),
+        field('body', $.statement_block),
       ),
-
-    empty_expression: ($) =>
-      seq(token(prec(2, '} @')), alias('empty', $.control_keyword), '{'),
-
-    for_end_expression: ($) => $._closing_bracket,
 
     for_declaration: ($) =>
       seq(
@@ -212,7 +207,7 @@ module.exports = grammar(HTML, {
         field('value', $.expression),
         ';',
         alias('track', $.special_keyword),
-        field('value', $.expression),
+        field('track', $.expression),
       ),
 
     for_reference: ($) =>
@@ -220,28 +215,11 @@ module.exports = grammar(HTML, {
         ';',
         alias('let', $.special_keyword),
         field('alias', $.assignment_expression),
-        repeat(seq(choice(';', ','), $.assignment_expression)),
+        repeat(seq(choice(';', ','), field('alias', $.assignment_expression))),
       ),
 
     // ---------- If Statement ----------
     if_statement: ($) => prec.right(seq($._if_start_expression, $._if_body_expression)),
-
-    _if_body_expression: ($) =>
-      prec.right(
-        seq(
-          '(',
-          field('condition', $.if_condition),
-          optional(field('reference', $.if_reference)),
-          ')',
-          field('consequence', $.statement_block),
-          optional(
-            choice(
-              field('alternative', $.else_if_statement),
-              field('alternative', $.else_statement),
-            ),
-          ),
-        ),
-      ),
 
     else_if_statement: ($) =>
       prec.right(seq($._else_if_start_expression, $._if_body_expression)),
@@ -263,6 +241,23 @@ module.exports = grammar(HTML, {
         alias($._control_flow_start, '@'),
         alias('else', $.control_keyword),
         alias('if', $.control_keyword),
+      ),
+
+    _if_body_expression: ($) =>
+      prec.right(
+        seq(
+          '(',
+          field('condition', $.if_condition),
+          optional(field('reference', $.if_reference)),
+          ')',
+          field('consequence', $.statement_block),
+          optional(
+            choice(
+              field('alternative', $.else_if_statement),
+              field('alternative', $.else_statement),
+            ),
+          ),
+        ),
       ),
 
     if_condition: ($) => prec.right(PREC.CALL, $._any_expression),
