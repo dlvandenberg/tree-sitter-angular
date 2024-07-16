@@ -38,6 +38,7 @@ module.exports = grammar(HTML, {
     attribute_name: (_) => /[^<>\*.\[\]\(\)"'=\s]+/,
     text: (_) => /[^<>{}&\s]([^<>{}&]*[^<>{}&\s])?/,
 
+    // ----------- Statement block --------
     statement_block: ($) => prec.right(seq('{', repeat($._node), '}')),
 
     // ---------- Statements ----------
@@ -45,45 +46,38 @@ module.exports = grammar(HTML, {
       choice($.if_statement, $.for_statement, $.defer_statement, $.switch_statement),
 
     // ---------- Switch Statement ----------
+
     switch_statement: ($) =>
-      seq(
-        $.switch_start_expression,
-        repeat1($.case_statement),
-        optional($.default_statement),
-        $.switch_end_expression,
+      prec.right(
+        seq(
+          alias($._control_flow_start, '@'),
+          alias('switch', $.control_keyword),
+          '(',
+          field('value', $.expression),
+          ')',
+          field('body', $.switch_body),
+        ),
       ),
 
-    case_statement: ($) => seq($.case_expression, repeat($._node), $.case_end_expression),
+    switch_body: ($) =>
+      seq('{', repeat1(choice($.case_statement, $.default_statement)), '}'),
 
-    default_statement: ($) =>
-      seq($.default_expression, repeat($._node), $.default_end_expression),
-
-    switch_start_expression: ($) =>
-      seq(
-        alias($._control_flow_start, '@'),
-        alias('switch', $.control_keyword),
-        '(',
-        field('value', $.expression),
-        ')',
-        '{',
-      ),
-
-    case_expression: ($) =>
+    case_statement: ($) =>
       seq(
         alias($._control_flow_start, '@'),
         alias('case', $.control_keyword),
         '(',
         field('value', $._primitive),
         ')',
-        '{',
+        field('body', $.statement_block),
       ),
 
-    default_expression: ($) =>
-      seq(alias($._control_flow_start, '@'), alias('default', $.control_keyword), '{'),
-
-    switch_end_expression: ($) => $._closing_bracket,
-    case_end_expression: ($) => $._closing_bracket,
-    default_end_expression: ($) => $._closing_bracket,
+    default_statement: ($) =>
+      seq(
+        alias($._control_flow_start, '@'),
+        alias('default', $.control_keyword),
+        field('body', $.statement_block),
+      ),
 
     // ---------- Defer Statement ----------
 
@@ -127,7 +121,12 @@ module.exports = grammar(HTML, {
           alias('loading', $.control_keyword),
           optional($.loading_condition),
           field('body', $.statement_block),
-          optional(field('error', $.error_statement)),
+          optional(
+            choice(
+              field('placeholder', $.placeholder_statement),
+              field('error', $.error_statement),
+            ),
+          ),
         ),
       ),
 
