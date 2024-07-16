@@ -10,19 +10,18 @@ If statement
 
 (document
     (if_statement
-      (if_start_expression
         (control_keyword)
-        (if_condition
+        condition: (if_condition
           (binary_expression
-            (identifier)
-            (identifier))))
-      (element
-        (start_tag
-          (tag_name))
-        (text)
-        (end_tag
-          (tag_name)))
-      (if_end_expression)))
+            left: (identifier)
+            right: (identifier)))
+        consequence: (statement_block
+          (element
+            (start_tag
+              (tag_name))
+            (text)
+            (end_tag
+              (tag_name))))))
 
 =================
 If-else statement
@@ -38,33 +37,32 @@ If-else statement
 
 (document
     (if_statement
-      (if_start_expression
         (control_keyword)
-        (if_condition
+        condition: (if_condition
           (binary_expression
-            (identifier)
-            (identifier))))
-      (element
-        (start_tag
-          (tag_name))
-        (text)
-        (end_tag
-          (tag_name)))
-      (else_if_statement
-        (else_if_expression
+            left: (identifier)
+            right: (identifier)))
+        consequence: (statement_block
+          (element
+            (start_tag
+              (tag_name))
+            (text)
+            (end_tag
+              (tag_name))))
+        alternative: (else_if_statement
           (control_keyword)
           (control_keyword)
-          (if_condition
+          condition: (if_condition
             (binary_expression
-              (identifier)
-              (identifier))))
-        (element
-          (start_tag
-            (tag_name))
-          (text)
-          (end_tag
-            (tag_name)))
-        (if_end_expression))))
+              left: (identifier)
+              right: (identifier)))
+          consequence: (statement_block
+            (element
+              (start_tag
+                (tag_name))
+              (text)
+              (end_tag
+                (tag_name)))))))
 
 =================
 Else statement
@@ -80,28 +78,27 @@ Else statement
 
 (document
     (if_statement
-      (if_start_expression
-        (control_keyword)
-        (if_condition
-          (binary_expression
-            (identifier)
-            (identifier))))
-      (element
-        (start_tag
-          (tag_name))
-        (text)
-        (end_tag
-          (tag_name)))
-      (else_statement
-        (else_expression
-          (control_keyword))
+      (control_keyword)
+      condition: (if_condition
+        (binary_expression
+          left: (identifier)
+          right: (identifier)))
+      consequence: (statement_block
         (element
           (start_tag
             (tag_name))
           (text)
           (end_tag
-            (tag_name)))
-        (if_end_expression))))
+            (tag_name))))
+      alternative: (else_statement
+        (control_keyword)
+        (statement_block
+          (element
+            (start_tag
+              (tag_name))
+            (text)
+            (end_tag
+              (tag_name)))))))
 
 =========
 Nested if
@@ -120,43 +117,41 @@ Nested if
 
 (document
   (if_statement
-    (if_start_expression
-      (control_keyword)
-      (if_condition
-        (conditional_expression
-          (identifier)
-          (conditional_operator)
-          (identifier))))
-    (element
-      (start_tag
-        (tag_name))
-      (text)
-      (end_tag
-        (tag_name)))
-    (if_statement
-      (if_start_expression
-        (control_keyword)
-        (if_condition
-          (binary_expression
-            (identifier)
-            (identifier))))
+    (control_keyword)
+    condition: (if_condition
+      (conditional_expression
+        left: (identifier)
+        (conditional_operator)
+        right: (identifier)))
+    consequence: (statement_block
       (element
         (start_tag
           (tag_name))
         (text)
         (end_tag
           (tag_name)))
-      (else_statement
-        (else_expression
-          (control_keyword))
-        (element
-          (start_tag
-            (tag_name))
-          (text)
-          (end_tag
-            (tag_name)))
-        (if_end_expression)))
-    (if_end_expression)))
+      (if_statement
+        (control_keyword)
+        condition: (if_condition
+          (binary_expression
+            left: (identifier)
+            right: (identifier)))
+        consequence: (statement_block
+          (element
+            (start_tag
+              (tag_name))
+            (text)
+            (end_tag
+              (tag_name))))
+        alternative: (else_statement
+          (control_keyword)
+          (statement_block
+            (element
+              (start_tag
+                (tag_name))
+              (text)
+              (end_tag
+                (tag_name)))))))))
 
 =================
 If with reference
@@ -170,31 +165,30 @@ If with reference
 
 (document
   (if_statement
-    (if_start_expression
-      (control_keyword)
-      (if_condition
-        (expression
-          (identifier)
-          (pipe_sequence
-            (pipe_operator)
-            (pipe_call
-              (identifier)))))
-      (if_reference
-        (special_keyword)
-        (identifier)))
-    (element
-      (start_tag
-        (tag_name))
-      (interpolation
-        (expression
-          (identifier)
-          (pipe_sequence
-            (pipe_operator)
-            (pipe_call
-              (identifier)))))
-      (end_tag
-        (tag_name)))
-    (if_end_expression)))
+    (control_keyword)
+    condition: (if_condition
+      (expression
+        (identifier)
+        pipes: (pipe_sequence
+          (pipe_operator)
+          (pipe_call
+            name: (identifier)))))
+    reference: (if_reference
+      (special_keyword)
+      (identifier))
+    consequence: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (interpolation
+          (expression
+            (identifier)
+            pipes: (pipe_sequence
+              (pipe_operator)
+              (pipe_call
+                name: (identifier)))))
+        (end_tag
+          (tag_name))))))
 
 ========================
 If with object reference
@@ -208,32 +202,31 @@ If with object reference
 
 (document
   (if_statement
-    (if_start_expression
-      (control_keyword)
-      (if_condition
-        (expression
-          (object
-            (pair
-              (identifier)
-              (expression
-                (call_expression
-                  (identifier)))))))
-      (if_reference
-        (special_keyword)
-        (identifier)))
-    (element
-      (start_tag
-        (tag_name))
-      (interpolation
-        (expression
-          (identifier)
-          (pipe_sequence
-            (pipe_operator)
-            (pipe_call
-              (identifier)))))
-      (end_tag
-        (tag_name)))
-    (if_end_expression)))
+    (control_keyword)
+    condition: (if_condition
+      (expression
+        (object
+          (pair
+            key: (identifier)
+            value: (expression
+              (call_expression
+                function: (identifier)))))))
+    reference: (if_reference
+      (special_keyword)
+      (identifier))
+    consequence: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (interpolation
+          (expression
+            (identifier)
+            pipes: (pipe_sequence
+              (pipe_operator)
+              (pipe_call
+                name: (identifier)))))
+        (end_tag
+          (tag_name))))))
 
 ==========================
 Unary and conditional expr
@@ -247,26 +240,25 @@ Unary and conditional expr
 
 (document
   (if_statement
-    (if_start_expression
-      (control_keyword)
-      (if_condition
-        (conditional_expression
-          (unary_expression
-            (unary_operator)
-            (expression
-              (identifier)))
-          (conditional_operator)
-          (unary_expression
-            (unary_operator)
-            (expression
-              (identifier))))))
-    (element
-      (start_tag
-        (tag_name))
-      (text)
-      (end_tag
-        (tag_name)))
-    (if_end_expression)))
+    (control_keyword)
+    condition: (if_condition
+      (conditional_expression
+        left: (unary_expression
+          operator: (unary_operator)
+          value: (expression
+            (identifier)))
+        (conditional_operator)
+        right: (unary_expression
+          operator: (unary_operator)
+          value: (expression
+            (identifier)))))
+    consequence: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (text)
+        (end_tag
+          (tag_name))))))
 
 ======================
 Multiple if conditions
@@ -280,21 +272,20 @@ Multiple if conditions
 
 (document
   (if_statement
-    (if_start_expression
-      (control_keyword)
-      (if_condition
-        (conditional_expression
-          (binary_expression
-            (identifier)
-            (identifier))
-          (conditional_operator)
-          (binary_expression
-            (identifier)
-            (identifier)))))
-    (element
-      (start_tag
-        (tag_name))
-      (text)
-      (end_tag
-        (tag_name)))
-    (if_end_expression)))
+    (control_keyword)
+    condition: (if_condition
+      (conditional_expression
+        left: (binary_expression
+          left: (identifier)
+          right: (identifier))
+        (conditional_operator)
+        right: (binary_expression
+          left: (identifier)
+          right: (identifier))))
+    consequence: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (text)
+        (end_tag
+          (tag_name))))))
