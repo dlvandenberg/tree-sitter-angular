@@ -10,15 +10,14 @@ Defer statement
 
 (document
   (defer_statement
-    (defer_start_expression
-      (control_keyword))
-    (element
-      (start_tag
-        (tag_name))
-      (text)
-      (end_tag
-        (tag_name)))
-    (defer_end_expression)))
+    (control_keyword)
+    body: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (text)
+        (end_tag
+          (tag_name))))))
 
 ==================
 Defer with trigger
@@ -32,16 +31,15 @@ Defer with trigger
 
 (document
   (defer_statement
-    (defer_start_expression
-      (control_keyword)
-      (defer_trigger
-        (defer_trigger_condition
-          (special_keyword)
-          (identifier))))
-    (element
-      (self_closing_tag
-        (tag_name)))
-    (defer_end_expression)))
+    (control_keyword)
+    (defer_trigger
+      condition: (defer_trigger_condition
+        (special_keyword)
+        trigger: (identifier)))
+    body: (statement_block
+      (element
+        (self_closing_tag
+          (tag_name))))))
 
 ============================
 Defer with multiple triggers
@@ -55,22 +53,21 @@ Defer with multiple triggers
 
 (document
   (defer_statement
-    (defer_start_expression
-      (control_keyword)
-      (defer_trigger
-        (defer_trigger_condition
-          (special_keyword)
-          (identifier))
-        (defer_trigger_condition
-          (special_keyword)
-          (call_expression
-            (identifier)
-            (arguments
-              (identifier))))))
-    (element
-      (self_closing_tag
-        (tag_name)))
-    (defer_end_expression)))
+    (control_keyword)
+    (defer_trigger
+      condition: (defer_trigger_condition
+        (special_keyword)
+        trigger: (identifier))
+      condition: (defer_trigger_condition
+        (special_keyword)
+        trigger: (call_expression
+          function: (identifier)
+          arguments: (arguments
+            (identifier)))))
+    body: (statement_block
+      (element
+        (self_closing_tag
+          (tag_name))))))
 
 ===================
 Defer with prefetch
@@ -84,20 +81,19 @@ Defer with prefetch
 
 (document
   (defer_statement
-    (defer_start_expression
-      (control_keyword)
-      (defer_trigger
-        (defer_trigger_condition
-          (special_keyword)
-          (identifier))
-        (defer_trigger_condition
-          (prefetch_keyword)
-          (special_keyword)
-          (identifier))))
-    (element
-      (self_closing_tag
-        (tag_name)))
-    (defer_end_expression)))
+    (control_keyword)
+    (defer_trigger
+      condition: (defer_trigger_condition
+        (special_keyword)
+        trigger: (identifier))
+      condition: (defer_trigger_condition
+        (prefetch_keyword)
+        (special_keyword)
+        trigger: (identifier)))
+    body: (statement_block
+      (element
+        (self_closing_tag
+          (tag_name))))))
 
 ==============================
 Defer with conditional trigger
@@ -111,20 +107,19 @@ Defer with conditional trigger
 
 (document
   (defer_statement
-    (defer_start_expression
-      (control_keyword)
-      (defer_trigger
-        (defer_trigger_condition
-          (special_keyword)
-          (binary_expression
-            (member_expression
-              (identifier)
-              (identifier))
-            (identifier)))))
-    (element
-      (self_closing_tag
-        (tag_name)))
-    (defer_end_expression)))
+    (control_keyword)
+    (defer_trigger
+      condition: (defer_trigger_condition
+        (special_keyword)
+        trigger: (binary_expression
+          left: (member_expression
+            object: (identifier)
+            property: (identifier))
+          right: (identifier))))
+    body: (statement_block
+      (element
+        (self_closing_tag
+          (tag_name))))))
 
 ===========
 Placeholder
@@ -140,18 +135,17 @@ Placeholder
 
 (document
   (defer_statement
-    (defer_start_expression
-      (control_keyword))
-    (element
-      (self_closing_tag
-        (tag_name)))
-    (placeholder_statement
-      (placeholder_expression
-        (control_keyword))
+    (control_keyword)
+    body: (statement_block
       (element
         (self_closing_tag
-          (tag_name)))
-      (defer_end_expression))))
+          (tag_name))))
+    placeholder: (placeholder_statement
+      (control_keyword)
+      body: (statement_block
+        (element
+          (self_closing_tag
+            (tag_name)))))))
 
 ========================
 Placeholder with minimum
@@ -167,22 +161,22 @@ Placeholder with minimum
 
 (document
   (defer_statement
-    (defer_start_expression
-      (control_keyword))
-    (element
-      (self_closing_tag
-        (tag_name)))
-    (placeholder_statement
-      (placeholder_expression
-        (control_keyword)
-        (placeholder_minimum
-          (special_keyword)
-          (number)
-          (unit)))
+    (control_keyword)
+    body: (statement_block
       (element
         (self_closing_tag
-          (tag_name)))
-      (defer_end_expression))))
+          (tag_name))))
+    placeholder: (placeholder_statement
+        (control_keyword)
+        (placeholder_minimum
+          minimum: (timed_expression
+            (special_keyword)
+            value: (number)
+            (unit)))
+        body: (statement_block
+        (element
+          (self_closing_tag
+            (tag_name)))))))
 
 =======
 Loading
@@ -198,18 +192,17 @@ Loading
 
 (document
   (defer_statement
-    (defer_start_expression
-      (control_keyword))
-    (element
-      (self_closing_tag
-        (tag_name)))
-    (loading_statement
-      (loading_expression
-        (control_keyword))
+    (control_keyword)
+    body: (statement_block
       (element
         (self_closing_tag
-          (tag_name)))
-      (defer_end_expression))))
+          (tag_name))))
+    loading: (loading_statement
+      (control_keyword)
+      body: (statement_block
+        (element
+          (self_closing_tag
+            (tag_name)))))))
 
 ====================
 Loading with minimum
@@ -225,22 +218,22 @@ Loading with minimum
 
 (document
   (defer_statement
-    (defer_start_expression
-      (control_keyword))
-    (element
-      (self_closing_tag
-        (tag_name)))
-    (loading_statement
-      (loading_expression
-        (control_keyword)
-        (loading_condition
-          (special_keyword)
-          (number)
-          (unit)))
+    (control_keyword)
+    body: (statement_block
       (element
         (self_closing_tag
-          (tag_name)))
-      (defer_end_expression))))
+          (tag_name))))
+    loading: (loading_statement
+      (control_keyword)
+      (loading_condition
+        condition: (timed_expression
+          (special_keyword)
+          value: (number)
+          (unit)))
+      body: (statement_block
+        (element
+          (self_closing_tag
+            (tag_name)))))))
 
 ==================
 Loading with after
@@ -256,22 +249,22 @@ Loading with after
 
 (document
   (defer_statement
-    (defer_start_expression
-      (control_keyword))
-    (element
-      (self_closing_tag
-        (tag_name)))
-    (loading_statement
-      (loading_expression
-        (control_keyword)
-        (loading_condition
-          (special_keyword)
-          (number)
-          (unit)))
+    (control_keyword)
+    body: (statement_block
       (element
         (self_closing_tag
-          (tag_name)))
-      (defer_end_expression))))
+          (tag_name))))
+    loading: (loading_statement
+      (control_keyword)
+      (loading_condition
+        condition: (timed_expression
+          (special_keyword)
+          value: (number)
+          (unit)))
+      body: (statement_block
+        (element
+          (self_closing_tag
+            (tag_name)))))))
 
 =========================
 Loading minimum and after
@@ -287,25 +280,26 @@ Loading minimum and after
 
 (document
   (defer_statement
-    (defer_start_expression
-      (control_keyword))
-    (element
-      (self_closing_tag
-        (tag_name)))
-    (loading_statement
-      (loading_expression
-        (control_keyword)
-        (loading_condition
-          (special_keyword)
-          (number)
-          (unit)
-          (special_keyword)
-          (number)
-          (unit)))
+    (control_keyword)
+    body: (statement_block
       (element
         (self_closing_tag
-          (tag_name)))
-      (defer_end_expression))))
+          (tag_name))))
+    loading: (loading_statement
+      (control_keyword)
+      (loading_condition
+        condition: (timed_expression
+          (special_keyword)
+          value: (number)
+          (unit))
+        condition: (timed_expression
+          (special_keyword)
+          value: (number)
+          (unit)))
+      body: (statement_block
+        (element
+          (self_closing_tag
+            (tag_name)))))))
 
 =====
 Error
@@ -321,18 +315,17 @@ Error
 
 (document
   (defer_statement
-    (defer_start_expression
-      (control_keyword))
-    (element
-      (self_closing_tag
-        (tag_name)))
-    (error_statement
-      (error_expression
-        (control_keyword))
+    (control_keyword)
+    body: (statement_block
       (element
         (self_closing_tag
-          (tag_name)))
-      (defer_end_expression))))
+          (tag_name))))
+    error: (error_statement
+      (control_keyword)
+      body: (statement_block
+        (element
+          (self_closing_tag
+            (tag_name)))))))
 
 ===============================
 Defer-placeholder-loading-error
@@ -352,42 +345,44 @@ Defer-placeholder-loading-error
 
 (document
   (defer_statement
-    (defer_start_expression
-      (control_keyword)
-      (defer_trigger
-        (defer_trigger_condition
-          (special_keyword)
-          (identifier))))
-    (element
-      (self_closing_tag
-        (tag_name)))
-    (placeholder_statement
-      (placeholder_expression
-        (control_keyword)
-        (placeholder_minimum
-          (special_keyword)
-          (number)
-          (unit)))
+    (control_keyword)
+    (defer_trigger
+      condition: (defer_trigger_condition
+        (special_keyword)
+        trigger: (identifier)))
+    body: (statement_block
       (element
         (self_closing_tag
-          (tag_name)))
-      (loading_statement
-        (loading_expression
-          (control_keyword)
-          (loading_condition
-            (special_keyword)
-            (number)
-            (unit)
-            (special_keyword)
-            (number)
-            (unit)))
+          (tag_name))))
+    placeholder: (placeholder_statement
+      (control_keyword)
+      (placeholder_minimum
+        minimum: (timed_expression
+          (special_keyword)
+          value: (number)
+          (unit)))
+      body: (statement_block
         (element
           (self_closing_tag
-            (tag_name)))
-        (error_statement
-          (error_expression
-            (control_keyword))
+            (tag_name))))
+      loading: (loading_statement
+          (control_keyword)
+          (loading_condition
+            condition: (timed_expression
+              (special_keyword)
+              value: (number)
+              (unit))
+            condition: (timed_expression
+              (special_keyword)
+              value: (number)
+              (unit)))
+        body: (statement_block
           (element
             (self_closing_tag
-              (tag_name)))
-          (defer_end_expression))))))
+              (tag_name))))
+        error: (error_statement
+          (control_keyword)
+          body: (statement_block
+            (element
+              (self_closing_tag
+                (tag_name)))))))))

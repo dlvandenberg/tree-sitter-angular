@@ -86,79 +86,73 @@ module.exports = grammar(HTML, {
     default_end_expression: ($) => $._closing_bracket,
 
     // ---------- Defer Statement ----------
+
     defer_statement: ($) =>
-      seq(
-        $.defer_start_expression,
-        repeat($._node),
-        choice(
-          $.placeholder_statement,
-          $.loading_statement,
-          $.error_statement,
-          $.defer_end_expression,
+      prec.right(
+        seq(
+          alias($._control_flow_start, '@'),
+          alias('defer', $.control_keyword),
+          optional($.defer_trigger),
+          field('body', $.statement_block),
+          optional(
+            choice(
+              field('placeholder', $.placeholder_statement),
+              field('loading', $.loading_statement),
+              field('error', $.error_statement),
+            ),
+          ),
         ),
       ),
 
     placeholder_statement: ($) =>
-      seq(
-        $.placeholder_expression,
-        repeat($._node),
-        choice($.loading_statement, $.error_statement, $.defer_end_expression),
+      prec.right(
+        seq(
+          alias($._control_flow_start, '@'),
+          alias('placeholder', $.control_keyword),
+          optional($.placeholder_minimum),
+          field('body', $.statement_block),
+          optional(
+            choice(
+              field('loading', $.loading_statement),
+              field('error', $.error_statement),
+            ),
+          ),
+        ),
       ),
 
     loading_statement: ($) =>
-      seq(
-        $.loading_expression,
-        repeat($._node),
-        choice($.error_statement, $.placeholder_statement, $.defer_end_expression),
+      prec.right(
+        seq(
+          alias($._control_flow_start, '@'),
+          alias('loading', $.control_keyword),
+          optional($.loading_condition),
+          field('body', $.statement_block),
+          optional(field('error', $.error_statement)),
+        ),
       ),
 
     error_statement: ($) =>
-      seq($.error_expression, repeat($._node), $.defer_end_expression),
-
-    defer_start_expression: ($) =>
       seq(
         alias($._control_flow_start, '@'),
-        alias('defer', $.control_keyword),
-        optional($.defer_trigger),
-        '{',
+        alias('error', $.control_keyword),
+        field('body', $.statement_block),
       ),
-
-    placeholder_expression: ($) =>
-      seq(
-        token(prec(2, '} @')),
-        alias('placeholder', $.control_keyword),
-        optional($.placeholder_minimum),
-        '{',
-      ),
-
-    loading_expression: ($) =>
-      seq(
-        token(prec(2, '} @')),
-        alias('loading', $.control_keyword),
-        optional($.loading_condition),
-        '{',
-      ),
-
-    error_expression: ($) =>
-      seq(token(prec(2, '} @')), alias('error', $.control_keyword), '{'),
-
-    defer_end_expression: ($) => $._closing_bracket,
 
     defer_trigger: ($) =>
       seq(
         '(',
-        $.defer_trigger_condition,
-        optional(repeat(seq(';', $.defer_trigger_condition))),
+        field('condition', $.defer_trigger_condition),
+        optional(repeat(seq(';', field('condition', $.defer_trigger_condition)))),
         ')',
       ),
 
-    placeholder_minimum: ($) => seq('(', field('minimum', $._timed_expression), ')'),
+    placeholder_minimum: ($) => seq('(', field('minimum', $.timed_expression), ')'),
 
     loading_condition: ($) =>
       seq(
         '(',
-        field('condition', $._timed_expression),
-        optional(seq(';', field('condition', $._timed_expression))),
+        field('condition', $.timed_expression),
+        optional(seq(';', field('condition', $.timed_expression))),
         ')',
       ),
 
@@ -171,7 +165,7 @@ module.exports = grammar(HTML, {
         ),
       ),
 
-    _timed_expression: ($) =>
+    timed_expression: ($) =>
       seq(
         alias(choice('after', 'minimum'), $.special_keyword),
         field('value', $.number),
