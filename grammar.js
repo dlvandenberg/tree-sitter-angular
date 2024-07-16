@@ -38,6 +38,8 @@ module.exports = grammar(HTML, {
     attribute_name: (_) => /[^<>\*.\[\]\(\)"'=\s]+/,
     text: (_) => /[^<>{}&\s]([^<>{}&]*[^<>{}&\s])?/,
 
+    statement_block: ($) => prec.right(seq('{', repeat($._node), '}')),
+
     // ---------- Statements ----------
     _any_statement: ($) =>
       choice($.if_statement, $.for_statement, $.defer_statement, $.switch_statement),
@@ -222,52 +224,48 @@ module.exports = grammar(HTML, {
       ),
 
     // ---------- If Statement ----------
-    if_statement: ($) =>
-      seq(
-        $.if_start_expression,
-        repeat($._node),
-        choice($.else_if_statement, $.else_statement, $.if_end_expression),
+    if_statement: ($) => prec.right(seq($._if_start_expression, $._if_body_expression)),
+
+    _if_body_expression: ($) =>
+      prec.right(
+        seq(
+          '(',
+          field('condition', $.if_condition),
+          optional(field('reference', $.if_reference)),
+          ')',
+          field('consequence', $.statement_block),
+          optional(
+            choice(
+              field('alternative', $.else_if_statement),
+              field('alternative', $.else_statement),
+            ),
+          ),
+        ),
       ),
 
     else_if_statement: ($) =>
-      seq(
-        $.else_if_expression,
-        repeat($._node),
-        choice($.else_if_statement, $.else_statement, $.if_end_expression),
+      prec.right(seq($._else_if_start_expression, $._if_body_expression)),
+
+    else_statement: ($) =>
+      prec.right(
+        seq(
+          alias($._control_flow_start, '@'),
+          alias('else', $.control_keyword),
+          $.statement_block,
+        ),
       ),
 
-    else_statement: ($) => seq($.else_expression, repeat($._node), $.if_end_expression),
+    _if_start_expression: ($) =>
+      seq(alias($._control_flow_start, '@'), alias('if', $.control_keyword)),
 
-    if_start_expression: ($) =>
+    _else_if_start_expression: ($) =>
       seq(
         alias($._control_flow_start, '@'),
-        alias('if', $.control_keyword),
-        '(',
-        $.if_condition,
-        optional(field('reference', $.if_reference)),
-        ')',
-        '{',
-      ),
-
-    else_if_expression: ($) =>
-      seq(
-        token(prec(2, '} @')),
         alias('else', $.control_keyword),
         alias('if', $.control_keyword),
-        '(',
-        $.if_condition,
-        optional(field('reference', $.if_reference)),
-        ')',
-        '{',
       ),
 
-    else_expression: ($) =>
-      seq(token(prec(2, '} @')), alias('else', $.control_keyword), '{'),
-
-    if_end_expression: ($) => $._closing_bracket,
-
     if_condition: ($) => prec.right(PREC.CALL, $._any_expression),
-
     if_reference: ($) => seq(';', alias('as', $.special_keyword), $.identifier),
 
     // ---------- Expressions -----------
@@ -429,9 +427,9 @@ module.exports = grammar(HTML, {
         seq(
           field('condition', $._any_expression),
           alias('?', $.ternary_operator),
-          choice($.group, $._primitive),
+          field('consequence', choice($.group, $._primitive)),
           alias(':', $.ternary_operator),
-          choice($.group, $._any_expression),
+          field('alternative', choice($.group, $._any_expression)),
         ),
       ),
 
@@ -448,13 +446,10 @@ module.exports = grammar(HTML, {
       prec.right(
         PREC.CALL,
         seq(
-          field(
-            'condition',
-            choice($._primitive, $.unary_expression, $.binary_expression),
-          ),
+          field('left', choice($._primitive, $.unary_expression, $.binary_expression)),
           alias(choice('||', '&&'), $.conditional_operator),
           field(
-            'condition',
+            'right',
             choice(
               $._primitive,
               $.unary_expression,
