@@ -23,9 +23,17 @@ This parser extends [tree-sitter-html](https://github.com/tree-sitter/tree-sitte
 - [x] Defer-statements (v17)
 - [x] ICU message format
 
+## Requirements
+
+- [Neovim](https://neovim.io/) nightly recommended (as it includes the filetype detection of Angular Templates)
+
 ## Filetype
 
-By default Angular's template files are marked as HTML and it will use the HTML parser. To use the Angular parser instead, you will need to create a _plugin_ that sets the filetype correctly and registers the filetype for the `angular` parser in treesitter.
+In the nightly neovim built (or release 0.11.x), the filetype detection for Angular templates is included. It will detect Angular HTML templates, based on it's contents, and set the filetype to `htmlangular`.
+
+If you are using an older version, you must set the filetype yourself.
+
+E.g. mark the file as `htmlangular` if it matches the pattern `*.component.html`:
 
 Create a `plugin` in `~/.config/nvim/plugin/angular.lua` with the following:
 
@@ -35,20 +43,15 @@ vim.filetype.add({
     [".*%.component%.html"] = "angular.html", -- Sets the filetype to `angular.html` if it matches the pattern
   },
 })
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "angular.html",
-  callback = function()
-    vim.treesitter.language.register("angular", "angular.html") -- Register the filetype with treesitter for the `angular` language/parser
-  end,
-})
 ```
 
-You may need to include this new filetype (`angular.html`) for other plugins, like [LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#angularls) for example:
+## LSP's or other plugins
+
+You may need to include this new filetype (`htmlangular`) for other plugins, like [LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#angularls) for example:
 
 ```lua
 require('lspconfig').angularls.setup {
-  filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'angular.html' }
+  filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' }
 }
 ```
 
