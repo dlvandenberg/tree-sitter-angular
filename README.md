@@ -40,7 +40,7 @@ Create a `plugin` in `~/.config/nvim/plugin/angular.lua` with the following:
 ```lua
 vim.filetype.add({
   pattern = {
-    [".*%.component%.html"] = "angular.html", -- Sets the filetype to `angular.html` if it matches the pattern
+    [".*%.component%.html"] = "htmlangular", -- Sets the filetype to `htmlangular` if it matches the pattern
   },
 })
 ```
