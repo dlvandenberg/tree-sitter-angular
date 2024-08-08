@@ -480,7 +480,7 @@
       "value": "[^<>{}&\\s]([^<>{}&]*[^<>{}&\\s])?"
     },
     "statement_block": {
-      "type": "PREC_RIGHT",
+      "type": "PREC_LEFT",
       "value": 0,
       "content": {
         "type": "SEQ",
@@ -1522,7 +1522,7 @@
       ]
     },
     "_if_body_expression": {
-      "type": "PREC_RIGHT",
+      "type": "PREC_LEFT",
       "value": 0,
       "content": {
         "type": "SEQ",

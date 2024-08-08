@@ -237,7 +237,7 @@ module.exports = grammar(HTML, {
       ),
 
     _if_body_expression: ($) =>
-      prec.right(
+      prec.left(
         seq(
           '(',
           field('condition', $.if_condition),
