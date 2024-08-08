@@ -874,6 +874,14 @@
           "named": true
         },
         {
+          "type": "else_if_statement",
+          "named": true
+        },
+        {
+          "type": "else_statement",
+          "named": true
+        },
+        {
           "type": "entity",
           "named": true
         },
@@ -937,6 +945,14 @@
           "named": true
         },
         {
+          "type": "else_if_statement",
+          "named": true
+        },
+        {
+          "type": "else_statement",
+          "named": true
+        },
+        {
           "type": "end_tag",
           "named": true
         },
@@ -995,20 +1011,6 @@
     "type": "else_if_statement",
     "named": true,
     "fields": {
-      "alternative": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "else_if_statement",
-            "named": true
-          },
-          {
-            "type": "else_statement",
-            "named": true
-          }
-        ]
-      },
       "condition": {
         "multiple": false,
         "required": true,
@@ -1431,6 +1433,14 @@
           "named": true
         },
         {
+          "type": "else_if_statement",
+          "named": true
+        },
+        {
+          "type": "else_statement",
+          "named": true
+        },
+        {
           "type": "entity",
           "named": true
         },
@@ -1587,20 +1597,6 @@
     "type": "if_statement",
     "named": true,
     "fields": {
-      "alternative": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "else_if_statement",
-            "named": true
-          },
-          {
-            "type": "else_statement",
-            "named": true
-          }
-        ]
-      },
       "condition": {
         "multiple": false,
         "required": true,
@@ -2248,6 +2244,14 @@
         },
         {
           "type": "element",
+          "named": true
+        },
+        {
+          "type": "else_if_statement",
+          "named": true
+        },
+        {
+          "type": "else_statement",
           "named": true
         },
         {
