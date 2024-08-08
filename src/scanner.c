@@ -235,7 +235,7 @@ static bool scan_implicit_end_tag(Scanner *scanner, TSLexer *lexer) {
       }
     }
   } else if (
-      parent && 
+      parent &&
       (
         !tag_can_contain(parent, &next_tag) ||
         ((parent->type == HTML || parent->type == HEAD || parent->type == BODY) && lexer->eof(lexer))
@@ -367,6 +367,7 @@ static bool scan(Scanner *scanner, TSLexer *lexer, const bool *valid_symbols) {
       advance(lexer);
 
       if (lexer->lookahead == '}' &&
+          scanner->tags.size > 0 &&
           array_back(&scanner->tags)->type == INTERPOLATION) {
         advance(lexer);
         lexer->mark_end(lexer);

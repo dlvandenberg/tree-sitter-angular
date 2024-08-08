@@ -43,7 +43,7 @@ module.exports = grammar(HTML, {
 
     // ---------- Statements ----------
     _any_statement: ($) =>
-      choice($.if_statement, $.for_statement, $.defer_statement, $.switch_statement),
+      choice($.if_statement, $.for_statement, $.defer_statement, $.switch_statement, $.else_statement, $.else_if_statement),
 
     // ---------- Switch Statement ----------
 
@@ -237,19 +237,13 @@ module.exports = grammar(HTML, {
       ),
 
     _if_body_expression: ($) =>
-      prec.right(
+      prec.left(
         seq(
           '(',
           field('condition', $.if_condition),
           optional(field('reference', $.if_reference)),
           ')',
           field('consequence', $.statement_block),
-          optional(
-            choice(
-              field('alternative', $.else_if_statement),
-              field('alternative', $.else_statement),
-            ),
-          ),
         ),
       ),
 
