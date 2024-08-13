@@ -43,7 +43,23 @@ module.exports = grammar(HTML, {
 
     // ---------- Statements ----------
     _any_statement: ($) =>
-      choice($.if_statement, $.for_statement, $.defer_statement, $.switch_statement),
+      choice(
+        $.if_statement,
+        $.for_statement,
+        $.defer_statement,
+        $.switch_statement,
+        $._alternative_statement,
+      ),
+
+    _alternative_statement: ($) =>
+      choice(
+        field('alternative', $.else_statement),
+        field('alternative_condition', $.else_if_statement),
+        field('empty', $.empty_statement),
+        field('placeholder', $.placeholder_statement),
+        field('loading', $.loading_statement),
+        field('error', $.error_statement),
+      ),
 
     // ---------- Switch Statement ----------
 
@@ -82,51 +98,32 @@ module.exports = grammar(HTML, {
     // ---------- Defer Statement ----------
 
     defer_statement: ($) =>
-      prec.right(
+      prec.left(
         seq(
           alias($._control_flow_start, '@'),
           alias('defer', $.control_keyword),
           optional($.defer_trigger),
           field('body', $.statement_block),
-          optional(
-            choice(
-              field('placeholder', $.placeholder_statement),
-              field('loading', $.loading_statement),
-              field('error', $.error_statement),
-            ),
-          ),
         ),
       ),
 
     placeholder_statement: ($) =>
-      prec.right(
+      prec.left(
         seq(
           alias($._control_flow_start, '@'),
           alias('placeholder', $.control_keyword),
           optional($.placeholder_minimum),
           field('body', $.statement_block),
-          optional(
-            choice(
-              field('loading', $.loading_statement),
-              field('error', $.error_statement),
-            ),
-          ),
         ),
       ),
 
     loading_statement: ($) =>
-      prec.right(
+      prec.left(
         seq(
           alias($._control_flow_start, '@'),
           alias('loading', $.control_keyword),
           optional($.loading_condition),
           field('body', $.statement_block),
-          optional(
-            choice(
-              field('placeholder', $.placeholder_statement),
-              field('error', $.error_statement),
-            ),
-          ),
         ),
       ),
 
@@ -173,7 +170,7 @@ module.exports = grammar(HTML, {
 
     // ---------- For Statement ----------
     for_statement: ($) =>
-      prec.right(
+      prec.left(
         seq(
           alias($._control_flow_start, '@'),
           alias('for', $.control_keyword),
@@ -182,7 +179,6 @@ module.exports = grammar(HTML, {
           optional(field('reference', $.for_reference)),
           ')',
           field('body', $.statement_block),
-          optional($.empty_statement),
         ),
       ),
 
@@ -237,19 +233,13 @@ module.exports = grammar(HTML, {
       ),
 
     _if_body_expression: ($) =>
-      prec.right(
+      prec.left(
         seq(
           '(',
           field('condition', $.if_condition),
           optional(field('reference', $.if_reference)),
           ')',
           field('consequence', $.statement_block),
-          optional(
-            choice(
-              field('alternative', $.else_if_statement),
-              field('alternative', $.else_statement),
-            ),
-          ),
         ),
       ),
 
