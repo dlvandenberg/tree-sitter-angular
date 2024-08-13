@@ -144,13 +144,75 @@ For-empty
           (expression
             (identifier)))
         (end_tag
-          (tag_name))))
-    (empty_statement
-      (control_keyword)
-      body: (statement_block
-        (element
-          (start_tag
-            (tag_name))
-          (text)
-          (end_tag
-            (tag_name)))))))
+          (tag_name)))))
+  empty: (empty_statement
+    (control_keyword)
+    body: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (text)
+        (end_tag
+          (tag_name))))))
+
+=============
+Consecutive For-statement
+=============
+
+@for (item of items; track item.id) {
+  <li>{{ item.name }}</li>
+}
+
+@for (item of otherItems; track item.id) {
+  <li>{{ item.name }}</li>
+}
+
+---
+
+(document
+  (for_statement
+    (control_keyword)
+    declaration: (for_declaration
+      name: (identifier)
+      (special_keyword)
+      value: (expression
+        (identifier))
+      (special_keyword)
+      track: (expression
+        (member_expression
+          object: (identifier)
+          property: (identifier))))
+    body: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (interpolation
+          (expression
+            (member_expression
+              object: (identifier)
+              property: (identifier))))
+        (end_tag
+          (tag_name)))))
+  (for_statement
+    (control_keyword)
+    declaration: (for_declaration
+      name: (identifier)
+      (special_keyword)
+      value: (expression
+        (identifier))
+      (special_keyword)
+      track: (expression
+        (member_expression
+          object: (identifier)
+          property: (identifier))))
+    body: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (interpolation
+          (expression
+            (member_expression
+              object: (identifier)
+              property: (identifier))))
+        (end_tag
+          (tag_name))))))

@@ -699,36 +699,6 @@
             "named": true
           }
         ]
-      },
-      "error": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "error_statement",
-            "named": true
-          }
-        ]
-      },
-      "loading": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "loading_statement",
-            "named": true
-          }
-        ]
-      },
-      "placeholder": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "placeholder_statement",
-            "named": true
-          }
-        ]
       }
     },
     "children": {
@@ -856,7 +826,68 @@
   {
     "type": "document",
     "named": true,
-    "fields": {},
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "else_statement",
+            "named": true
+          }
+        ]
+      },
+      "alternative_condition": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "else_if_statement",
+            "named": true
+          }
+        ]
+      },
+      "empty": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "empty_statement",
+            "named": true
+          }
+        ]
+      },
+      "error": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "error_statement",
+            "named": true
+          }
+        ]
+      },
+      "loading": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "loading_statement",
+            "named": true
+          }
+        ]
+      },
+      "placeholder": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "placeholder_statement",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": false,
@@ -919,7 +950,68 @@
   {
     "type": "element",
     "named": true,
-    "fields": {},
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "else_statement",
+            "named": true
+          }
+        ]
+      },
+      "alternative_condition": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "else_if_statement",
+            "named": true
+          }
+        ]
+      },
+      "empty": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "empty_statement",
+            "named": true
+          }
+        ]
+      },
+      "error": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "error_statement",
+            "named": true
+          }
+        ]
+      },
+      "loading": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "loading_statement",
+            "named": true
+          }
+        ]
+      },
+      "placeholder": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "placeholder_statement",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -995,20 +1087,6 @@
     "type": "else_if_statement",
     "named": true,
     "fields": {
-      "alternative": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "else_if_statement",
-            "named": true
-          },
-          {
-            "type": "else_statement",
-            "named": true
-          }
-        ]
-      },
       "condition": {
         "multiple": false,
         "required": true,
@@ -1361,15 +1439,11 @@
       }
     },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
           "type": "control_keyword",
-          "named": true
-        },
-        {
-          "type": "empty_statement",
           "named": true
         }
       ]
@@ -1413,7 +1487,68 @@
   {
     "type": "icu_case",
     "named": true,
-    "fields": {},
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "else_statement",
+            "named": true
+          }
+        ]
+      },
+      "alternative_condition": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "else_if_statement",
+            "named": true
+          }
+        ]
+      },
+      "empty": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "empty_statement",
+            "named": true
+          }
+        ]
+      },
+      "error": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "error_statement",
+            "named": true
+          }
+        ]
+      },
+      "loading": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "loading_statement",
+            "named": true
+          }
+        ]
+      },
+      "placeholder": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "placeholder_statement",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -1587,20 +1722,6 @@
     "type": "if_statement",
     "named": true,
     "fields": {
-      "alternative": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "else_if_statement",
-            "named": true
-          },
-          {
-            "type": "else_statement",
-            "named": true
-          }
-        ]
-      },
       "condition": {
         "multiple": false,
         "required": true,
@@ -1708,26 +1829,6 @@
         "types": [
           {
             "type": "statement_block",
-            "named": true
-          }
-        ]
-      },
-      "error": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "error_statement",
-            "named": true
-          }
-        ]
-      },
-      "placeholder": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "placeholder_statement",
             "named": true
           }
         ]
@@ -2074,26 +2175,6 @@
             "named": true
           }
         ]
-      },
-      "error": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "error_statement",
-            "named": true
-          }
-        ]
-      },
-      "loading": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "loading_statement",
-            "named": true
-          }
-        ]
       }
     },
     "children": {
@@ -2233,7 +2314,68 @@
   {
     "type": "statement_block",
     "named": true,
-    "fields": {},
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "else_statement",
+            "named": true
+          }
+        ]
+      },
+      "alternative_condition": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "else_if_statement",
+            "named": true
+          }
+        ]
+      },
+      "empty": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "empty_statement",
+            "named": true
+          }
+        ]
+      },
+      "error": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "error_statement",
+            "named": true
+          }
+        ]
+      },
+      "loading": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "loading_statement",
+            "named": true
+          }
+        ]
+      },
+      "placeholder": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "placeholder_statement",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": false,

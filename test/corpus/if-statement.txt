@@ -48,21 +48,21 @@ If-else statement
               (tag_name))
             (text)
             (end_tag
-              (tag_name))))
-        alternative: (else_if_statement
-          (control_keyword)
-          (control_keyword)
-          condition: (if_condition
-            (binary_expression
-              left: (identifier)
-              right: (identifier)))
-          consequence: (statement_block
-            (element
-              (start_tag
-                (tag_name))
-              (text)
-              (end_tag
-                (tag_name)))))))
+              (tag_name)))))
+    alternative_condition: (else_if_statement
+      (control_keyword)
+      (control_keyword)
+      condition: (if_condition
+        (binary_expression
+          left: (identifier)
+          right: (identifier)))
+      consequence: (statement_block
+        (element
+          (start_tag
+            (tag_name))
+          (text)
+          (end_tag
+            (tag_name))))))
 
 =================
 Else statement
@@ -77,28 +77,28 @@ Else statement
 ---
 
 (document
-    (if_statement
-      (control_keyword)
-      condition: (if_condition
-        (binary_expression
-          left: (identifier)
-          right: (identifier)))
-      consequence: (statement_block
-        (element
-          (start_tag
-            (tag_name))
-          (text)
-          (end_tag
-            (tag_name))))
-      alternative: (else_statement
-        (control_keyword)
-        (statement_block
-          (element
-            (start_tag
-              (tag_name))
-            (text)
-            (end_tag
-              (tag_name)))))))
+  (if_statement
+    (control_keyword)
+    condition: (if_condition
+      (binary_expression
+        left: (identifier)
+        right: (identifier)))
+    consequence: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (text)
+        (end_tag
+          (tag_name)))))
+  alternative: (else_statement
+    (control_keyword)
+    (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (text)
+        (end_tag
+          (tag_name))))))
 
 =========
 Nested if
@@ -142,16 +142,16 @@ Nested if
               (tag_name))
             (text)
             (end_tag
-              (tag_name))))
-        alternative: (else_statement
-          (control_keyword)
-          (statement_block
-            (element
-              (start_tag
-                (tag_name))
-              (text)
-              (end_tag
-                (tag_name)))))))))
+              (tag_name)))))
+      alternative: (else_statement
+        (control_keyword)
+        (statement_block
+          (element
+            (start_tag
+              (tag_name))
+            (text)
+            (end_tag
+              (tag_name))))))))
 
 =================
 If with reference
@@ -289,3 +289,43 @@ Multiple if conditions
         (text)
         (end_tag
           (tag_name))))))
+
+======================
+Consecutive if blocks
+======================
+
+@if (somecondition) {
+  <p>somecondition is true</p>
+}
+
+@if (anothercondition) {
+  <p>anothercondition is true</p>
+}
+
+---
+
+(document
+    (if_statement
+        (control_keyword)
+        condition: (if_condition
+          (expression
+            (identifier)))
+        consequence: (statement_block
+          (element
+            (start_tag
+              (tag_name))
+            (text)
+            (end_tag
+              (tag_name)))))
+    (if_statement
+        (control_keyword)
+        condition: (if_condition
+          (expression
+            (identifier)))
+        consequence: (statement_block
+          (element
+            (start_tag
+              (tag_name))
+            (text)
+            (end_tag
+              (tag_name))))))
