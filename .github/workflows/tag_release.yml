@@ -25,3 +25,7 @@ jobs:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: ${{ steps.tag_version.outputs.new_version }}
           body: ${{ steps.tag_version.outputs.changelog }}
+
+  publish_packages:
+    name: Publish packages
+    uses: './.github/workflows/publish.yml'
