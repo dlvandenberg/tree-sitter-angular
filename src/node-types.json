@@ -1,5 +1,63 @@
 [
   {
+    "type": "animation_binding",
+    "named": true,
+    "fields": {
+      "trigger": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "=",
+            "named": false
+          },
+          {
+            "type": "assignment_expression",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "conditional_expression",
+            "named": true
+          },
+          {
+            "type": "expression",
+            "named": true
+          },
+          {
+            "type": "nullish_coalescing_expression",
+            "named": true
+          },
+          {
+            "type": "ternary_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "binding_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "arguments",
     "named": true,
     "fields": {},
@@ -127,6 +185,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "animation_binding",
+          "named": true
+        },
         {
           "type": "attribute_name",
           "named": true
@@ -3050,6 +3112,10 @@
   },
   {
     "type": "[(",
+    "named": false
+  },
+  {
+    "type": "[@",
     "named": false
   },
   {

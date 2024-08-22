@@ -297,6 +297,7 @@ module.exports = grammar(HTML, {
       choice(
         prec(1, $.property_binding),
         prec(1, $.two_way_binding),
+        prec(1, $.animation_binding),
         prec(1, $.event_binding),
         prec(1, $.structural_directive),
         $._normal_attribute, // <-- This needs to be hidden from syntax tree
@@ -365,6 +366,8 @@ module.exports = grammar(HTML, {
     property_binding: ($) => seq('[', $.binding_name, ']', $._binding_assignment),
     event_binding: ($) => seq('(', $.binding_name, ')', $._binding_assignment),
     two_way_binding: ($) => seq('[(', $.binding_name, ')]', $._binding_assignment),
+    animation_binding: ($) =>
+      seq('[@', $.binding_name, ']', optional(field('trigger', $._binding_assignment))),
 
     _binding_assignment: ($) =>
       seq(
@@ -374,7 +377,7 @@ module.exports = grammar(HTML, {
         $._double_quote,
       ),
 
-    binding_name: ($) => seq(optional('@'), choice($.identifier, $.member_expression)),
+    binding_name: ($) => seq(choice($.identifier, $.member_expression)),
 
     _normal_attribute: ($) =>
       seq(
