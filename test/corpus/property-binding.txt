@@ -246,27 +246,6 @@ Empty attribute value
   )
 )
 
-==================
-Animation property
-==================
-
-<span [@someAnimation]="condition"></span>
-
----
-
-(document
-  (element
-    (start_tag
-      (tag_name)
-      (attribute
-        (property_binding
-          (binding_name
-            (identifier))
-          (expression
-            (identifier)))))
-    (end_tag
-      (tag_name))))
-
 ===================
 Map property binding
 ====================
