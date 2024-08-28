@@ -139,8 +139,10 @@ NgIf binary expression
           (identifier)
           (structural_expression
             (binary_expression
-              (identifier)
-              (identifier))))))
+              left: (expression
+                (identifier))
+              right: (expression
+                (identifier)))))))
     (end_tag
       (tag_name)))
   (element
@@ -151,8 +153,10 @@ NgIf binary expression
           (identifier)
           (structural_expression
             (binary_expression
-              (identifier)
-              (identifier))))))
+              left: (expression
+                (identifier))
+              right: (expression
+                (identifier)))))))
     (end_tag
       (tag_name)))
   (element
@@ -163,8 +167,10 @@ NgIf binary expression
           (identifier)
           (structural_expression
             (binary_expression
-              (identifier)
-              (identifier))))))
+              left: (expression
+                (identifier))
+              right: (expression
+                (identifier)))))))
     (end_tag
       (tag_name)))
   (element
@@ -175,8 +181,10 @@ NgIf binary expression
           (identifier)
           (structural_expression
             (binary_expression
-              (identifier)
-              (identifier))))))
+              left: (expression
+                (identifier))
+              right: (expression
+                (identifier)))))))
     (end_tag
       (tag_name)))
   (element
@@ -187,8 +195,10 @@ NgIf binary expression
           (identifier)
           (structural_expression
             (binary_expression
-              (identifier)
-              (identifier))))))
+              left: (expression
+                (identifier))
+              right: (expression
+                (identifier)))))))
     (end_tag
       (tag_name)))
   (element
@@ -199,9 +209,9 @@ NgIf binary expression
           (identifier)
           (structural_expression
             (conditional_expression
-              (identifier)
+              left: (identifier)
               (conditional_operator)
-              (identifier))))))
+              right: (identifier))))))
     (end_tag
       (tag_name)))
   (element
@@ -212,9 +222,9 @@ NgIf binary expression
           (identifier)
           (structural_expression
             (conditional_expression
-              (identifier)
+              left: (identifier)
               (conditional_operator)
-              (identifier))))))
+              right: (identifier))))))
     (end_tag
       (tag_name))))
 
@@ -358,33 +368,37 @@ Template Outlet context
           (identifier)
           (structural_expression
             (ternary_expression
-              (conditional_expression
-                (binary_expression
-                  (member_expression
-                    (identifier)
-                    (identifier))
-                  (identifier))
+              condition: (conditional_expression
+                left: (binary_expression
+                  left: (expression
+                    (member_expression
+                      object: (identifier)
+                      property: (identifier)))
+                  right: (expression
+                    (identifier)))
                 (conditional_operator)
-                (binary_expression
-                  (member_expression
-                    (identifier)
-                    (identifier))
-                  (identifier)))
+                right: (binary_expression
+                  left: (expression
+                    (member_expression
+                      object: (identifier)
+                      property: (identifier)))
+                  right: (expression
+                    (identifier))))
               (ternary_operator)
-              (identifier)
+              consequence: (identifier)
               (ternary_operator)
-              (expression
+              alternative: (expression
                 (identifier)))
             (special_keyword)
             (expression
               (object
                 (pair
-                  (identifier)
-                  (expression
+                  key: (identifier)
+                  value: (expression
                     (identifier)))
                 (pair
-                  (identifier)
-                  (expression
+                  key: (identifier)
+                  value: (expression
                     (identifier)))))))))
     (end_tag
       (tag_name))))

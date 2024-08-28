@@ -395,10 +395,13 @@ module.exports = grammar(HTML, {
 
     // Binary expression
     binary_expression: ($) =>
-      seq(
-        field('left', $._primitive),
-        field('operator', $._binary_op),
-        field('right', $._primitive),
+      prec.left(
+        PREC.CALL,
+        seq(
+          field('left', $.expression),
+          field('operator', $._binary_op),
+          field('right', choice($.binary_expression, $.expression)),
+        ),
       ),
 
     // Ternary expression
@@ -470,7 +473,7 @@ module.exports = grammar(HTML, {
       seq(
         field('key', choice($.identifier, $.string)),
         ':',
-        field('value', choice($.expression, $.unary_expression)),
+        field('value', $._any_expression),
         optional(','),
       ),
 
