@@ -112,10 +112,12 @@ Defer with conditional trigger
       condition: (defer_trigger_condition
         (special_keyword)
         trigger: (binary_expression
-          left: (member_expression
-            object: (identifier)
-            property: (identifier))
-          right: (identifier))))
+          left: (expression
+            (member_expression
+              object: (identifier)
+              property: (identifier)))
+          right: (expression
+            (identifier)))))
     body: (statement_block
       (element
         (self_closing_tag

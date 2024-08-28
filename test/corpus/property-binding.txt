@@ -86,10 +86,12 @@ String literal binding
           (binding_name
             (identifier))
           (binary_expression
-            (string)
-            (member_expression
-              (identifier)
-              (identifier)))))
+            left: (expression
+              (string))
+            right: (expression
+              (member_expression
+                object: (identifier)
+                property: (identifier))))))
       (attribute
         (property_binding
           (binding_name
@@ -440,5 +442,117 @@ Nested ternary expression
               (ternary_operator)
               (expression
                 (string)))))))
+    (end_tag
+      (tag_name))))
+
+==================
+NgStyle simple
+==================
+
+<span [ngStyle]="objExpr"></span>
+
+---
+
+(document
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (expression
+            (identifier)))))
+    (end_tag
+      (tag_name))))
+
+==================
+NgStyle with object
+==================
+
+<span [ngStyle]="{ color: 'red', 'background-color': 'green' }"></span>
+
+---
+
+(document
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (expression
+            (object
+              (pair
+                key: (identifier)
+                value: (expression
+                  (string)))
+              (pair
+                key: (string)
+                value: (expression
+                  (string))))))))
+    (end_tag
+      (tag_name))))
+
+==================
+NgStyle with calculation
+==================
+
+<span [ngStyle]="{ width: someProp + '%' }"></span>
+
+---
+
+(document
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (expression
+            (object
+              (pair
+                key: (identifier)
+                value: (binary_expression
+                  left: (expression
+                   (identifier))
+                  right: (expression
+                    (string)))))))))
+    (end_tag
+      (tag_name))))
+
+==================
+NgStyle with complex calculation
+==================
+
+<span [ngStyle]="{ width: someVal / num * factor + '%' }"></span>
+
+---
+
+(document
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (expression
+            (object
+              (pair
+                key: (identifier)
+                value: (binary_expression
+                  left: (expression
+                    (identifier))
+                  right: (binary_expression
+                    left: (expression
+                      (identifier))
+                    right: (binary_expression
+                      left: (expression
+                        (identifier))
+                      right: (expression
+                        (string)))))))))))
     (end_tag
       (tag_name))))
