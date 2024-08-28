@@ -29,3 +29,4 @@ jobs:
   publish_packages:
     name: Publish packages
     uses: './.github/workflows/publish.yml'
+    secrets: inherit
