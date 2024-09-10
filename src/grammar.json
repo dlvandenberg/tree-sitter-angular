@@ -528,6 +528,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "let_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "_alternative_statement"
         }
       ]
@@ -584,6 +588,41 @@
           }
         }
       ]
+    },
+    "let_statement": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_control_flow_start"
+            },
+            "named": false,
+            "value": "@"
+          },
+          {
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "let"
+            },
+            "named": true,
+            "value": "control_keyword"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "assignment_expression"
+          },
+          {
+            "type": "STRING",
+            "value": ";"
+          }
+        ]
+      }
     },
     "switch_statement": {
       "type": "PREC_RIGHT",
