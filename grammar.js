@@ -70,7 +70,7 @@ module.exports = grammar(HTML, {
           alias($._control_flow_start, '@'),
           alias('let', $.control_keyword),
           $.assignment_expression,
-          ';'
+          ';',
         ),
       ),
 
