@@ -48,6 +48,7 @@ module.exports = grammar(HTML, {
         $.for_statement,
         $.defer_statement,
         $.switch_statement,
+        $.let_statement,
         $._alternative_statement,
       ),
 
@@ -59,6 +60,18 @@ module.exports = grammar(HTML, {
         field('placeholder', $.placeholder_statement),
         field('loading', $.loading_statement),
         field('error', $.error_statement),
+      ),
+
+    // ---------- Let Statement ----------
+
+    let_statement: ($) =>
+      prec.left(
+        seq(
+          alias($._control_flow_start, '@'),
+          alias('let', $.control_keyword),
+          $.assignment_expression,
+          ';',
+        ),
       ),
 
     // ---------- Switch Statement ----------

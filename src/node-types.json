@@ -931,6 +931,10 @@
           "named": true
         },
         {
+          "type": "let_statement",
+          "named": true
+        },
+        {
           "type": "script_element",
           "named": true
         },
@@ -1056,6 +1060,10 @@
         },
         {
           "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "let_statement",
           "named": true
         },
         {
@@ -1596,6 +1604,10 @@
           "named": true
         },
         {
+          "type": "let_statement",
+          "named": true
+        },
+        {
           "type": "script_element",
           "named": true
         },
@@ -1800,6 +1812,25 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "let_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment_expression",
+          "named": true
+        },
+        {
+          "type": "control_keyword",
           "named": true
         }
       ]
@@ -2432,6 +2463,10 @@
         },
         {
           "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "let_statement",
           "named": true
         },
         {
