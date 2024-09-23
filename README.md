@@ -32,6 +32,8 @@ This parser extends [tree-sitter-html](https://github.com/tree-sitter/tree-sitte
 
 In the nightly neovim built (or release 0.11.x), the filetype detection for Angular templates is included. It will detect Angular HTML templates, based on it's contents, and set the filetype to `htmlangular`.
 
+### Older versions
+
 If you are using an older version, you must set the filetype yourself.
 
 E.g. mark the file as `htmlangular` if it matches the pattern `*.component.html`:
@@ -44,6 +46,18 @@ vim.filetype.add({
     [".*%.component%.html"] = "htmlangular", -- Sets the filetype to `htmlangular` if it matches the pattern
   },
 })
+```
+
+Next, create a `ftplugin` for `htmlangular` that does the following:
+
+```vim
+runtime! ftplugin/html.vim!
+```
+
+Or, in lua:
+
+```lua
+vim.cmd('runtime! ftplugin/html.vim!')
 ```
 
 ## LSP's or other plugins
