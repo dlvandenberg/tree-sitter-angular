@@ -556,3 +556,22 @@ NgStyle with complex calculation
                         (string)))))))))))
     (end_tag
       (tag_name))))
+
+================
+Escaped string expression
+================
+
+<element [property]="'value\'s value'"/>
+
+---
+
+(document
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (expression
+            (string)))))))
