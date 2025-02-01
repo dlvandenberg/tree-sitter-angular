@@ -9,21 +9,21 @@ If statement
 ---
 
 (document
-    (if_statement
-        (control_keyword)
-        condition: (if_condition
-          (binary_expression
-            left: (expression
-              (identifier))
-            right: (expression
-              (identifier))))
-        consequence: (statement_block
-          (element
-            (start_tag
-              (tag_name))
-            (text)
-            (end_tag
-              (tag_name))))))
+  (if_statement
+    (control_keyword)
+    condition: (if_condition
+      (binary_expression
+        left: (expression
+          (identifier))
+        right: (expression
+          (identifier))))
+    consequence: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (text)
+        (end_tag
+          (tag_name))))))
 
 =================
 If-else statement
@@ -38,37 +38,37 @@ If-else statement
 ---
 
 (document
-    (if_statement
-        (control_keyword)
-        condition: (if_condition
-          (binary_expression
-            left: (expression
-              (identifier))
-            right: (expression
-              (identifier))))
-        consequence: (statement_block
-          (element
-            (start_tag
-              (tag_name))
-            (text)
-            (end_tag
-              (tag_name)))))
-    alternative_condition: (else_if_statement
-      (control_keyword)
-      (control_keyword)
-      condition: (if_condition
-        (binary_expression
-          left: (expression
-            (identifier))
-          right: (expression
-            (identifier))))
-      consequence: (statement_block
-        (element
-          (start_tag
-            (tag_name))
-          (text)
-          (end_tag
-            (tag_name))))))
+  (if_statement
+    (control_keyword)
+    condition: (if_condition
+      (binary_expression
+        left: (expression
+          (identifier))
+        right: (expression
+          (identifier))))
+    consequence: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (text)
+        (end_tag
+          (tag_name)))))
+  alternative_condition: (else_if_statement
+    (control_keyword)
+    (control_keyword)
+    condition: (if_condition
+      (binary_expression
+        left: (expression
+          (identifier))
+        right: (expression
+          (identifier))))
+    consequence: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (text)
+        (end_tag
+          (tag_name))))))
 
 =================
 Else statement
@@ -319,27 +319,60 @@ Consecutive if blocks
 ---
 
 (document
-    (if_statement
-        (control_keyword)
-        condition: (if_condition
-          (expression
-            (identifier)))
-        consequence: (statement_block
-          (element
-            (start_tag
-              (tag_name))
-            (text)
-            (end_tag
-              (tag_name)))))
-    (if_statement
-        (control_keyword)
-        condition: (if_condition
-          (expression
-            (identifier)))
-        consequence: (statement_block
-          (element
-            (start_tag
-              (tag_name))
-            (text)
-            (end_tag
-              (tag_name))))))
+  (if_statement
+    (control_keyword)
+    condition: (if_condition
+      (expression
+        (identifier)))
+    consequence: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (text)
+        (end_tag
+          (tag_name)))))
+  (if_statement
+    (control_keyword)
+    condition: (if_condition
+      (expression
+        (identifier)))
+    consequence: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (text)
+        (end_tag
+          (tag_name))))))
+
+============
+If statement with expression
+============
+
+@if (a + 3 > b + 1) {
+  <p>a is greater than b</p>
+}
+
+---
+
+(document
+  (if_statement
+    (control_keyword)
+    condition: (if_condition
+      (binary_expression
+        left: (expression
+          (identifier))
+        right: (binary_expression
+          left: (expression
+            (identifier))
+          right: (binary_expression
+            left: (expression
+              (identifier))
+            right: (expression
+              (identifier))))))
+    consequence: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (text)
+        (end_tag
+          (tag_name))))))

@@ -95,7 +95,7 @@ For with pipes
         pipes: (pipe_sequence
           (pipe_operator)
           (pipe_call
-           name: (identifier))))
+            name: (identifier))))
       (special_keyword)
       track: (expression
         (member_expression
@@ -214,5 +214,42 @@ Consecutive For-statement
             (member_expression
               object: (identifier)
               property: (identifier))))
+        (end_tag
+          (tag_name))))))
+
+=============
+For-statement with let
+=============
+
+@for (item of items(); track item.id + $index) {
+  <li>{{ item }}</li>
+}
+
+---
+
+(document
+  (for_statement
+    (control_keyword)
+    (for_declaration
+      (identifier)
+      (special_keyword)
+      (expression
+        (call_expression
+          (identifier)))
+      (special_keyword)
+      (binary_expression
+        (expression
+          (member_expression
+            (identifier)
+            (identifier)))
+        (expression
+          (identifier))))
+    (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (interpolation
+          (expression
+            (identifier)))
         (end_tag
           (tag_name))))))
