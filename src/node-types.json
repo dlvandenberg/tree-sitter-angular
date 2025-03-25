@@ -832,7 +832,6 @@
   {
     "type": "document",
     "named": true,
-    "root": true,
     "fields": {
       "alternative": {
         "multiple": true,

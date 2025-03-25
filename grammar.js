@@ -387,10 +387,7 @@ module.exports = grammar(HTML, {
         '=',
         $._double_quote,
         optional(choice($._any_expression, $.assignment_expression)),
-        repeat(seq(
-          ';',
-          optional(choice($._any_expression, $.assignment_expression)),
-        )),
+        repeat(seq(';', optional(choice($._any_expression, $.assignment_expression)))),
         $._double_quote,
       ),
 
@@ -506,21 +503,6 @@ module.exports = grammar(HTML, {
     // Identifier
     identifier: () => /[a-zA-Z_0-9\-\$]+/,
 
-    _escape_sequence: (_) =>
-      token.immediate(
-        seq(
-          '\\',
-          choice(
-            /[^xu0-7]/,
-            /[0-7]{1,3}/,
-            /x[0-9a-fA-F]{2}/,
-            /u[0-9a-fA-F]{4}/,
-            /u\{[0-9a-fA-F]+\}/,
-            /[\r?][\n\u2028\u2029]/,
-          ),
-        ),
-      ),
-
     // String
     string: ($) =>
       choice(
@@ -533,6 +515,21 @@ module.exports = grammar(HTML, {
           $._single_quote,
           repeat(choice(token.immediate(/[^']/), $._escape_sequence)),
           $._single_quote,
+        ),
+      ),
+
+    _escape_sequence: (_) =>
+      token.immediate(
+        seq(
+          '\\',
+          choice(
+            /[^xu0-7]/,
+            /[0-7]{1,3}/,
+            /x[0-9a-fA-F]{2}/,
+            /u[0-9a-fA-F]{4}/,
+            /u\{[0-9a-fA-F]+\}/,
+            /[\r?][\n\u2028\u2029]/,
+          ),
         ),
       ),
 

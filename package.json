@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-angular",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Tree-sitter grammar for the Angular framework",
   "main": "bindings/node",
   "types": "bindings/node",
@@ -62,9 +62,7 @@
   "tree-sitter": [
     {
       "scope": "source.angular",
-      "file-types": [
-        "component.html"
-      ]
+      "injection-regex": "^angular$"
     }
   ]
 }
