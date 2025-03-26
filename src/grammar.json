@@ -481,7 +481,7 @@
     },
     "text": {
       "type": "PATTERN",
-      "value": "[^<>{}&\\s]([^<>{}&]*[^<>{}&\\s])?"
+      "value": "[^<>@{}&\\s]([^<>@{}&]*[^<>@{}&\\s])?"
     },
     "statement_block": {
       "type": "PREC_RIGHT",

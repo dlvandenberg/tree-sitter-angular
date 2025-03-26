@@ -36,7 +36,7 @@ module.exports = grammar(HTML, {
 
     // ---------- Overrides ----------
     attribute_name: (_) => /[^<>\*.\[\]\(\)"'=\s]+/,
-    text: (_) => /[^<>{}&\s]([^<>{}&]*[^<>{}&\s])?/,
+    text: (_) => /[^<>@{}&\s]([^<>@{}&]*[^<>@{}&\s])?/,
 
     // ----------- Statement block --------
     statement_block: ($) => prec.right(seq('{', repeat($._node), '}')),
