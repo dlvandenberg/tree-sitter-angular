@@ -18,15 +18,16 @@ jobs:
         with:
           custom_tag: ${{ inputs.version }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          dry_run: true
 
-      - name: Create release
-        uses: ncipollo/release-action@v1.14.0
-        with:
-          tag: ${{ steps.tag_version.outputs.new_tag }}
-          name: ${{ steps.tag_version.outputs.new_version }}
-          body: ${{ steps.tag_version.outputs.changelog }}
+      # - name: Create release
+      #   uses: ncipollo/release-action@v1.14.0
+      #   with:
+      #     tag: ${{ steps.tag_version.outputs.new_tag }}
+      #     name: ${{ steps.tag_version.outputs.new_version }}
+      #     body: ${{ steps.tag_version.outputs.changelog }}
 
-  publish_packages:
-    name: Publish packages
-    uses: './.github/workflows/publish.yml'
-    secrets: inherit
+  # publish_packages:
+  #   name: Publish packages
+  #   uses: './.github/workflows/publish.yml'
+  #   secrets: inherit
