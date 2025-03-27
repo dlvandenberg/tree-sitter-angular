@@ -2,7 +2,7 @@
 
 <h4 align="center">
     <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/dlvandenberg/tree-sitter-angular/ci.yml">
-    <img alt="Angular" src="https://img.shields.io/badge/Angular-v18.1-AF21EA?logo=angular&logoColor=F51365">
+    <img alt="Angular" src="https://img.shields.io/badge/Angular-v19.2-AF21EA?logo=angular&logoColor=F51365">
     <img alt="Tree-sitter CLI version" src="https://img.shields.io/github/package-json/dependency-version/dlvandenberg/tree-sitter-angular/dev/tree-sitter-cli/main">
 </h4>
 
@@ -23,6 +23,7 @@ This parser extends [tree-sitter-html](https://github.com/tree-sitter/tree-sitte
 - [x] Defer-statements (v17)
 - [x] Let-expression (v18.1)
 - [x] ICU message format
+- [x] Untagged Template Literals (v19.2)
 
 ## Requirements
 

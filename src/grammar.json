@@ -1617,6 +1617,10 @@
           "name": "nullish_coalescing_expression"
         },
         {
+          "type": "SYMBOL",
+          "name": "template_string"
+        },
+        {
           "type": "PREC",
           "value": 3,
           "content": {
@@ -2393,6 +2397,63 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "template_string": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_backtick"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "template_chars"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "template_substitution"
+              }
+            ]
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_backtick"
+        }
+      ]
+    },
+    "template_chars": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "PATTERN",
+          "value": "(?:[^$`\\\\]+|\\\\.)+"
+        }
+      }
+    },
+    "template_substitution": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "${"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_any_expression"
+        },
+        {
+          "type": "STRING",
+          "value": "}"
         }
       ]
     },
@@ -3233,6 +3294,10 @@
           "value": "}"
         }
       }
+    },
+    "_backtick": {
+      "type": "STRING",
+      "value": "`"
     },
     "_single_quote": {
       "type": "STRING",
