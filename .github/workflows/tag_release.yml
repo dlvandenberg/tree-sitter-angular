@@ -26,7 +26,7 @@ jobs:
           dry_run: ${{ inputs.dry_run }}
 
       - name: Create release
-        if: ${{ inputs.dry_run == 'false' }}
+        if: ${{ inputs.dry_run != 'true' }}
         uses: ncipollo/release-action@v1.14.0
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
@@ -34,7 +34,7 @@ jobs:
           body: ${{ steps.tag_version.outputs.changelog }}
 
   publish_packages:
-    if: ${{ inputs.dry_run == 'false' }}
+    if: ${{ inputs.dry_run != 'true' }}
     name: Publish packages
     uses: './.github/workflows/publish.yml'
     secrets: inherit
