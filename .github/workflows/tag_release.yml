@@ -7,7 +7,7 @@ on:
         description: Manually set release version
         required: false
         type: string
-      dryrun:
+      dry_run:
         description: Dry run
         required: false
         type: boolean
@@ -22,10 +22,10 @@ jobs:
         with:
           custom_tag: ${{ inputs.version }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          debug: ${{ inputs.dryrun }}
+          dry_run: ${{ inputs.dry_run }}
 
       - name: Create release
-        if: ${{ inputs.dryrun == 'false' }}
+        if: ${{ inputs.dry_run == 'false' }}
         uses: ncipollo/release-action@v1.14.0
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
@@ -33,7 +33,7 @@ jobs:
           body: ${{ steps.tag_version.outputs.changelog }}
 
   publish_packages:
-    if: ${{ inputs.dryrun == 'false' }}
+    if: ${{ inputs.dry_run == 'false' }}
     name: Publish packages
     uses: './.github/workflows/publish.yml'
     secrets: inherit
