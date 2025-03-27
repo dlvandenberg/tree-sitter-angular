@@ -267,6 +267,7 @@ module.exports = grammar(HTML, {
         $.expression,
         $.ternary_expression,
         $.nullish_coalescing_expression,
+        $.template_string,
         prec(3, $.conditional_expression),
       ),
 
@@ -400,6 +401,18 @@ module.exports = grammar(HTML, {
       ),
 
     // ---------- Expressions ---------
+    // untagged template literal
+    template_string: ($) =>
+      seq(
+        $._backtick,
+        repeat(choice($.template_chars, $.template_substitution)),
+        $._backtick,
+      ),
+
+    template_chars: ($) => token.immediate(prec(1, /(?:[^$`\\]+|\\.)+/)),
+
+    template_substitution: ($) => seq('${', $._any_expression, '}'),
+
     // Expression
     expression: ($) => seq($._primitive, optional(field('pipes', $.pipe_sequence))),
 
@@ -584,6 +597,7 @@ module.exports = grammar(HTML, {
 
     // ---------- Base ----------
     _closing_bracket: (_) => token(prec(-1, '}')),
+    _backtick: () => '`',
     // eslint-disable-next-line quotes
     _single_quote: () => "'",
     _double_quote: () => '"',
