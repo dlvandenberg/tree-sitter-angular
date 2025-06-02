@@ -27,11 +27,11 @@ This parser extends [tree-sitter-html](https://github.com/tree-sitter/tree-sitte
 
 ## Requirements
 
-- [Neovim](https://neovim.io/) nightly recommended (as it includes the filetype detection of Angular Templates)
+- [Neovim](https://neovim.io/) v 0.11.x required (as it includes the filetype detection of Angular Templates)
 
 ## Filetype
 
-In the nightly neovim built (or release 0.11.x), the filetype detection for Angular templates is included. It will detect Angular HTML templates, based on it's contents, and set the filetype to `htmlangular`.
+Since neovim release 0.11.x, the filetype detection for Angular templates is included. It will detect Angular HTML templates, based on it's contents, and set the filetype to `htmlangular`.
 
 ### Older versions
 
