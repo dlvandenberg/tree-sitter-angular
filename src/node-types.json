@@ -844,6 +844,7 @@
   {
     "type": "document",
     "named": true,
+    "root": true,
     "fields": {
       "alternative": {
         "multiple": true,
@@ -3240,6 +3241,10 @@
     "named": false
   },
   {
+    "type": "`",
+    "named": false
+  },
+  {
     "type": "attribute_name",
     "named": true
   },
@@ -3253,7 +3258,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "conditional_operator",

@@ -41,15 +41,15 @@
   "homepage": "https://github.com/dlvandenberg/tree-sitter-angular#readme",
   "devDependencies": {
     "@stylistic/eslint-plugin-js": "^1.4.1",
-    "eslint": "^8.54.0",
-    "eslint-config-google": "^0.14.0",
-    "tree-sitter-cli": "^0.22.5",
-    "prebuildify": "^6.0.0"
+    "eslint": "^9.14.0",
+    "eslint-config-treesitter": "^1.0.2",
+    "tree-sitter-cli": "^0.25.5",
+    "prebuildify": "^6.0.1"
   },
   "dependencies": {
-    "tree-sitter-html": "^0.20.3",
-    "node-addon-api": "^8.0.0",
-    "node-gyp-build": "^4.8.0"
+    "tree-sitter-html": "^0.23.2",
+    "node-addon-api": "^8.2.2",
+    "node-gyp-build": "^4.8.2"
   },
   "peerDependencies": {
     "tree-sitter": "^0.21.1"
