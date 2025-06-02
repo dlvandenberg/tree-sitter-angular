@@ -325,9 +325,9 @@ module.exports = grammar(HTML, {
         optional(
           seq(
             '=',
-            $._double_quote,
+            choice($._double_quote, $._single_quote),
             choice($.structural_expression, $.structural_declaration),
-            $._double_quote,
+            choice($._double_quote, $._single_quote),
           ),
         ),
       ),

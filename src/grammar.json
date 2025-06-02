@@ -1845,8 +1845,17 @@
                   "value": "="
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "_double_quote"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_double_quote"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "_single_quote"
+                    }
+                  ]
                 },
                 {
                   "type": "CHOICE",
@@ -1862,8 +1871,17 @@
                   ]
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "_double_quote"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_double_quote"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "_single_quote"
+                    }
+                  ]
                 }
               ]
             },

@@ -300,6 +300,54 @@ NgFor with alias
     (end_tag
       (tag_name))))
 
+================
+NgFor with single quotes
+================
+
+<li *ngFor='let person of people; let i = index; let isEven = even; let isOdd = odd; trackBy: trackByPersonId' class='some-class'>
+</li>
+
+---
+
+(document
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (structural_directive
+          (identifier)
+          (structural_declaration
+            (special_keyword)
+            (structural_assignment
+              (identifier)
+              (identifier)
+              (expression
+                (identifier)))
+            (structural_assignment
+              (special_keyword)
+              (identifier)
+              (expression
+                (identifier)))
+            (structural_assignment
+              (special_keyword)
+              (identifier)
+              (expression
+                (identifier)))
+            (structural_assignment
+              (special_keyword)
+              (identifier)
+              (expression
+                (identifier)))
+            (structural_assignment
+              (identifier)
+              (identifier)))))
+      (attribute
+        (attribute_name)
+        (quoted_attribute_value
+          (attribute_value))))
+    (end_tag
+      (tag_name))))
+
 ========
 NgSwitch
 ========
