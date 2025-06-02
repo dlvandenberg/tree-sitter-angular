@@ -96,7 +96,7 @@ module.exports = grammar(HTML, {
         alias($._control_flow_start, '@'),
         alias('case', $.control_keyword),
         '(',
-        field('value', $._primitive),
+        field('value', $._any_expression),
         ')',
         field('body', $.statement_block),
       ),
