@@ -454,39 +454,31 @@
         "required": true,
         "types": [
           {
-            "type": "array",
+            "type": "binary_expression",
             "named": true
           },
           {
-            "type": "bracket_expression",
+            "type": "conditional_expression",
             "named": true
           },
           {
-            "type": "call_expression",
+            "type": "expression",
             "named": true
           },
           {
-            "type": "group",
+            "type": "nullish_coalescing_expression",
             "named": true
           },
           {
-            "type": "identifier",
+            "type": "template_string",
             "named": true
           },
           {
-            "type": "member_expression",
+            "type": "ternary_expression",
             "named": true
           },
           {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": true
-          },
-          {
-            "type": "string",
+            "type": "unary_expression",
             "named": true
           }
         ]

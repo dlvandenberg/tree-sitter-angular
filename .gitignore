@@ -32,3 +32,6 @@ dist/
 *.wasm
 *.obj
 *.o
+
+# Debug
+log.html
