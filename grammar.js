@@ -607,6 +607,7 @@ module.exports = grammar(HTML, {
         '-',
         '/',
         '*',
+        '**',
         '%',
         '==',
         '===',

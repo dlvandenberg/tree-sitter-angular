@@ -226,3 +226,18 @@ String concat with pipes
           (pipe_call
             (identifier)))))))
 
+========================
+Exponentiation
+========================
+
+{{ 10 ** 3 }}
+
+---
+
+(document
+ (interpolation
+  (binary_expression
+    (expression
+     (identifier))
+    (expression
+     (identifier)))))
