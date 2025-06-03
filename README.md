@@ -24,6 +24,7 @@ This parser extends [tree-sitter-html](https://github.com/tree-sitter/tree-sitte
 - [x] Let-expression (v18.1)
 - [x] ICU message format
 - [x] Untagged Template Literals (v19.2)
+- [x] Exponentiation (`**`) and `in` operators (v20)
 
 ## Requirements
 

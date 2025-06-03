@@ -9,21 +9,21 @@ If statement
 ---
 
 (document
-    (if_statement
-        (control_keyword)
-        condition: (if_condition
-          (binary_expression
-            left: (expression
-              (identifier))
-            right: (expression
-              (identifier))))
-        consequence: (statement_block
-          (element
-            (start_tag
-              (tag_name))
-            (text)
-            (end_tag
-              (tag_name))))))
+ (if_statement
+  (control_keyword)
+  condition: (if_condition
+    (binary_expression
+     left: (expression
+       (identifier))
+     right: (expression
+       (identifier))))
+     consequence: (statement_block
+       (element
+        (start_tag
+         (tag_name))
+        (text)
+        (end_tag
+         (tag_name))))))
 
 =================
 If-else statement
@@ -343,3 +343,34 @@ Consecutive if blocks
             (text)
             (end_tag
               (tag_name))))))
+
+=============================
+If statement with in operator
+=============================
+
+@if ('model' in car) {
+  <p>{{ car.model }}</p>
+}
+
+---
+
+(document
+ (if_statement
+  (control_keyword)
+  (if_condition
+   (binary_expression
+    (expression
+     (string))
+    (expression
+     (identifier))))
+  (statement_block
+   (element
+    (start_tag
+     (tag_name))
+    (interpolation
+     (expression
+      (member_expression
+       (identifier)
+       (identifier))))
+    (end_tag
+     (tag_name))))))

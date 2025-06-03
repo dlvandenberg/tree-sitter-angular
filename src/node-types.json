@@ -311,6 +311,10 @@
             "named": false
           },
           {
+            "type": "in",
+            "named": false
+          },
+          {
             "type": "||",
             "named": false
           }
@@ -3288,6 +3292,10 @@
   {
     "type": "identifier",
     "named": true
+  },
+  {
+    "type": "in",
+    "named": false
   },
   {
     "type": "number",

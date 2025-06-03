@@ -618,6 +618,7 @@ module.exports = grammar(HTML, {
         '<',
         '<=',
         '>',
+        'in',
         '>=',
       ),
   },
