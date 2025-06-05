@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-angular",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Tree-sitter grammar for the Angular framework",
   "main": "bindings/node",
   "types": "bindings/node",
@@ -26,11 +26,13 @@
   ],
   "files": [
     "grammar.js",
+    "tree-sitter.json",
     "binding.gyp",
     "prebuilds/**",
     "bindings/node/*",
     "queries/*",
-    "src/**"
+    "src/**",
+    "*.wasm"
   ],
   "author": "Dennis van den Berg",
   "url": "https://vdberg.dev",
