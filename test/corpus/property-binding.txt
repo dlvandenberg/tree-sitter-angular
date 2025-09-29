@@ -297,7 +297,8 @@ Map property binding
                 (member_expression
                   (identifier)
                   (identifier))
-                (identifier))
+                (expression
+                  (identifier)))
               (identifier))))))
     (end_tag
       (tag_name))))
@@ -326,8 +327,8 @@ Binding with a static array access full
                 (member_expression
                   (identifier)
                   (identifier))
-                (static_member_expression
-                  (identifier)))
+                (expression
+                  (string)))
               (identifier))))))
     (end_tag
       (tag_name))))
@@ -353,8 +354,8 @@ Binding with a static array access
           (expression
             (bracket_expression
               (identifier)
-              (static_member_expression
-                (identifier)))))))
+              (expression
+                (string)))))))
     (end_tag
       (tag_name))))
 
@@ -379,7 +380,40 @@ Binding with a dynamic array access
           (expression
             (bracket_expression
               (identifier)
-              (identifier))))))
+              (expression
+                (identifier)))))))
+    (end_tag
+      (tag_name))))
+
+===================================
+Binding with array access from a complex expression
+===================================
+
+<element
+  [variant]="arr[variable | add: 1]"
+></element>
+
+---
+
+(document
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (expression
+            (bracket_expression
+              (identifier)
+              (expression
+                (identifier)
+                (pipe_sequence
+                  (pipe_operator)
+                  (pipe_call
+                    (identifier)
+                    (pipe_arguments
+                      (identifier))))))))))
     (end_tag
       (tag_name))))
 
