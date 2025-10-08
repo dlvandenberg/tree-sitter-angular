@@ -409,7 +409,7 @@ module.exports = grammar(HTML, {
         $._backtick,
       ),
 
-    template_chars: ($) => token.immediate(prec(1, /(?:[^$`\\]+|\\.)+/)),
+    template_chars: (_) => token.immediate(prec(1, /(?:[^$`\\]+|\\.)+/)),
 
     template_substitution: ($) => seq('${', $._any_expression, '}'),
 

@@ -9,7 +9,7 @@
     }
   ],
   "metadata": {
-    "version": "0.6.3",
+    "version": "0.7.0",
     "license": "MIT",
     "description": "Tree-sitter grammar for the Angular framework",
     "authors": [

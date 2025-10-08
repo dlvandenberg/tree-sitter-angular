@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-angular",
-  "version": "0.6.4",
+  "version": "0.7.0",
   "description": "Tree-sitter grammar for the Angular framework",
   "main": "bindings/node",
   "types": "bindings/node",
