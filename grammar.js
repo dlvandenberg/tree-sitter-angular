@@ -24,6 +24,8 @@ module.exports = grammar(HTML, {
       $._control_flow_start,
     ]),
 
+  word: $ => $.identifier,
+
   rules: {
     // ---------- Root ---------
     _node: ($, original) =>
