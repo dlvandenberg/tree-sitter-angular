@@ -2973,7 +2973,7 @@
     },
     "identifier": {
       "type": "PATTERN",
-      "value": "[a-zA-Z_0-9\\-\\$]+"
+      "value": "[a-zA-Z_0-9\\$]+"
     },
     "string": {
       "type": "CHOICE",
