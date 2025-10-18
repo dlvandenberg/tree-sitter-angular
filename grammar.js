@@ -24,6 +24,8 @@ module.exports = grammar(HTML, {
       $._control_flow_start,
     ]),
 
+  word: $ => $.identifier,
+
   rules: {
     // ---------- Root ---------
     _node: ($, original) =>
@@ -514,7 +516,7 @@ module.exports = grammar(HTML, {
       ),
 
     // Identifier
-    identifier: () => /[a-zA-Z_0-9\-\$]+/,
+    identifier: () => /[a-zA-Z_0-9\$]+/,
 
     // String
     string: ($) =>
