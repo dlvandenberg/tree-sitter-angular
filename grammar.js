@@ -65,7 +65,7 @@ module.exports = grammar(HTML, {
     // ---------- Let Statement ----------
 
     let_statement: ($) =>
-      prec.left(
+      prec.right(
         seq(
           alias($._control_flow_start, '@'),
           alias('let', $.control_keyword),
@@ -75,17 +75,16 @@ module.exports = grammar(HTML, {
       ),
 
     // ---------- Switch Statement ----------
-
+    //
     switch_statement: ($) =>
-      prec.right(
-        seq(
-          alias($._control_flow_start, '@'),
-          alias('switch', $.control_keyword),
-          '(',
-          field('value', $.expression),
-          ')',
-          field('body', $.switch_body),
-        ),
+      prec.right(seq($._switch_start_expression, $._switch_body_expression)),
+
+    _switch_start_expression: ($) =>
+      seq(alias($._control_flow_start, '@'), alias('switch', $.control_keyword)),
+
+    _switch_body_expression: ($) =>
+      prec.left(
+        seq('(', field('value', $.expression), ')', field('body', $.switch_body)),
       ),
 
     switch_body: ($) =>
@@ -111,7 +110,7 @@ module.exports = grammar(HTML, {
     // ---------- Defer Statement ----------
 
     defer_statement: ($) =>
-      prec.left(
+      prec.right(
         seq(
           alias($._control_flow_start, '@'),
           alias('defer', $.control_keyword),
@@ -121,7 +120,7 @@ module.exports = grammar(HTML, {
       ),
 
     placeholder_statement: ($) =>
-      prec.left(
+      prec.right(
         seq(
           alias($._control_flow_start, '@'),
           alias('placeholder', $.control_keyword),
@@ -131,7 +130,7 @@ module.exports = grammar(HTML, {
       ),
 
     loading_statement: ($) =>
-      prec.left(
+      prec.right(
         seq(
           alias($._control_flow_start, '@'),
           alias('loading', $.control_keyword),
@@ -183,10 +182,14 @@ module.exports = grammar(HTML, {
 
     // ---------- For Statement ----------
     for_statement: ($) =>
+      prec.right(seq($._for_start_expression, $._for_body_expression)),
+
+    _for_start_expression: ($) =>
+      seq(alias($._control_flow_start, '@'), alias('for', $.control_keyword)),
+
+    _for_body_expression: ($) =>
       prec.left(
         seq(
-          alias($._control_flow_start, '@'),
-          alias('for', $.control_keyword),
           '(',
           field('declaration', $.for_declaration),
           optional(field('reference', $.for_reference)),
