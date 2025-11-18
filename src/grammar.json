@@ -2636,6 +2636,10 @@
                 {
                   "type": "SYMBOL",
                   "name": "_primitive"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_short_concat_expression"
                 }
               ]
             }
@@ -2668,6 +2672,23 @@
           }
         ]
       }
+    },
+    "_short_concat_expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_primitive"
+        },
+        {
+          "type": "STRING",
+          "value": "+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_primitive"
+        }
+      ]
     },
     "nullish_coalescing_expression": {
       "type": "SEQ",

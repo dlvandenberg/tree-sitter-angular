@@ -441,11 +441,13 @@ module.exports = grammar(HTML, {
         seq(
           field('condition', $._any_expression),
           alias('?', $.ternary_operator),
-          field('consequence', choice($.group, $._primitive)),
+          field('consequence', choice($.group, $._primitive, $._short_concat_expression)),
           alias(':', $.ternary_operator),
           field('alternative', choice($.group, $._any_expression)),
         ),
       ),
+
+    _short_concat_expression: ($) => seq($._primitive, '+', $._primitive),
 
     // Nullish coalescing expression
     nullish_coalescing_expression: ($) =>

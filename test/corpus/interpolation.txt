@@ -241,3 +241,38 @@ Exponentiation
      (number))
     (expression
      (number)))))
+
+========================
+String concat with ternary
+========================
+
+{{ obj.member + (obj.list.length < 0 ? ', ' + obj.field : '') }}
+
+---
+
+(document
+  (interpolation
+    (concatenation_expression
+      (member_expression
+        object: (identifier)
+        property: (identifier))
+      (expression
+        (group
+          (ternary_expression
+            condition: (binary_expression
+              left: (expression
+                (member_expression
+                  object: (member_expression
+                    object: (identifier)
+                    property: (identifier))
+                  property: (identifier)))
+              right: (expression
+                (number)))
+            (ternary_operator)
+            consequence: (string)
+            consequence: (member_expression
+              object: (identifier)
+              property: (identifier))
+            (ternary_operator)
+            alternative: (expression
+              (string))))))))
