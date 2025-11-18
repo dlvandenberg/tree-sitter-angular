@@ -498,7 +498,8 @@ module.exports = grammar(HTML, {
       ),
 
     // Object
-    object: ($) => seq('{', repeat($.pair), '}'),
+    object: ($) => seq('{', repeat(choice($.pair, $._shorthand, $.spread)), '}'),
+
     pair: ($) =>
       seq(
         field('key', choice($.identifier, $.string)),
@@ -506,6 +507,9 @@ module.exports = grammar(HTML, {
         field('value', $._any_expression),
         optional(','),
       ),
+
+    _shorthand: ($) => seq($.identifier, optional(',')),
+    spread: ($) => seq('...', $.identifier, optional(',')),
 
     // Array
     array: ($) =>
