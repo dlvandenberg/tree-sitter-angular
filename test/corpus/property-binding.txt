@@ -386,6 +386,32 @@ Binding with a dynamic array access
       (tag_name))))
 
 ===================================
+Binding with a numbered array access
+===================================
+
+<element
+  [variant]="obj[4]"
+></element>
+
+---
+
+(document
+  (element
+    (start_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (expression
+            (bracket_expression
+              (identifier)
+              (expression
+                (number)))))))
+    (end_tag
+      (tag_name))))
+
+===================================
 Binding with array access from a complex expression
 ===================================
 
@@ -413,7 +439,7 @@ Binding with array access from a complex expression
                   (pipe_call
                     (identifier)
                     (pipe_arguments
-                      (identifier))))))))))
+                      (number))))))))))
     (end_tag
       (tag_name))))
 

@@ -61,7 +61,7 @@ If-else statement
           left: (expression
             (identifier))
           right: (expression
-            (identifier))))
+            (number))))
       consequence: (statement_block
         (element
           (start_tag

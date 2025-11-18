@@ -63,7 +63,8 @@ Defer with multiple triggers
         trigger: (call_expression
           function: (identifier)
           arguments: (arguments
-            (identifier)))))
+            (number)
+            (unit)))))
     body: (statement_block
       (element
         (self_closing_tag
@@ -117,7 +118,7 @@ Defer with conditional trigger
               object: (identifier)
               property: (identifier)))
           right: (expression
-            (identifier)))))
+            (number)))))
     body: (statement_block
       (element
         (self_closing_tag

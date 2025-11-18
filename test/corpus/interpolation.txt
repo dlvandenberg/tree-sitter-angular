@@ -238,6 +238,6 @@ Exponentiation
  (interpolation
   (binary_expression
     (expression
-     (identifier))
+     (number))
     (expression
-     (identifier)))))
+     (number)))))
