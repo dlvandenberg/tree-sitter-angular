@@ -177,7 +177,7 @@ module.exports = grammar(HTML, {
       seq(
         alias(choice('after', 'minimum'), $.special_keyword),
         field('value', $.number),
-        alias(choice('ms', 's'), $.unit),
+        $.unit,
       ),
 
     // ---------- For Statement ----------
@@ -521,7 +521,7 @@ module.exports = grammar(HTML, {
       ),
 
     // Identifier
-    identifier: () => /[a-zA-Z_0-9\-\$]+/,
+    identifier: () => /[a-zA-Z_\$][a-zA-Z0-9_\$]*/,
 
     // String
     string: ($) =>
@@ -572,9 +572,11 @@ module.exports = grammar(HTML, {
       ),
     arguments: ($) =>
       seq(
-        choice($._primitive, $.binary_expression, $.unary_expression),
+        choice($._primitive, $.binary_expression, $.unary_expression, $._timed_argument),
         repeat(seq(',', $._primitive)),
       ),
+
+    _timed_argument: ($) => seq($.number, $.unit),
 
     // Member expression
     member_expression: ($) =>
@@ -601,6 +603,8 @@ module.exports = grammar(HTML, {
       ),
 
     // ---------- Base ----------
+    unit: () => choice('ms', 's'),
+
     _closing_bracket: (_) => token(prec(-1, '}')),
     _backtick: () => '`',
     // eslint-disable-next-line quotes

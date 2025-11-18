@@ -116,6 +116,10 @@
         {
           "type": "unary_expression",
           "named": true
+        },
+        {
+          "type": "unit",
+          "named": true
         }
       ]
     }
@@ -3189,6 +3193,11 @@
     }
   },
   {
+    "type": "unit",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "!.",
     "named": false
   },
@@ -3442,6 +3451,10 @@
     "named": false
   },
   {
+    "type": "ms",
+    "named": false
+  },
+  {
     "type": "number",
     "named": true
   },
@@ -3460,6 +3473,10 @@
   {
     "type": "raw_text",
     "named": true
+  },
+  {
+    "type": "s",
+    "named": false
   },
   {
     "type": "select",
@@ -3487,10 +3504,6 @@
   },
   {
     "type": "unary_operator",
-    "named": true
-  },
-  {
-    "type": "unit",
     "named": true
   },
   {

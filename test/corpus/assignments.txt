@@ -10,9 +10,9 @@ Binary assignment - +=
  (interpolation
   (binary_expression
     (expression
-     (identifier))
+     (number))
     (expression
-     (identifier)))))
+     (number)))))
 
 ========================
 Binary assignment - -=
@@ -26,9 +26,9 @@ Binary assignment - -=
  (interpolation
   (binary_expression
     (expression
-     (identifier))
+     (number))
     (expression
-     (identifier)))))
+     (number)))))
 
 ========================
 Binary assignment - *=
@@ -42,9 +42,9 @@ Binary assignment - *=
  (interpolation
   (binary_expression
     (expression
-     (identifier))
+     (number))
     (expression
-     (identifier)))))
+     (number)))))
 
 ========================
 Binary assignment - /=
@@ -58,9 +58,9 @@ Binary assignment - /=
  (interpolation
   (binary_expression
     (expression
-     (identifier))
+     (number))
     (expression
-     (identifier)))))
+     (number)))))
 
 ========================
 Binary assignment - %=
@@ -74,9 +74,9 @@ Binary assignment - %=
  (interpolation
   (binary_expression
     (expression
-     (identifier))
+     (number))
     (expression
-     (identifier)))))
+     (number)))))
 
 ========================
 Binary assignment - &=
@@ -90,9 +90,9 @@ Binary assignment - &=
  (interpolation
   (binary_expression
     (expression
-     (identifier))
+     (number))
     (expression
-     (identifier)))))
+     (number)))))
 
 ========================
 Binary assignment - ^=
@@ -106,9 +106,9 @@ Binary assignment - ^=
  (interpolation
   (binary_expression
     (expression
-     (identifier))
+     (number))
     (expression
-     (identifier)))))
+     (number)))))
 
 ========================
 Binary assignment - |=
@@ -122,9 +122,9 @@ Binary assignment - |=
  (interpolation
   (binary_expression
     (expression
-     (identifier))
+     (number))
     (expression
-     (identifier)))))
+     (number)))))
 
 ========================
 Binary assignment - **=
@@ -138,9 +138,9 @@ Binary assignment - **=
  (interpolation
   (binary_expression
     (expression
-     (identifier))
+     (number))
     (expression
-     (identifier)))))
+     (number)))))
 
 ========================
 Binary assignment - <<=
@@ -154,9 +154,9 @@ Binary assignment - <<=
  (interpolation
   (binary_expression
     (expression
-     (identifier))
+     (number))
     (expression
-     (identifier)))))
+     (number)))))
 
 ========================
 Binary assignment - >>=
@@ -170,9 +170,9 @@ Binary assignment - >>=
  (interpolation
   (binary_expression
     (expression
-     (identifier))
+     (number))
     (expression
-     (identifier)))))
+     (number)))))
 
 ========================
 Binary assignment - ||=
@@ -186,9 +186,9 @@ Binary assignment - ||=
  (interpolation
   (binary_expression
     (expression
-     (identifier))
+     (number))
     (expression
-     (identifier)))))
+     (number)))))
 
 ========================
 Binary assignment - &&=
@@ -202,9 +202,9 @@ Binary assignment - &&=
  (interpolation
   (binary_expression
     (expression
-     (identifier))
+     (number))
     (expression
-     (identifier)))))
+     (number)))))
 
 ========================
 Binary assignment - ??=
@@ -218,9 +218,9 @@ Binary assignment - ??=
  (interpolation
   (binary_expression
     (expression
-     (identifier))
+     (number))
     (expression
-     (identifier)))))
+     (number)))))
 
 ========================
 Binary assignment - >>>=
@@ -234,6 +234,6 @@ Binary assignment - >>>=
  (interpolation
   (binary_expression
     (expression
-     (identifier))
+     (number))
     (expression
-     (identifier)))))
+     (number)))))
