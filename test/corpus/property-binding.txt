@@ -636,3 +636,57 @@ Escaped string expression
             (identifier))
           (expression
             (string)))))))
+
+================
+Object with shorthand properties
+================
+
+<element [property]="{ objProp, otherProp, diff: name, ...spread }"/>
+
+---
+
+(document
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (expression
+            (object
+              (identifier)
+              (identifier)
+              (pair
+                key: (identifier)
+                value: (expression
+                  (identifier)))
+              (spread
+                (identifier)))))))))
+
+================
+Pipe with object with shorthand properties
+================
+
+<element [property]="'key' | translate: { objProp, otherProp }"/>
+
+---
+
+(document
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (expression
+            (string)
+            pipes: (pipe_sequence
+              (pipe_operator)
+              (pipe_call
+               name: (identifier)
+               arguments: (pipe_arguments
+                 (object
+                  (identifier)
+                  (identifier)))))))))))
