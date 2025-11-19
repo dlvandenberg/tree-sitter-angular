@@ -67,6 +67,7 @@
   <button (click)="onClick()">Click me</button>
   <button (click)="onClick($event)">Click me</button>
   <button (click)="onClick($event, 'some')">Click me</button>
+  <button (click)="onClick(); this.element = $event.target; $event.target.value = 'Hi'; onClick()">Click me</button>
 </div>
 
 <div class="directives">

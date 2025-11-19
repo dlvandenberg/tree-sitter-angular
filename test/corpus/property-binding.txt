@@ -232,6 +232,47 @@ Event binding with mutiple expressions
               (call_expression
                 (identifier)))))))))
 
+========================
+Event binding with multiple assigns and expressions
+========================
+
+<element (click)="handle($event); $event.target.value = 'hello'; greeting.value = 'Hi'; $event.preventDefault()"/>
+
+---
+
+(document
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (event_binding
+            (binding_name
+              (identifier))
+            (expression
+              (call_expression
+                function: (identifier)
+                arguments: (arguments
+                  (identifier))))
+            (assignment_expression
+              name: (member_expression
+                object: (member_expression
+                  object: (identifier)
+                  property: (identifier))
+                property: (identifier))
+              value: (expression
+                (string)))
+            (assignment_expression
+              name: (member_expression
+                object: (identifier)
+                property: (identifier))
+              value: (expression
+                (string)))
+            (expression
+              (member_expression
+                object: (identifier)
+                call: (call_expression
+                  function: (identifier)))))))))
+
 =================
 Regular attribute
 =================
