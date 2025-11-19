@@ -275,7 +275,7 @@ module.exports = grammar(HTML, {
       ),
 
     assignment_expression: ($) =>
-      seq(field('name', $.identifier), '=', field('value', $._any_expression)),
+      seq(field('name', choice($.member_expression, $.identifier)), '=', field('value', $._any_expression)),
 
     // -------- ICU expressions ---------
     icu_expression: ($) =>
