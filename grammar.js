@@ -271,11 +271,50 @@ module.exports = grammar(HTML, {
         $.ternary_expression,
         $.nullish_coalescing_expression,
         $.template_string,
+        $.regular_expression,
         prec(3, $.conditional_expression),
       ),
 
+    regular_expression: ($) =>
+      seq(
+        '/',
+        field('pattern', $.regular_expression_pattern),
+        token.immediate(prec(1, '/')),
+        optional(field('flags', $.regular_expression_flags)),
+        optional(seq('.', $.call_expression)),
+      ),
+
+    regular_expression_pattern: (_) =>
+      token.immediate(
+        prec(
+          -1,
+          repeat1(
+            choice(
+              seq(
+                '[',
+                repeat(
+                  choice(
+                    /\\./, // escaped character
+                    /[^\]\n\\]/, // any character besides ']', '\' or '\n'
+                  ),
+                ),
+                ']',
+              ),
+              /\\./, // escaped character
+              /[^/\\\[\n]/, // any character besides '[', '\', '/', '\n'
+            ),
+          ),
+        ),
+      ),
+
+    regular_expression_flags: () => token.immediate(/[dgimsuvy]+/),
+
     assignment_expression: ($) =>
-      seq(field('name', choice($.member_expression, $.identifier)), '=', field('value', $._any_expression)),
+      seq(
+        field('name', choice($.member_expression, $.identifier)),
+        '=',
+        field('value', $._any_expression),
+      ),
 
     // -------- ICU expressions ---------
     icu_expression: ($) =>

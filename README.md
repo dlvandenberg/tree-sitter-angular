@@ -2,7 +2,7 @@
 
 <h4 align="center">
     <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/dlvandenberg/tree-sitter-angular/ci.yml">
-    <img alt="Angular" src="https://img.shields.io/badge/Angular-v20.1-AF21EA?logo=angular&logoColor=F51365">
+    <img alt="Angular" src="https://img.shields.io/badge/Angular-v21.0-AF21EA?logo=angular&logoColor=F51365">
     <img alt="Tree-sitter CLI version" src="https://img.shields.io/github/package-json/dependency-version/dlvandenberg/tree-sitter-angular/dev/tree-sitter-cli/main">
 </h4>
 
@@ -26,6 +26,7 @@ This parser extends [tree-sitter-html](https://github.com/tree-sitter/tree-sitte
 - [x] Untagged Template Literals (v19.2)
 - [x] Exponentiation (`**`) and `in` operators (v20)
 - [x] Binary assignment (`+=`, `*=`, etc) operators (v20.1)
+- [x] Regular expressions (`/\d+/i`) (v21)
 
 ## Requirements
 
