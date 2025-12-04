@@ -780,6 +780,49 @@ Class modifier property
             (call_expression
               function: (identifier))))))))
 
+================
+Class property
+================
+
+<element [class.--modifier]="value()"/>
+
+---
+
+(document
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (member_expression
+              object: (identifier)
+              property: (identifier)))
+          (expression
+            (call_expression
+              function: (identifier))))))))
+
+================
+Class selector class
+================
+
+<element [class.some-css-class]="value()"/>
+
+---
+
+(document
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (member_expression
+              object: (identifier)
+              property: (identifier)))
+          (expression
+            (call_expression
+              function: (identifier))))))))
 
 ================
 Style unit property
