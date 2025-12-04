@@ -774,8 +774,33 @@ Class modifier property
         (property_binding
           (binding_name
             (member_expression
-              (identifier)
-              (identifier)))
+              object: (identifier)
+              property: (identifier)))
           (expression
             (call_expression
-              (identifier))))))))
+              function: (identifier))))))))
+
+
+================
+Style unit property
+================
+
+<element [style.width.%]="value()"/>
+
+---
+
+(document
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (member_expression
+              object: (member_expression
+                object: (identifier)
+                property: (identifier))
+              unit: (style_unit)))
+          (expression
+            (call_expression
+              function: (identifier))))))))
