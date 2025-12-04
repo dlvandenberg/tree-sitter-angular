@@ -626,10 +626,16 @@ module.exports = grammar(HTML, {
         choice(
           seq(
             choice('.', '?.', '!.'),
-            choice(field('property', $.identifier), field('call', $.call_expression)),
+            choice(
+              field('property', $.identifier),
+              field('call', $.call_expression),
+              field('unit', $.style_unit),
+            ),
           ),
         ),
       ),
+
+    style_unit: () => choice('px', '%'),
 
     // Bracket expression
     bracket_expression: ($) =>
