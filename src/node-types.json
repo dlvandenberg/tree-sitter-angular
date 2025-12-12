@@ -44,10 +44,6 @@
             "named": true
           },
           {
-            "type": "template_string",
-            "named": true
-          },
-          {
             "type": "ternary_expression",
             "named": true
           },
@@ -115,6 +111,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "template_string",
           "named": true
         },
         {
@@ -187,10 +187,6 @@
           },
           {
             "type": "regular_expression",
-            "named": true
-          },
-          {
-            "type": "template_string",
             "named": true
           },
           {
@@ -474,6 +470,10 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "template_string",
+            "named": true
           }
         ]
       },
@@ -499,10 +499,6 @@
           },
           {
             "type": "regular_expression",
-            "named": true
-          },
-          {
-            "type": "template_string",
             "named": true
           },
           {
@@ -582,10 +578,6 @@
             "named": true
           },
           {
-            "type": "template_string",
-            "named": true
-          },
-          {
             "type": "ternary_expression",
             "named": true
           },
@@ -654,6 +646,10 @@
         {
           "type": "string",
           "named": true
+        },
+        {
+          "type": "template_string",
+          "named": true
         }
       ]
     }
@@ -704,6 +700,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "template_string",
             "named": true
           },
           {
@@ -758,6 +758,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "template_string",
             "named": true
           },
           {
@@ -1402,10 +1406,6 @@
           "named": true
         },
         {
-          "type": "template_string",
-          "named": true
-        },
-        {
           "type": "ternary_expression",
           "named": true
         },
@@ -1469,6 +1469,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "template_string",
           "named": true
         }
       ]
@@ -1618,10 +1622,6 @@
         },
         {
           "type": "regular_expression",
-          "named": true
-        },
-        {
-          "type": "template_string",
           "named": true
         },
         {
@@ -1813,10 +1813,6 @@
           "named": true
         },
         {
-          "type": "template_string",
-          "named": true
-        },
-        {
           "type": "ternary_expression",
           "named": true
         },
@@ -1853,10 +1849,6 @@
         },
         {
           "type": "regular_expression",
-          "named": true
-        },
-        {
-          "type": "template_string",
           "named": true
         },
         {
@@ -1965,10 +1957,6 @@
         },
         {
           "type": "regular_expression",
-          "named": true
-        },
-        {
-          "type": "template_string",
           "named": true
         },
         {
@@ -2100,6 +2088,10 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "template_string",
+            "named": true
           }
         ]
       },
@@ -2154,10 +2146,6 @@
             "named": true
           },
           {
-            "type": "template_string",
-            "named": true
-          },
-          {
             "type": "ternary_expression",
             "named": true
           },
@@ -2205,6 +2193,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "template_string",
             "named": true
           }
         ]
@@ -2287,10 +2279,6 @@
             "named": true
           },
           {
-            "type": "template_string",
-            "named": true
-          },
-          {
             "type": "ternary_expression",
             "named": true
           },
@@ -2344,6 +2332,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "template_string",
           "named": true
         }
       ]
@@ -2474,10 +2466,6 @@
         },
         {
           "type": "regular_expression",
-          "named": true
-        },
-        {
-          "type": "template_string",
           "named": true
         },
         {
@@ -2915,10 +2903,6 @@
           "named": true
         },
         {
-          "type": "template_string",
-          "named": true
-        },
-        {
           "type": "ternary_expression",
           "named": true
         },
@@ -3060,10 +3044,6 @@
           "named": true
         },
         {
-          "type": "template_string",
-          "named": true
-        },
-        {
           "type": "ternary_expression",
           "named": true
         },
@@ -3107,10 +3087,6 @@
             "named": true
           },
           {
-            "type": "template_string",
-            "named": true
-          },
-          {
             "type": "ternary_expression",
             "named": true
           },
@@ -3142,10 +3118,6 @@
           },
           {
             "type": "regular_expression",
-            "named": true
-          },
-          {
-            "type": "template_string",
             "named": true
           },
           {
@@ -3200,6 +3172,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "template_string",
             "named": true
           }
         ]
@@ -3280,10 +3256,6 @@
         },
         {
           "type": "regular_expression",
-          "named": true
-        },
-        {
-          "type": "template_string",
           "named": true
         },
         {

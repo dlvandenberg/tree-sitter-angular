@@ -16,12 +16,13 @@ Untagged template literal
         (property_binding
           (binding_name
             (identifier))
-          (template_string
-            (template_chars)
-            (template_substitution
-              (expression
-                (call_expression
-                  (identifier))))))))
+          (expression
+            (template_string
+              (template_chars)
+              (template_substitution
+                (expression
+                  (call_expression
+                    (identifier)))))))))
     (text)
     (end_tag
       (tag_name))))
@@ -44,11 +45,12 @@ Untagged template literal - only substitution
         (property_binding
           (binding_name
             (identifier))
-          (template_string
-            (template_substitution
-              (expression
-                (call_expression
-                  (identifier))))))))
+          (expression
+            (template_string
+              (template_substitution
+                (expression
+                  (call_expression
+                    (identifier)))))))))
     (text)
     (end_tag
       (tag_name))))
@@ -71,17 +73,18 @@ Untagged template literal - multiple
         (property_binding
           (binding_name
             (identifier))
-          (template_string
-            (template_chars)
-            (template_substitution
-              (expression
-                (call_expression
-                  (identifier))))
-            (template_chars)
-            (template_substitution
-              (expression
-                (call_expression
-                  (identifier))))))))
+          (expression
+            (template_string
+              (template_chars)
+              (template_substitution
+                (expression
+                  (call_expression
+                    (identifier))))
+              (template_chars)
+              (template_substitution
+                (expression
+                  (call_expression
+                    (identifier)))))))))
     (text)
     (end_tag
       (tag_name))))
@@ -104,15 +107,16 @@ Untagged template literal - complex
         (property_binding
           (binding_name
             (identifier))
-          (template_string
-            (template_chars)
-            (template_substitution
-              (expression
-                (identifier)
-                (pipe_sequence
-                  (pipe_operator)
-                  (pipe_call
-                    (identifier)))))))))
+          (expression
+            (template_string
+              (template_chars)
+              (template_substitution
+                (expression
+                  (identifier)
+                  (pipe_sequence
+                    (pipe_operator)
+                    (pipe_call
+                      (identifier))))))))))
     (text)
     (end_tag
       (tag_name))))
@@ -130,11 +134,34 @@ Untagged template literal - interpolation
     (start_tag
       (tag_name))
     (interpolation
-      (template_string
+      (expression
+        (template_string
+          (template_chars)
+          (template_substitution
+            (expression
+              (call_expression
+                (identifier)))))))
+    (end_tag
+      (tag_name))))
+
+========================
+Untagged template literal - interpolation with pipe
+========================
+
+{{ `Hello, ${name}` | uperrcase }}
+
+---
+
+(document
+  (interpolation
+    (expression
+        (template_string
         (template_chars)
         (template_substitution
           (expression
-            (call_expression
-              (identifier))))))
-    (end_tag
-      (tag_name))))
+            (identifier))))
+      (pipe_sequence
+        (pipe_operator)
+        (pipe_call
+          (identifier))))))
+
