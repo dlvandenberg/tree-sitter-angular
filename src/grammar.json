@@ -1650,10 +1650,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "template_string"
-        },
-        {
-          "type": "SYMBOL",
           "name": "regular_expression"
         },
         {
@@ -3018,6 +3014,10 @@
         {
           "type": "SYMBOL",
           "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "template_string"
         },
         {
           "type": "SYMBOL",
