@@ -55,6 +55,12 @@
     <img [src]="imageUrl" />
   </div>
   <input [cond]="obj.access['thing'].thing" />
+
+  @if (cond) {
+    <div [class.!bg-blue-500]="isBlue" [class.bg-red-500]="!isBlue">Color me</div>
+  }
+
+  <div [style.width.%]="50">Half width</div>
 </div>
 
 <div class="icu">

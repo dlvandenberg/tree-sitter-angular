@@ -434,7 +434,20 @@ module.exports = grammar(HTML, {
         $._double_quote,
       ),
 
-    binding_name: ($) => seq(choice($.identifier, $.member_expression)),
+    binding_name: ($) =>
+      choice($.identifier, alias($._binding_member_expression, $.member_expression)),
+    _binding_member_expression: ($) =>
+      seq(
+        field(
+          'object',
+          choice($.identifier, alias($._binding_member_expression, $.member_expression)),
+        ),
+        '.',
+        choice(
+          field('property', alias(/!?[-a-zA-Z_\$][-a-zA-Z0-9_\$]*/, $.identifier)),
+          field('unit', $.style_unit),
+        ),
+      ),
 
     _normal_attribute: ($) =>
       seq(

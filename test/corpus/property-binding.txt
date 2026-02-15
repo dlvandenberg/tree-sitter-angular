@@ -847,3 +847,24 @@ Style unit property
           (expression
             (call_expression
               function: (identifier))))))))
+
+================
+Class binding with Tailwind important modifier
+================
+
+<element [class.!text-red-500]="isError"/>
+
+---
+
+(document
+ (element
+   (self_closing_tag
+     (tag_name)
+     (attribute
+       (property_binding
+         (binding_name
+           (member_expression
+             object: (identifier)
+             property: (identifier)))
+         (expression
+           (identifier)))))))
