@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-angular",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "Tree-sitter grammar for the Angular framework",
   "main": "bindings/node",
   "types": "bindings/node",
@@ -46,7 +46,7 @@
     "eslint": "^9.14.0",
     "eslint-config-treesitter": "^1.0.2",
     "prebuildify": "^6.0.1",
-    "tree-sitter-cli": "^0.25.10"
+    "tree-sitter-cli": "^0.26.5"
   },
   "dependencies": {
     "node-addon-api": "^8.2.2",

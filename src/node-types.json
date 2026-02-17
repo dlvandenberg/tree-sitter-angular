@@ -600,6 +600,25 @@
     }
   },
   {
+    "type": "class_binding",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "class_name",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "concatenation_expression",
     "named": true,
     "fields": {},
@@ -2453,6 +2472,10 @@
           "named": true
         },
         {
+          "type": "class_binding",
+          "named": true
+        },
+        {
           "type": "conditional_expression",
           "named": true
         },
@@ -3510,6 +3533,10 @@
   },
   {
     "type": "attribute_value",
+    "named": true
+  },
+  {
+    "type": "class_name",
     "named": true
   },
   {
