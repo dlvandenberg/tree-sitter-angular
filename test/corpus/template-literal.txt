@@ -14,7 +14,7 @@ Untagged template literal
       (tag_name)
       (attribute
         (property_binding
-          (binding_name
+          (class_binding
             (identifier))
           (expression
             (template_string
@@ -43,7 +43,7 @@ Untagged template literal - only substitution
       (tag_name)
       (attribute
         (property_binding
-          (binding_name
+          (class_binding
             (identifier))
           (expression
             (template_string
@@ -71,7 +71,7 @@ Untagged template literal - multiple
       (tag_name)
       (attribute
         (property_binding
-          (binding_name
+          (class_binding
             (identifier))
           (expression
             (template_string
@@ -105,7 +105,7 @@ Untagged template literal - complex
       (tag_name)
       (attribute
         (property_binding
-          (binding_name
+          (class_binding
             (identifier))
           (expression
             (template_string

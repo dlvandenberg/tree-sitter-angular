@@ -68,7 +68,13 @@
   <button (click)="onClick()">Click me</button>
   <button (click)="onClick($event)">Click me</button>
   <button (click)="onClick($event, 'some')">Click me</button>
-  <button (click)="onClick(); this.element = $event.target; $event.target.value = 'Hi'; onClick()">Click me</button>
+  <button
+    (click)="
+      onClick(); this.element = $event.target; $event.target.value = 'Hi'; onClick()
+    "
+  >
+    Click me
+  </button>
 </div>
 
 <div class="directives">
@@ -79,4 +85,16 @@
   </ng-template>
 
   <span *ngFor="let item of items; index as i; trackBy: trackByFn">{{ item }}</span>
+</div>
+
+<div class="tailwind">
+  <div
+    [class.text-primary/80]="cond()"
+    [class.data-active:text-green-300/80]="cond()"
+    [class.data-[size='large']:p-8]="cond()"
+  >
+    @if (cond()) {
+      <div class="test">test</div>
+    }
+  </div>
 </div>

@@ -418,7 +418,8 @@ module.exports = grammar(HTML, {
       ),
 
     // ---------- Bindings ----------
-    property_binding: ($) => seq('[', $.binding_name, ']', $._binding_assignment),
+    property_binding: ($) =>
+      seq('[', choice($.binding_name, $.class_binding), ']', $._binding_assignment),
     event_binding: ($) => seq('(', $.binding_name, ')', $._binding_assignment),
     two_way_binding: ($) => seq('[(', $.binding_name, ')]', $._binding_assignment),
     animation_binding: ($) =>
@@ -433,7 +434,20 @@ module.exports = grammar(HTML, {
         $._double_quote,
       ),
 
-    binding_name: ($) => seq(choice($.identifier, $.member_expression)),
+    binding_name: ($) => choice($.identifier, $.member_expression),
+
+    class_binding: ($) =>
+      seq(alias('class', $.identifier), optional(seq('.', $.class_name))),
+
+    class_name: () =>
+      token(
+        repeat1(
+          choice(
+            /[\!a-zA-Z0-9_\-\/:'"()]+/, // regular characters (no brackets)
+            /\[[^\]]+\]/, // bracket pairs for arbitrary variants like [size='large']
+          ),
+        ),
+      ),
 
     _normal_attribute: ($) =>
       seq(

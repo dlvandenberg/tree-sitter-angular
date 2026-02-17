@@ -772,10 +772,9 @@ Class modifier property
       (tag_name)
       (attribute
         (property_binding
-          (binding_name
-            (member_expression
-              object: (identifier)
-              property: (identifier)))
+          (class_binding
+            (identifier)
+            (class_name))
           (expression
             (call_expression
               function: (identifier))))))))
@@ -794,10 +793,9 @@ Class property
       (tag_name)
       (attribute
         (property_binding
-          (binding_name
-            (member_expression
-              object: (identifier)
-              property: (identifier)))
+          (class_binding
+            (identifier)
+            (class_name))
           (expression
             (call_expression
               function: (identifier))))))))
@@ -816,10 +814,30 @@ Class selector class
       (tag_name)
       (attribute
         (property_binding
-          (binding_name
-            (member_expression
-              object: (identifier)
-              property: (identifier)))
+          (class_binding
+            (identifier)
+            (class_name))
+          (expression
+            (call_expression
+              function: (identifier))))))))
+
+================
+Class selector class - inverse
+================
+
+<element [class.!some-css-class]="value()"/>
+
+---
+
+(document
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (class_binding
+            (identifier)
+            (class_name))
           (expression
             (call_expression
               function: (identifier))))))))
