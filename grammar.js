@@ -362,7 +362,7 @@ module.exports = grammar(HTML, {
     structural_directive: ($) =>
       seq(
         '*',
-        $.identifier,
+        alias($.attribute_name, $.identifier),
         optional(
           seq(
             '=',
@@ -434,7 +434,22 @@ module.exports = grammar(HTML, {
         $._double_quote,
       ),
 
-    binding_name: ($) => choice($.identifier, $.member_expression),
+    binding_identifier: () => /[-a-zA-Z_\$][-a-zA-Z0-9_\$]*/,
+    binding_name: ($) => $._binding_primitive,
+    _binding_primitive: ($) =>
+      choice(
+        alias($.binding_identifier, $.identifier),
+        alias($.binding_member_expression, $.member_expression),
+      ),
+    binding_member_expression: ($) =>
+      seq(
+        field('object', $._binding_primitive),
+        '.',
+        choice(
+          field('property', alias($.binding_identifier, $.identifier)),
+          field('unit', $.style_unit),
+        ),
+      ),
 
     class_binding: ($) =>
       seq(alias('class', $.identifier), optional(seq('.', $.class_name))),
@@ -570,13 +585,15 @@ module.exports = grammar(HTML, {
     array: ($) =>
       seq(
         '[',
-        choice($.expression, $.unary_expression),
-        repeat(seq(',', choice($.expression, $.unary_expression))),
+        optional(seq(
+          choice($.expression, $.unary_expression),
+          repeat(seq(',', choice($.expression, $.unary_expression))),
+        )),
         ']',
       ),
 
     // Identifier
-    identifier: () => /[-a-zA-Z_\$][-a-zA-Z0-9_\$]*/,
+    identifier: () => /[a-zA-Z_\$][a-zA-Z0-9_\$]*/,
 
     // String
     string: ($) =>
@@ -640,11 +657,7 @@ module.exports = grammar(HTML, {
         choice(
           seq(
             choice('.', '?.', '!.'),
-            choice(
-              field('property', $.identifier),
-              field('call', $.call_expression),
-              field('unit', $.style_unit),
-            ),
+            choice(field('property', $.identifier), field('call', $.call_expression)),
           ),
         ),
       ),
