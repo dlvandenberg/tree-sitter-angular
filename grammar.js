@@ -585,8 +585,10 @@ module.exports = grammar(HTML, {
     array: ($) =>
       seq(
         '[',
-        choice($.expression, $.unary_expression),
-        repeat(seq(',', choice($.expression, $.unary_expression))),
+        optional(seq(
+          choice($.expression, $.unary_expression),
+          repeat(seq(',', choice($.expression, $.unary_expression))),
+        )),
         ']',
       ),
 
