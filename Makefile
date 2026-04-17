@@ -1,4 +1,4 @@
-VERSION := 0.0.1
+VERSION := 0.8.5
 
 LANGUAGE_NAME := tree-sitter-angular
 
