@@ -36,6 +36,10 @@ jobs:
         if: ${{ inputs.dry_run != 'true' }}
         run: ./scripts/bump-version.sh "${{ steps.tag_version.outputs.new_version }}"
 
+      - name: Install dependencies
+        if: ${{ inputs.dry_run != 'true' }}
+        run: npm ci
+
       - name: Build
         if: ${{ inputs.dry_run != 'true' }}
         run: tree-sitter generate
