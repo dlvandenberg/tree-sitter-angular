@@ -517,7 +517,7 @@ module.exports = grammar(HTML, {
 
     // Unary expression
     unary_expression: ($) =>
-      seq(field('operator', alias('!', $.unary_operator)), field('value', $.expression)),
+      seq(field('operator', alias('!', $.unary_operator)), field('value', choice($.expression, $.unary_expression))),
 
     // Binary expression
     binary_expression: ($) =>

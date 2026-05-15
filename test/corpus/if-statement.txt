@@ -373,4 +373,32 @@ If statement with in operator
        (identifier)
        (identifier))))
     (end_tag
-     (tag_name))))))
+      (tag_name))))))
+
+==========================
+Nested unary
+==========================
+
+@if (!!nonNull) {
+  <p>prop is not nullish</p>
+}
+
+---
+
+(document
+  (if_statement
+    (control_keyword)
+    condition: (if_condition
+      (unary_expression
+        operator: (unary_operator)
+        value: (unary_expression
+          operator: (unary_operator)
+          value: (expression
+            (identifier)))))
+    consequence: (statement_block
+      (element
+        (start_tag
+          (tag_name))
+        (text)
+        (end_tag
+          (tag_name))))))
