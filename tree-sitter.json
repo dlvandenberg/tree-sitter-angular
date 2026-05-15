@@ -5,7 +5,13 @@
       "camelcase": "Angular",
       "scope": "source.angular",
       "path": ".",
-      "file-types": ["component.html"]
+      "file-types": [
+        "component.html"
+      ],
+      "highlights": "queries/highlights.scm",
+      "injections": "queries/injections.scm",
+      "folds": "queries/folds.scm",
+      "indents": "queries/indents.scm"
     }
   ],
   "metadata": {
