@@ -123,3 +123,35 @@ Switch-default
           (element
             (self_closing_tag
               (tag_name))))))))
+
+==============
+Switch multiple cases
+==============
+
+@switch (condition) {
+  @case (a)
+  @case (b) {
+    <element-a/>
+  }
+}
+
+---
+
+(document
+  (switch_statement
+    (control_keyword)
+    value: (expression
+      (identifier))
+    body: (switch_body
+      (case_statement
+        (control_keyword)
+        value: (expression
+          (identifier)))
+      (case_statement
+        (control_keyword)
+        value: (expression
+          (identifier))
+        body: (statement_block
+          (element
+            (self_closing_tag
+              (tag_name))))))))

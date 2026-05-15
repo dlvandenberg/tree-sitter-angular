@@ -97,7 +97,7 @@ module.exports = grammar(HTML, {
         '(',
         field('value', $._any_expression),
         ')',
-        field('body', $.statement_block),
+        optional(field('body', $.statement_block)),
       ),
 
     default_statement: ($) =>
