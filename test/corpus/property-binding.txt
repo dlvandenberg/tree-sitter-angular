@@ -965,3 +965,26 @@ Function call with multiple spread arguments
                   (identifier))
                 (spread
                   (identifier))))))))))
+
+================
+Property binding with boolean coercion
+================
+
+<element [property]="!!value"/>
+
+---
+
+(document
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (unary_expression
+            (unary_operator)
+            (unary_expression
+              (unary_operator)
+              (expression
+                (identifier)))))))))
