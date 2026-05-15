@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.RELEASE_TOKEN }}
 
       - name: Set up tree-sitter
         if: ${{ inputs.dry_run != 'true' }}
@@ -29,7 +31,7 @@ jobs:
         id: tag_version
         with:
           custom_tag: ${{ inputs.version }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.RELEASE_TOKEN }}
           dry_run: true
 
       - name: Bump versions in source files
@@ -59,7 +61,7 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.2
         with:
           custom_tag: ${{ steps.tag_version.outputs.new_version }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.RELEASE_TOKEN }}
 
       - name: Create release
         if: ${{ inputs.dry_run != 'true' }}
