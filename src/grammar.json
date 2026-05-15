@@ -3186,8 +3186,25 @@
                 "name": "_shorthand"
               },
               {
-                "type": "SYMBOL",
-                "name": "spread"
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "spread"
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -3274,19 +3291,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": ","
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "name": "_primitive"
         }
       ]
     },
@@ -3313,6 +3318,10 @@
                     {
                       "type": "SYMBOL",
                       "name": "unary_expression"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "spread"
                     }
                   ]
                 },
@@ -3335,6 +3344,10 @@
                           {
                             "type": "SYMBOL",
                             "name": "unary_expression"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "spread"
                           }
                         ]
                       }
@@ -3551,6 +3564,10 @@
             {
               "type": "SYMBOL",
               "name": "_timed_argument"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "spread"
             }
           ]
         },
@@ -3564,8 +3581,17 @@
                 "value": ","
               },
               {
-                "type": "SYMBOL",
-                "name": "_primitive"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_primitive"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "spread"
+                  }
+                ]
               }
             ]
           }
