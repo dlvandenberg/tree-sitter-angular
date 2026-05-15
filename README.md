@@ -27,6 +27,8 @@ This parser extends [tree-sitter-html](https://github.com/tree-sitter/tree-sitte
 - [x] Exponentiation (`**`) and `in` operators (v20)
 - [x] Binary assignment (`+=`, `*=`, etc) operators (v20.1)
 - [x] Regular expressions (`/\d+/i`) (v21)
+- [x] Sread syntax (`{ ...obj, prop: value }`, `[ ...arr, 1, 2 ]`) (v21)
+- [x] Rest syntax (`func(...args)`) (v21)
 
 ## Requirements
 

@@ -568,7 +568,7 @@ module.exports = grammar(HTML, {
       ),
 
     // Object
-    object: ($) => seq('{', repeat(choice($.pair, $._shorthand, $.spread)), '}'),
+    object: ($) => seq('{', repeat(choice($.pair, $._shorthand, seq($.spread, optional(',')))), '}'),
 
     pair: ($) =>
       seq(
@@ -579,15 +579,15 @@ module.exports = grammar(HTML, {
       ),
 
     _shorthand: ($) => seq($.identifier, optional(',')),
-    spread: ($) => seq('...', $.identifier, optional(',')),
+    spread: ($) => seq('...', $._primitive),
 
     // Array
     array: ($) =>
       seq(
         '[',
         optional(seq(
-          choice($.expression, $.unary_expression),
-          repeat(seq(',', choice($.expression, $.unary_expression))),
+          choice($.expression, $.unary_expression, $.spread),
+          repeat(seq(',', choice($.expression, $.unary_expression, $.spread))),
         )),
         ']',
       ),
@@ -644,8 +644,8 @@ module.exports = grammar(HTML, {
       ),
     arguments: ($) =>
       seq(
-        choice($._primitive, $.binary_expression, $.unary_expression, $._timed_argument),
-        repeat(seq(',', $._primitive)),
+        choice($._primitive, $.binary_expression, $.unary_expression, $._timed_argument, $.spread),
+        repeat(seq(',', choice($._primitive, $.spread))),
       ),
 
     _timed_argument: ($) => seq($.number, $.unit),

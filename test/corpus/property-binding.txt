@@ -865,3 +865,103 @@ Style unit property
           (expression
             (call_expression
               function: (identifier))))))))
+
+================
+Object spread with member expression
+================
+
+<element [property]="{ ...obj.props, key: value }"/>
+
+---
+
+(document
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (expression
+            (object
+              (spread
+                (member_expression
+                  object: (identifier)
+                  property: (identifier)))
+              (pair
+                key: (identifier)
+                value: (expression
+                  (identifier))))))))))
+
+================
+Array with spread
+================
+
+<element [property]="[...arr, 1, 2]"/>
+
+---
+
+(document
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (expression
+            (array
+              (spread
+                (identifier))
+              (expression
+                (number))
+              (expression
+                (number)))))))))
+
+================
+Function call with spread arguments
+================
+
+<element [property]="fn(...args)"/>
+
+---
+
+(document
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (expression
+            (call_expression
+              function: (identifier)
+              arguments: (arguments
+                (spread
+                  (identifier))))))))))
+
+================
+Function call with multiple spread arguments
+================
+
+<element [property]="fn(...arr, ...other)"/>
+
+---
+
+(document
+  (element
+    (self_closing_tag
+      (tag_name)
+      (attribute
+        (property_binding
+          (binding_name
+            (identifier))
+          (expression
+            (call_expression
+              function: (identifier)
+              arguments: (arguments
+                (spread
+                  (identifier))
+                (spread
+                  (identifier))))))))))
