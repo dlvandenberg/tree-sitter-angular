@@ -47,6 +47,7 @@ jobs:
         run: npm run build && cargo build
 
       - name: Commit version bump
+        id: commit
         if: ${{ !inputs.dry_run }}
         run: |
           git config user.name "github-actions[bot]"
@@ -55,6 +56,7 @@ jobs:
           git diff --staged --quiet && echo "No changes to commit" && exit 0
           git commit -m "chore: bump version to ${{ steps.tag_version.outputs.new_version }}"
           git push
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Create tag
         if: ${{ !inputs.dry_run }}
@@ -62,6 +64,7 @@ jobs:
         with:
           custom_tag: ${{ steps.tag_version.outputs.new_version }}
           github_token: ${{ secrets.RELEASE_TOKEN }}
+          commit_sha: ${{ steps.commit.outputs.sha }}
 
       - name: Create release
         if: ${{ !inputs.dry_run }}
@@ -71,9 +74,3 @@ jobs:
           name: ${{ steps.tag_version.outputs.new_version }}
           body: ${{ steps.tag_version.outputs.changelog }}
 
-  publish_packages:
-    if: ${{ !inputs.dry_run }}
-    needs: tag_release
-    name: Publish packages
-    uses: './.github/workflows/publish.yml'
-    secrets: inherit

@@ -1,11 +1,9 @@
 name: Publish package
 
 on:
-  workflow_call:
-
-concurrency:
-  group: ${{github.workflow}}-${{github.ref}}
-  cancel-in-progress: true
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   npm:
@@ -22,11 +20,11 @@ jobs:
       url: https://crates.io/crates/tree-sitter-angular
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Set up Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
-          toolchain: ${{inputs.rust-toolchain}}
+          toolchain: stable
       - name: Set up tree-sitter CLI
         uses: tree-sitter/setup-action/cli@v2
       - name: Install dependencies
