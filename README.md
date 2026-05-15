@@ -30,6 +30,7 @@ This parser extends [tree-sitter-html](https://github.com/tree-sitter/tree-sitte
 - [x] Sread syntax (`{ ...obj, prop: value }`, `[ ...arr, 1, 2 ]`) (v21.1)
 - [x] Rest syntax (`func(...args)`) (v21.1)
 - [x] Multiple switch-case statements (v21.1)
+- [x] Arrow functions (`fn((a, b) => a + b)`) (v21.2)
 
 ## Requirements
 

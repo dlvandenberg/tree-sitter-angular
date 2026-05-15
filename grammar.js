@@ -10,12 +10,17 @@
 const HTML = require('tree-sitter-html/grammar');
 
 const PREC = {
+  ARROW: 0,
   CALL: 1,
   ALIAS: 2,
 };
 
 module.exports = grammar(HTML, {
   name: 'angular',
+
+  conflicts: ($) => [
+    [$.arrow_function_parameters, $._primitive],
+  ],
 
   externals: ($, original) =>
     original.concat([
@@ -265,6 +270,7 @@ module.exports = grammar(HTML, {
     // ---------- Expressions -----------
     _any_expression: ($) =>
       choice(
+        $.arrow_function,
         $.binary_expression,
         $.unary_expression,
         $.expression,
@@ -272,6 +278,29 @@ module.exports = grammar(HTML, {
         $.nullish_coalescing_expression,
         $.regular_expression,
         prec(3, $.conditional_expression),
+      ),
+
+    arrow_function: ($) =>
+      prec.right(
+        PREC.ARROW,
+        seq(
+          field('parameters', choice(
+            $.identifier,
+            $.arrow_function_parameters,
+          )),
+          '=>',
+          field('body', $._any_expression),
+        ),
+      ),
+
+    arrow_function_parameters: ($) =>
+      seq(
+        '(',
+        optional(seq(
+          $.identifier,
+          repeat(seq(',', $.identifier)),
+        )),
+        ')',
       ),
 
     regular_expression: ($) =>
@@ -644,8 +673,8 @@ module.exports = grammar(HTML, {
       ),
     arguments: ($) =>
       seq(
-        choice($._primitive, $.binary_expression, $.unary_expression, $._timed_argument, $.spread),
-        repeat(seq(',', choice($._primitive, $.spread))),
+        choice($._primitive, $.binary_expression, $.unary_expression, $._timed_argument, $.spread, $.arrow_function),
+        repeat(seq(',', choice($._primitive, $.spread, $.arrow_function))),
       ),
 
     _timed_argument: ($) => seq($.number, $.unit),
