@@ -41,6 +41,11 @@ case "$1" in
   *) usage ;;
 esac
 
+if [[ "$CURRENT" == "$NEW" ]]; then
+  echo "Version is already $CURRENT, nothing to do."
+  exit 0
+fi
+
 echo "Bumping version: $CURRENT -> $NEW"
 
 # package.json — first "version" field
