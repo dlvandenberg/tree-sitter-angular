@@ -27,6 +27,7 @@ module.exports = grammar(HTML, {
       $._interpolation_start,
       $._interpolation_end,
       $._control_flow_start,
+      $._empty_quoted_string,
     ]),
 
   rules: {
@@ -455,12 +456,15 @@ module.exports = grammar(HTML, {
       seq('[@', $.binding_name, ']', optional(field('trigger', $._binding_assignment))),
 
     _binding_assignment: ($) =>
-      seq(
-        '=',
-        $._double_quote,
-        optional(choice($._any_expression, $.assignment_expression)),
-        repeat(seq(';', optional(choice($._any_expression, $.assignment_expression)))),
-        $._double_quote,
+      choice(
+        seq('=', alias($._empty_quoted_string, '""')),
+        seq(
+          '=',
+          $._double_quote,
+          optional(choice($._any_expression, $.assignment_expression)),
+          repeat(seq(';', optional(choice($._any_expression, $.assignment_expression)))),
+          $._double_quote,
+        ),
       ),
 
     binding_identifier: () => /[-a-zA-Z_\$][-a-zA-Z0-9_\$]*/,

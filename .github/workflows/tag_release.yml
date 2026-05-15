@@ -40,7 +40,7 @@ jobs:
 
       - name: Install dependencies
         if: ${{ !inputs.dry_run }}
-        run: npm ci
+        run: npm ci && npm i --package-lock-only
 
       - name: Build
         if: ${{ !inputs.dry_run }}

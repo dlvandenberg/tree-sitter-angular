@@ -16,6 +16,7 @@ enum TokenType {
   INTERPOLATION_START,
   INTERPOLATION_END,
   CONTROL_FLOW_START,
+  EMPTY_QUOTED_STRING,
 };
 
 typedef struct {
@@ -386,6 +387,19 @@ static bool scan(Scanner *scanner, TSLexer *lexer, const bool *valid_symbols) {
       lexer->mark_end(lexer);
       lexer->result_symbol = CONTROL_FLOW_START;
       return true;
+    }
+    break;
+
+  case '"':
+    if (valid_symbols[EMPTY_QUOTED_STRING]) {
+      lexer->mark_end(lexer);
+      advance(lexer);
+      if (lexer->lookahead == '"') {
+        advance(lexer);
+        lexer->mark_end(lexer);
+        lexer->result_symbol = EMPTY_QUOTED_STRING;
+        return true;
+      }
     }
     break;
 
