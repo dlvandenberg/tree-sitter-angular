@@ -42,7 +42,10 @@
   "\"" @punctuation.delimiter)
 
 (property_binding
-  "\"" @punctuation.delimiter)
+  [
+   "\""
+   "\"\""
+  ] @punctuation.delimiter)
 
 (structural_assignment
   operator: (identifier) @keyword)
